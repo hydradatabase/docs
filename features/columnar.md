@@ -1,10 +1,10 @@
 # Columnar
 
-Hydra offers a columnar table engine for Postgres in addition to Postgres' built-in (default) Heap tables. Heap tables are ideal for row-based access, where individual pieces of data is found in the heap by using an index.
+Hydra offers a columnar table engine for Postgres in addition to Postgres' built-in (default) Heap tables. Heap tables are ideal for row-based access, where individual pieces of data is found in the heap by using an index. Columnar is ideal for analytical and historical data that will not change.
 
-The columnar engine instead stores data in stripes of up to 150,000 rows of data. Each stripe of data stores data from each column together. This makes it considerably faster to read all data from a single column. Stripes are created from each transaction 
+The columnar engine stores data in stripes of up to 150,000 rows of data. Each stripe of data stores data from each column together. This makes it considerably faster to read all data from a single column. Stripes are created during each transaction, so data needs to be inserted in bulk, rather than one row at a time.
 
-Data in columnar tables is append-only; it cannot be updated or deleted. As such, data should only moved to columnar tables once it has been finalized. Alternatively, columnar tables can be periodically rebuilt in order to update them.
+Data in columnar tables is append-only; it cannot be updated or deleted. One pattern is to move data to columnar tables once it has been finalized. Alternatively, columnar tables can be periodically rebuilt in order to update them.
 
 Data in columnar tables are compressed, which can assist in reducing your long-term storage requirements.
 
@@ -23,12 +23,13 @@ CREATE TABLE my_columnar_table
 ) USING columnar;
 ```
 
-Insert data into the table and read from it like normal (subject to the limitations listed below).
+Insert data into the table and read from it like normal (subject to the limitations listed below). Note that columnar supports only btree and hash indexes and their associated constraints.
 
 ## Limitations
 
 * Append-only (no ``UPDATE``/``DELETE`` support)
 * No space reclamation (e.g. rolled-back transactions may still consume disk space)
+* No support for `gist`, `gin`, `spgist`, and `brin` indexes.
 * No bitmap index scans
 * No tidscans
 * No sample scans
@@ -43,68 +44,39 @@ Insert data into the table and read from it like normal (subject to the limitati
 * No support for ``AFTER ... FOR EACH ROW`` triggers
 * No `UNLOGGED` columnar tables
 
-## Options
+## Converting Between Row and Columnar
 
-Set options using:
-
-```sql
-alter_columnar_table_set(
-    relid REGCLASS,
-    chunk_group_row_limit INT4 DEFAULT NULL,
-    stripe_row_limit INT4 DEFAULT NULL,
-    compression NAME DEFAULT NULL,
-    compression_level INT4)
-```
-
-For example:
+Note: ensure that you understand any advanced features that may be
+used with the table before converting it (e.g. row-level security,
+storage options, constraints, inheritance, etc.), and ensure that they
+are reproduced in the new table or partition appropriately. ``LIKE``,
+used below, is a shorthand that works only in simple cases.
 
 ```sql
-SELECT alter_columnar_table_set(
-    'my_columnar_table',
-    compression => 'none',
-    stripe_row_limit => 10000);
+CREATE TABLE my_table(i INT8 DEFAULT '7');
+INSERT INTO my_table VALUES(1);
+-- convert to columnar
+SELECT alter_table_set_access_method('my_table', 'columnar');
+-- back to row
+SELECT alter_table_set_access_method('my_table', 'heap');
 ```
 
-The following options are available:
+Converting between heap and columnar can be used to rebuild the table into full stripes.
 
-* **compression**: `[none|pglz|zstd|lz4|lz4hc]` - set the compression type
-  for _newly-inserted_ data. Existing data will not be
-  recompressed/decompressed. The default value is `zstd` (if support
-  has been compiled in).
-* **compression_level**: ``<integer>`` - Sets compression level. Valid
-  settings are from 1 through 19. If the compression method does not
-  support the level chosen, the closest level will be selected
-  instead.
-* **stripe_row_limit**: ``<integer>`` - the maximum number of rows per
-  stripe for _newly-inserted_ data. Existing stripes of data will not
-  be changed and may have more rows than this maximum value. The
-  default value is `150000`.
-* **chunk_group_row_limit**: ``<integer>`` - the maximum number of rows per
-  chunk for _newly-inserted_ data. Existing chunks of data will not be
-  changed and may have more rows than this maximum value. The default
-  value is `10000`.
-
-View options for all tables with:
+Data can also be converted by copying. For instance:
 
 ```sql
-SELECT * FROM columnar.options;
+CREATE TABLE table_heap (i INT8);
+CREATE TABLE table_columnar (LIKE table_heap) USING columnar;
+INSERT INTO table_columnar SELECT * FROM table_heap;
 ```
-
-You can also adjust options with a `SET` command of one of the
-following GUCs:
-
-* `columnar.compression`
-* `columnar.compression_level`
-* `columnar.stripe_row_limit`
-* `columnar.chunk_group_row_limit`
-
-GUCs only affect newly-created *tables*, not any newly-created
-*stripes* on an existing table.
 
 ## Partitioning
 
 Columnar tables can be used as partitions; and a partitioned table may
-be made up of any combination of row and columnar partitions.
+be made up of any combination of row and columnar partitions. You can
+use this feature to have archived data from previous months or years 
+stored in columnar tables while active data is added to a heap table.
 
 ```sql
 CREATE TABLE parent(ts timestamptz, i int, n numeric, s text)
@@ -160,25 +132,68 @@ CREATE UNIQUE INDEX p2_i_unique ON p2 (i);
 ALTER TABLE p2 ADD UNIQUE (n);
 ```
 
-## Converting Between Row and Columnar
+## Options
 
-Note: ensure that you understand any advanced features that may be
-used with the table before converting it (e.g. row-level security,
-storage options, constraints, inheritance, etc.), and ensure that they
-are reproduced in the new table or partition appropriately. ``LIKE``,
-used below, is a shorthand that works only in simple cases.
+Set options using:
 
 ```sql
-CREATE TABLE my_table(i INT8 DEFAULT '7');
-INSERT INTO my_table VALUES(1);
--- convert to columnar
-SELECT alter_table_set_access_method('my_table', 'columnar');
--- back to row
-SELECT alter_table_set_access_method('my_table', 'heap');
+alter_columnar_table_set(
+    relid REGCLASS,
+    chunk_group_row_limit INT4 DEFAULT NULL,
+    stripe_row_limit INT4 DEFAULT NULL,
+    compression NAME DEFAULT NULL,
+    compression_level INT4)
 ```
+
+For example:
+
+```sql
+SELECT alter_columnar_table_set(
+    'my_columnar_table',
+    compression => 'none',
+    stripe_row_limit => 10000);
+```
+
+The following options are available:
+
+* **compression**: `[none|pglz|zstd|lz4|lz4hc]` - set the compression type
+  for _newly-inserted_ data. Existing data will not be
+  recompressed/decompressed. The default value is `zstd`.
+* **compression_level**: ``<integer>`` - Sets compression level. Valid
+  settings are from 1 through 19. If the compression method does not
+  support the level chosen, the closest level will be selected
+  instead.
+* **stripe_row_limit**: ``<integer>`` - the maximum number of rows per
+  stripe for _newly-inserted_ data. Existing stripes of data will not
+  be changed and may have more rows than this maximum value. The
+  default value is `150000`.
+* **chunk_group_row_limit**: ``<integer>`` - the maximum number of rows per
+  chunk for _newly-inserted_ data. Existing chunks of data will not be
+  changed and may have more rows than this maximum value. The default
+  value is `10000`.
+
+View options for all tables with:
+
+```sql
+SELECT * FROM columnar.options;
+```
+
+You can also adjust options with a `SET` command of one of the
+following configuration variables:
+
+* `columnar.compression`
+* `columnar.compression_level`
+* `columnar.stripe_row_limit`
+* `columnar.chunk_group_row_limit`
+
+These settings only affect newly-created tables, not any newly-created
+stripes on an existing table.
 
 ## Source Code
 
 Hydra's columnar engine is a fork of the Citus columnar access method.
 Source code is available at https://github.com/HydrasCo/citus.
 
+## Additional information
+
+* [Archiving with columnar storage (microsoft.com)](https://docs.citusdata.com/en/stable/use_cases/timeseries.html#archiving-with-columnar-storage)
