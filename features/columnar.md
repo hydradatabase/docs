@@ -192,7 +192,7 @@ stripes on an existing table.
 ## Source Code
 
 Hydra's columnar engine is a fork of the Citus columnar access method.
-Source code is available at https://github.com/HydrasCo/citus.
+[The source code is available on GitHub](https://github.com/HydrasCo/citus).
 
 ## Additional information
 
