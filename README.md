@@ -1,6 +1,6 @@
 # What is Hydra?
 
-Hydra is a data warehouse that is accessible from Postgres. You can start for free, begin scaling with Postgres, then switch to the data engine of your choice at any time.
+Hydra is a data warehouse that is accessible from Postgres. You can start small with Postgres, then switch to the data engine of your choice at any time.
 
 All Hydra instances include:
 
@@ -10,7 +10,7 @@ All Hydra instances include:
 
 ## Quick Start
 
-Begin with a free Hydra data warehouse, then use standard Postgres tools to copy data. You'll need to substitute the credentials as appropriate. Each command below will prompt for the password.
+Begin with a Hydra data warehouse, then use standard Postgres tools to copy data. You'll need to substitute the credentials as appropriate. Each command below will prompt for the password.
 
 ```shell
 pg_dump -Fc --no-acl --no-owner \
