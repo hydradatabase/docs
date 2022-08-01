@@ -15,7 +15,7 @@ ln -s /etc/ssl/cert.pem ~/.postgres/root.crt
 
 The location of `/etc/ssl/cert.pem` may vary on your system.
 
-### add From Your Application
+### From Your Application
 
 You should refer to your application's Postgres library, but many libraries use `libpq` behind the scenes. You can configure `libpq` to read your cert bundle using the `PGSSLROOTCERT` environment variable. For example, add this environment variable to your application's environment:
 
