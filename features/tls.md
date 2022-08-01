@@ -9,7 +9,7 @@ If you are unable to configure your Postgres connection, we recommend using `ssl
 Instruct `psql` to read your public certificate bundle my symlinking `~/.postgresql/root.crt` to your public root cert bundle, typically at `/etc/ssl/cert.pem`:
 
 ```shell
-mkdir -p ~/.postgres
+mkdir -p ~/.postgresql
 ln -s /etc/ssl/cert.pem ~/.postgres/root.crt
 ```
 
