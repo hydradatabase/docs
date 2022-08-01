@@ -9,6 +9,7 @@
 ## Features
 
 * [Columnar](features/columnar.md)
+* [TLS](features/tls.md)
 
 ## Tools
 
