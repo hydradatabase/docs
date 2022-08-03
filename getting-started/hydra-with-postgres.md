@@ -1,6 +1,10 @@
-# 🐘 Hydra with Postgres
+---
+description: >-
+  Hydra with Postgres is a managed Postgres database that is ready to scale to
+  any size.
+---
 
-Hydra with Postgres is a managed Postgres database that is ready to scale to any size.
+# 🐘 Hydra with Postgres
 
 ### Importing Data
 

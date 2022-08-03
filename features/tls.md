@@ -1,4 +1,8 @@
-# TLS
+---
+description: Hydra is secured with end-to-end encryption with publicly signed certificates.
+---
+
+# 🔒 TLS
 
 Hydra has valid, publically signed certificates from Let's Encrypt allowing you to connect safety to your data warehouse from anywhere on the Internet. To validate the certificate, you must use `sslmode=verify-full` when connecting and configure your Postgres connection to read your public certificate bundle.
 

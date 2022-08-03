@@ -1,6 +1,11 @@
-# ❄ Hydra with Snowflake
+---
+description: >-
+  Hydra with Snowflake is a Postgres database that communicates directly with
+  Snowflake to execute all queries. Each Hydra database maps 1 to 1 with a
+  Snowflake database.
+---
 
-Hydra with Snowflake is a Postgres database that communicates directly with Snowflake to execute all queries. Each Hydra database maps 1:1 with a Snowflake database.&#x20;
+# ❄ Hydra with Snowflake
 
 ## Importing Data
 
@@ -10,7 +15,7 @@ You can import data directly into your Snowflake instance using Airbyte. For ins
 
 ### Import via Hydra with Postgres
 
-You may find it easier to first import data into Hydra with Postgres, then move your data to Snowflake using Hydra. Hydra staff will help you move you data from Postgres to Snowflake. We currently partner with Airbyte to move data between data warehouse engines.&#x20;
+You may find it easier to first import data into Hydra with Postgres, then move your data to Snowflake using Hydra. Hydra staff will help you move you data from Postgres to Snowflake. We currently partner with Airbyte to move data between data warehouse engines.
 
 Please contact Hydra if you need a custom Hydra with Postgres plan with additional resources during your migration.
 
@@ -24,7 +29,7 @@ This process is complex and will be improved with additional tooling soon. Hydra
 
 #### **1. Import your Postgres schema**
 
-The first step is to import your existing schema into Hydra directly. This is a cached copy of your schema that is kept in Postgres.&#x20;
+The first step is to import your existing schema into Hydra directly. This is a cached copy of your schema that is kept in Postgres.
 
 Get a plain text dump of your existing `public` schema using:
 
@@ -40,7 +45,7 @@ pg_dump -Fp \
 
 You may wish to review this file to assure it only contains what you wish to import into Snowflake.
 
-Restore this schema dump into Hydra using the following command. The `SET...` command will  disable the Snowflake connection so you can manipulate the cached .
+Restore this schema dump into Hydra using the following command. The `SET...` command will disable the Snowflake connection so you can manipulate the cached .
 
 ```
 echo "SET hydra.snowflake_enabled = false;" |
@@ -52,7 +57,7 @@ echo "SET hydra.snowflake_enabled = false;" |
 
 For Snowflake, your SQL file should only be the tables in your schema. Remove any other items from the dump like `SET` statements, etc.
 
-Depending on the data types in your schema, you may need to make some changes to import it into Snowflake. We recommend reviewing [this table of data types](https://hevodata.com/blog/postgresql-to-snowflake-etl/#data-type-conversion) and making manual changes to your schema. The data types must be compatible with the data types you've specified in Postgres. Generally, it is safe to map any complex Postgres types to `text` these will be cast to their appropriate type by Postgres when the data is returned.&#x20;
+Depending on the data types in your schema, you may need to make some changes to import it into Snowflake. We recommend reviewing [this table of data types](https://hevodata.com/blog/postgresql-to-snowflake-etl/#data-type-conversion) and making manual changes to your schema. The data types must be compatible with the data types you've specified in Postgres. Generally, it is safe to map any complex Postgres types to `text` these will be cast to their appropriate type by Postgres when the data is returned.
 
 {% hint style="warning" %}
 While the queries will execute on Snowflake, all queries are first parsed by Postgres and must be valid Postgres queries. Use data type names that are valid on both platforms, like `text`, rather than `string`. If Snowflake-specific syntax or data types are needed, see \[Executing Snowflake-specific Queries].
@@ -66,7 +71,7 @@ psql "postgres://uXXX:YYY@ZZZ.db.hydras.io/dAAA" < myschema.sql
 
 #### **3. Copy data**
 
-Generally, there are two ways to move the data: SQL import or CSV import.&#x20;
+Generally, there are two ways to move the data: SQL import or CSV import.
 
 For larger data sets, a CSV import is recommended. Follow the [standard method documented by Snowflake](https://community.snowflake.com/s/article/PostgreSQL-to-Snowflake-ETL-Steps-to-Migrate-Data). Data is uploaded to S3, staged, and then imported.
 

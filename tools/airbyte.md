@@ -1,3 +1,9 @@
+---
+description: >-
+  Airbyte can be used to import and update data into your Hydra data warehouse
+  from a wide variety of sources.
+---
+
 # Airbyte
 
 Airbyte can be used to import and update data into your Hydra data warehouse from a [wide variety of sources](https://docs.airbyte.com/integrations/sources). You can choose how often Airbyte should update your data in Hydra, from one-time, weekly, daily, or hourly.
@@ -6,10 +12,10 @@ Airbyte can be used to import and update data into your Hydra data warehouse fro
 
 Setting up Airbyte is easy and takes only a few minutes.
 
-1. Create an Airbyte account at [https://cloud.airbyte.io/signup](https://cloud.airbyte.io/signup).&#x20;
+1. Create an Airbyte account at [https://cloud.airbyte.io/signup](https://cloud.airbyte.io/signup).
 2. Add Hydra as a "Destination."
    1. If using Hydra with Postgres, use a "Postgres" destination.
-   2. If using Hydra with another engine, you can either use "Postgres" or your current engine for a direct connection. We recommend Postgres for ongoing changes, but use a direct connection for large one-time imports. \
+   2. If using Hydra with another engine, you can either use "Postgres" or your current engine for a direct connection. We recommend Postgres for ongoing changes, but use a direct connection for large one-time imports.\
       :information\_source: If making a direct connection, ask Hydra staff for the needed connection details.
 3. Add your existing data sources as a "Source." Airbyte supports a [long list of sources](https://docs.airbyte.com/integrations/sources), including SaaS providers and databases.
 

@@ -1,4 +1,10 @@
-# Columnar
+---
+description: >-
+  The Hydra columnar table engine gives Postgres the ability to increase
+  performance for append-only datasets.
+---
+
+# 📊 Columnar
 
 Hydra offers a columnar table engine for Postgres in addition to Postgres' built-in (default) Heap tables. Heap tables are ideal for row-based access, where individual pieces of data is found in the heap by using an index. Columnar is ideal for analytical and historical data that will not change.
 

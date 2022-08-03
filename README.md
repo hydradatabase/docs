@@ -1,6 +1,11 @@
-# What is Hydra?
+---
+description: >-
+  Hydra is a data warehouse that is accessible from Postgres. You can start
+  small with Postgres, then switch to the data engine of your choice at any
+  time.
+---
 
-Hydra is a data warehouse that is accessible from Postgres. You can start small with Postgres, then switch to the data engine of your choice at any time.
+# 💡 What is Hydra?
 
 All Hydra instances include:
 
