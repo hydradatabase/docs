@@ -52,7 +52,7 @@ Any additional parameters will override your service entry. For example, you can
 
 :warning: If you choose this path, `psql` will try to validate certificates when connecting to any Postgres database. This will cause connections to some other Postgres databases to return an error, even if you set `sslmode`.
 
-You can instruct `psql` to always read your public certificate bundle my symlinking `~/.postgresql/root.crt` to your public root cert bundle, typically at `/etc/ssl/cert.pem`:
+You can instruct `psql` to always read your public certificate bundle my symlinking `~/.postgresql/root.crt` to your public root cert bundle:
 
 ```shell
 mkdir -p ~/.postgresql
