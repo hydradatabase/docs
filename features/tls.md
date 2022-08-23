@@ -29,7 +29,7 @@ The simplest option is to add the file to the end of the connection string using
 psql "postgres://.../d123456?sslmode=verify-full&sslrootcert=/etc/ssl/cert.pem"
 ```
 
-### Add Hydra to you service file
+### Add Hydra to the service file
 
 You can manage and save your Hydra connection by creating an entry in your [service file](https://www.postgresql.org/docs/current/libpq-pgservice.html), located at `~/.pg_service.conf`.
 
