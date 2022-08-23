@@ -1,10 +1,3 @@
----
-description: >-
-  Hydra with Snowflake is a Postgres database that communicates directly with
-  Snowflake to execute all queries. Each Hydra database maps 1 to 1 with a
-  Snowflake database.
----
-
 # ❄ Hydra with Snowflake
 
 ## Importing Data
@@ -111,14 +104,14 @@ Please ask Hydra staff for your Snowflake `db_name`- this is not the same as you
 While you can call the function directly in a `SELECT` clause, the recommended way to treat the function like a table as follows:
 
 ```sql
-USE hydra.snowflake_enabled = false;
+SET hydra.snowflake_enabled = false;
 
 SELECT t1.*
 FROM
   hydra.run_on_snowflake('EXAMPLE', 'PUBLIC', 'SELECT 5, 10, 15, 20')
   AS t1(i1 numeric, i2 numeric, i3 numeric, i4 numeric);
   
-USE hydra.snowflake_enabled = true;
+SET hydra.snowflake_enabled = true;
 ```
 
 {% hint style="warning" %}
