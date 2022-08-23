@@ -1,5 +1,5 @@
 ---
-description: Hydra is secured with end-to-end encryption with publicly signed certificates.
+description: Hydra is secured with end-to-end encryption with publicly-trusted certificates.
 ---
 
 # 🔒 TLS
@@ -8,9 +8,9 @@ Hydra has publicly-trusted certificates from Let's Encrypt allowing you to conne
 
 If you are unable to configure your Postgres connection, we recommend using `sslmode=require`.&#x20;
 
-### psql
+## psql
 
-#### Locate your root certificate bundle
+### Locate your root certificate bundle
 
 To configure psql, you will need to know the location of your root certificate bundle. On most systems, this file is located at `/etc/ssl/cert.pem`.&#x20;
 
@@ -21,7 +21,7 @@ $ curl -v https://hydras.io/ 2>&1 | grep -i CAfile
 *  CAfile: /etc/ssl/cert.pem
 ```
 
-#### Add sslrootcert to the connection string
+### Add sslrootcert to the connection string
 
 The simplest option is to add the file to the end of the connection string using the parameter `sslrootcert`, as follows:
 
@@ -29,7 +29,7 @@ The simplest option is to add the file to the end of the connection string using
 psql "postgres://.../d123456?sslmode=verify-full&sslrootcert=/etc/ssl/cert.pem"
 ```
 
-#### Add Hydra to you service file
+### Add Hydra to you service file
 
 You can manage and save your Hydra connection by creating an entry in your [service file](https://www.postgresql.org/docs/current/libpq-pgservice.html), located at `~/.pg_service.conf`.
 
@@ -48,7 +48,7 @@ Once you have added this entry, connect to your data warehouse using the name yo
 
 Any additional parameters will override your service entry. For example, you can use `psql service=hydra dbname=postgres` to connect to the `postgres` database.
 
-#### Always validate certificates
+### Always validate certificates
 
 :warning: If you choose this path, `psql` will try to validate certificates when connecting to any Postgres database. This will cause connections to some other Postgres databases to return an error, even if you set `sslmode`.
 
@@ -59,7 +59,7 @@ mkdir -p ~/.postgresql
 ln -s /etc/ssl/cert.pem ~/.postgres/root.crt
 ```
 
-### From Your Application
+## From Your Application
 
 You should refer to your application's Postgres library, but many libraries use `libpq` behind the scenes. You can configure `libpq` to read your cert bundle using the `PGSSLROOTCERT` environment variable. For example, add this environment variable to your application's environment:
 
