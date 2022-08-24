@@ -25,7 +25,7 @@ $ curl -v https://hydras.io/ 2>&1 | grep -i CAfile
 
 The simplest option is to add the file to the end of the connection string using the parameter `sslrootcert`, as follows:
 
-```
+```shell
 psql "postgres://.../d123456?sslmode=verify-full&sslrootcert=/etc/ssl/cert.pem"
 ```
 
@@ -33,18 +33,22 @@ psql "postgres://.../d123456?sslmode=verify-full&sslrootcert=/etc/ssl/cert.pem"
 
 You can manage and save your Hydra connection by creating an entry in your [service file](https://www.postgresql.org/docs/current/libpq-pgservice.html), located at `~/.pg_service.conf`.
 
-<pre class="language-ini"><code class="lang-ini">[hydra]
+```ini
+[hydra]
 user=u123456
 password=UdW3zJT9FLfIpJrli47HMmL1
 host=1ed22fba-b20a-6680-afd9-91fc7c62485e.us-east-1.aws.hydradb.io
-<strong>port=5432
-</strong><strong>dbname=d123456
-</strong>sslmode=verify-full
-<strong>sslrootcert=/etc/ssl/cert.pem</strong></code></pre>
+port=5432
+dbname=d123456
+sslmode=verify-full
+sslrootcert=/etc/ssl/cert.pem
+```
 
 Once you have added this entry, connect to your data warehouse using the name you specified at the top of block:
 
-<pre><code><strong>psql service=hydra</strong></code></pre>
+```shell
+psql service=hydra
+```
 
 Any additional parameters will override your service entry. For example, you can use `psql service=hydra dbname=postgres` to connect to the `postgres` database.
 
