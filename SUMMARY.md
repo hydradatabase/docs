@@ -9,6 +9,7 @@
 ## Features
 
 * [📊 Columnar](features/columnar.md)
+* [🔁 Cron](features/cron.md) 
 * [🔒 TLS](features/tls.md)
 
 ## Tools
