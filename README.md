@@ -10,8 +10,8 @@ description: >-
 All Hydra instances include:
 
 * Encrypted connections and data stores
-* 30 days backups with point-in-time recovery (Postgres only)
-* Seamlessly scale storage plans with the same engine up and down
+* 30 days backups with point-in-time recovery
+* Seamlessly scale up storage
 
 ## Quick Start
 
