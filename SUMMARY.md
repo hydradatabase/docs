@@ -8,7 +8,7 @@
 ## Features
 
 * [📊 Columnar](features/columnar.md)
-* [🔁 Cron](features/cron.md) 
+* [🔁 Scheduler](features/scheduler.md) 
 * [🔒 TLS](features/tls.md)
 
 ## Tools
