@@ -1,10 +1,14 @@
 ---
-description: External tables allow you to read and write data between Hydra and other data sources.
+description: >-
+  External tables allow you to read and write data between Hydra and other data
+  sources.
 ---
 
 # 📡 External Tables
 
 External Tables are data that lives in databases outside Hydra. You can use External Tables to select, join, and insert data to and from your data warehouse. For example, in the image below, we see Hydra tables represented as “local” and RDS tables as “external.” Data in RDS is being fetched and returned through Hydra.
+
+<figure><img src="../.gitbook/assets/fdw_diagram.jpg" alt=""><figcaption><p>External Tables can be used to query and combine data from multiple data sources.</p></figcaption></figure>
 
 ## Use Cases
 
