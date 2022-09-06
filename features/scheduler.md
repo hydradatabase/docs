@@ -1,15 +1,15 @@
 ---
-description: Cron is used to schedule tasks at a regular interval on your data warehouse.
+description: Hydra Scheduler is used to schedule tasks at a regular interval on your data warehouse.
 ---
 
-# 🔁 Cron
+# 🔁 Hydra Scheduler
 
-Cron (or `pg_cron`) is a cron-style task scheduler that can run arbitrary SQL inside your data warehouse on any schedule.
-You can use cron to move data between data sources (using foreign data wrappers), move data from row to
+Hydra Scheduler is a cron-style task scheduler that can run arbitrary SQL inside your data warehouse on any schedule.
+You can use tasks to move data between data sources (using foreign data wrappers), move data from row to
 [columnar tables](/features/columnar.md), perform transformations, refresh materialized views, or any other regular
 maintenance tasks.
 
-Cron uses the standard cron syntax:
+Scheduler uses the standard cron syntax:
 
 ```
 ┌───────────── min (0 - 59)
