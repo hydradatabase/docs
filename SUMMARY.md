@@ -9,6 +9,7 @@
 
 * [📊 Columnar](features/columnar.md)
 * [🔁 Scheduler](features/scheduler.md) 
+* [📡 External Tables](features/external_tables.md)
 * [🔒 TLS](features/tls.md)
 
 ## Tools
