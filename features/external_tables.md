@@ -24,7 +24,7 @@ With External Tables, queries execute on source databases directly, which greatl
 
 ## Postgres External Tables
 
-Postgres External Tables are implemented using `postgres_fdw`. To set up a Postgres External Table from `psql`, run the following SQL, replacing `...` with you server's information.
+Postgres External Tables are implemented using `postgres_fdw`. To set up a Postgres External Table from `psql`, run the following SQL, replacing `...` with your server's information.
 
 ```sql
 CREATE EXTENSION postgres_fdw;
