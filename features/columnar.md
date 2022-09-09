@@ -51,22 +51,17 @@ Insert data into the table and read from it like normal (subject to the limitati
 * No support for `AFTER ... FOR EACH ROW` triggers
 * No `UNLOGGED` columnar tables
 
-## Converting Between Row and Columnar
+## Converting From Row to Columnar
 
-Note: ensure that you understand any advanced features that may be used with the table before converting it (e.g. row-level security, storage options, constraints, inheritance, etc.), and ensure that they are reproduced in the new table or partition appropriately. `LIKE`, used below, is a shorthand that works only in simple cases.
+Hydra has a convenience function that will copy your row table to columnar.
 
 ```sql
-CREATE TABLE my_table(i INT8 DEFAULT '7');
-INSERT INTO my_table VALUES(1);
+CREATE TABLE my_table (i INT8);
 -- convert to columnar
 SELECT alter_table_set_access_method('my_table', 'columnar');
--- back to row
-SELECT alter_table_set_access_method('my_table', 'heap');
 ```
 
-Converting between heap and columnar can be used to rebuild the table into full stripes.
-
-Data can also be converted by copying. For instance:
+Data can also be converted manually by copying. For instance:
 
 ```sql
 CREATE TABLE table_heap (i INT8);
