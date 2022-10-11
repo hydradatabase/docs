@@ -22,6 +22,6 @@ Create a "Connection" for each Source you wish to connect to Hydra. Choose what 
 
 ### Recommendations
 
-* When possible, design data coming into the data warehouse as append-only. Columnar data warehouse engines are very slow when updating or deleting data.
+* Whenever possible, design data coming into the data warehouse as append-only. Hydra's columnar store only supports inserts. If you need to update or delete data, you will need to use row (heap) tables.
 * Schema changes are difficult when a data source is connected through Airbyte. When possible, connect and insert data into Hydra directly after completing an initial import with Airbyte.
 * If you are uncertain how to design your data warehouse, reach out to Hydra for advice.

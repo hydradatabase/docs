@@ -1,10 +1,8 @@
 ---
-description: >-
-  Hydra with Postgres is a managed Postgres database that is ready to scale to
-  any size.
+description: Hydra is a managed Postgres data warehouse that is ready to scale to any size.
 ---
 
-# 🐘 Hydra with Postgres
+# 🐘 Getting Started
 
 ### Importing Data
 
@@ -35,4 +33,4 @@ In addition, WAL (write-ahead logs) are backed up to an encrypted S3 bucket for 
 
 ### Upgrading
 
-To upgrade to a different plan size or to add Snowflake to an existing Hydra database, please contact support.
+To upgrade to a different plan size, please contact support. In most cases, we can add storage or compute without any downtime.
