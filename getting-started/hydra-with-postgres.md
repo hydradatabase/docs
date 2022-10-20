@@ -27,7 +27,8 @@ You can use any Postgres adapter or any tools with Postgres compatibility to con
 
 ### Disaster Recovery
 
-All Hydra plans are monitored continuously by our infrastructure and will automatically recover in the case of hardware failure. All paid plans include HA allowing seamless instant recovery should there be a failure.
+All Hydra plans are monitored continuously by our infrastructure and will automatically recover in the case of hardware failure.
+All production plans include high availability allowing seamless instant recovery should there be a failure.
 
 In addition, WAL (write-ahead logs) are backed up to an encrypted S3 bucket for 30 days. Should there be a need to restore your data from backup, we can restore your data to any point in the last 30 days. Should you need this service, please open a support ticket.
 
