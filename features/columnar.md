@@ -154,7 +154,7 @@ These settings only affect newly-created tables, not any newly-created stripes o
 
 ## Source Code
 
-Hydra's columnar engine is a fork of the Citus columnar access method. [The source code is available on GitHub](https://github.com/HydrasCo/citus).
+Hydra's columnar engine is a fork of the Citus columnar access method. [The source code is available on GitHub](https://github.com/HydrasDB/hydra/tree/main/columnar).
 
 ## Additional information
 
