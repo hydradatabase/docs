@@ -71,7 +71,7 @@ CREATE SERVER remote_mysql_server FOREIGN DATA WRAPPER mysql_fdw OPTIONS (host '
 CREATE USER MAPPING FOR CURRENT_USER SERVER remote_mysql_server OPTIONS (username '...', password '...');
 ```
 
-Same as `postgres_fdw`, you can now create foreign tables from your remote MySQL database.
+You can now create foreign tables from your remote MySQL database.
 Assuming your remote MySQL database's name is `mysql`, you can [import all of your remote tables](https://www.postgresql.org/docs/current/sql-importforeignschema.html) at once as follows:
 
 ```sql
