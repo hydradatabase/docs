@@ -80,19 +80,30 @@ CREATE SCHEMA remote_mysql;
 IMPORT FOREIGN SCHEMA mysql FROM SERVER remote_mysql_server INTO remote_mysql;
 ```
 
-## HTTP External Sources
+## HTTP External Tables
 
-You can call a HTTP web service to obtain data that lives outside Hydra.
-For example, you can call a web service, get back a result, and compare it against the new state of the database.
-HTTP external sources are implemented using [`pgsql-http`](https://github.com/pramsey/pgsql-http).
+You can call a HTTP web service to obtain data that lives outside Hydra and create a [view](https://www.postgresql.org/docs/current/sql-createview.html) to consume the data like a table.
+HTTP external tables are implemented using [`pgsql-http`](https://github.com/pramsey/pgsql-http).
 
-Run a GET request and see the content:
+The following is an example that calls the GitHub organization repo endpoint to get a list of repos in JSON format and defines a view to hold the result:
 
 ```sql
-SELECT content FROM http_get('http://httpbin.org/ip');
+CREATE EXTENSION http;
+
+CREATE VIEW github_repos AS SELECT json_array_elements(content::json) as repo_json
+  FROM http_get('https://api.github.com/orgs/hydrasdb/repos');
 ```
 
-Run a GET request with an Authorization header:
+You can query the view as if it's a table. Note that Postgres view is read-only.
+
+The following gets all the repo names from the view:
+
+
+```sql
+SELECT repo_json->'name' FROM github_repos;
+```
+
+There are other functions introduced by the `pgsql-http`. For example, run a GET request with an Authorization header:
 
 ```sql
 SELECT content::json->'headers'->>'Authorization'
