@@ -90,18 +90,19 @@ The following is an example that calls the GitHub organization repo endpoint to 
 ```sql
 CREATE EXTENSION http;
 
-CREATE VIEW github_repos AS SELECT json_array_elements(content::json) as repo_json
-  FROM http_get('https://api.github.com/orgs/hydrasdb/repos');
+CREATE VIEW github_repos AS
+  WITH repos AS (
+    SELECT json_array_elements(content::json) AS repo
+      FROM http_get('https://api.github.com/orgs/hydrasdb/repos')
+  )
+SELECT 
+  (repo->'name')::TEXT AS name,
+  (repo->'html_url')::TEXT AS html_url,
+  (repo->'open_issues')::TEXT::INT AS open_issues
+FROM repos;
 ```
 
 You can query the view as if it's a table. Note that Postgres view is read-only.
-
-The following gets all the repo names from the view:
-
-
-```sql
-SELECT repo_json->'name' FROM github_repos;
-```
 
 There are other functions introduced by the `pgsql-http`. For example, run a GET request with an Authorization header:
 
