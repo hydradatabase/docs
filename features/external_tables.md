@@ -156,3 +156,71 @@ Here is a list of available functions:
 * `http_list_curlopt()` returns `setof(curlopt text, value text)`
 * `urlencode(string VARCHAR)` returns `text`
 * `urlencode(data JSONB)` returns `text`
+
+## S3 CSV External Tables
+
+You can run queries against CSV files stored on Amazon S3.
+S3 CSV External Tables are implemented using [`s3csv_fdw`](https://github.com/eligoenergy/s3csv_fdw).
+To create a S3 CSV External Table, create a `data.csv` file with the following content:
+
+```csv
+1,o@example.com
+2,jd@example.com
+3,joe@example.com
+```
+
+Upload the file to S3 and create a `multicorn` S3 CSV foreign table, replacing `...` with your AWS credentials and S3 bucket name:
+
+```sql
+CREATE EXTENSION multicorn;
+
+CREATE SERVER multicorn_s3 FOREIGN DATA WRAPPER multicorn
+  OPTIONS (
+    wrapper 's3fdw.s3fdw.S3Fdw'
+  );
+
+create foreign table users_csv (
+  id int,
+  email text
+) server multicorn_s3 options (
+  aws_access_key '...',
+  aws_secret_key '...',
+  bucket '...',
+  filename 'data.csv'
+);
+```
+
+### Google Spreadsheet External Tables
+
+You can run run queries against Google Spreadsheets.
+Google Spreadsheet External Tables are implemented using [`gspreadsheet_fdw`](https://github.com/HydrasDB/gspreadsheet_fdw).
+To create a Google Spreadsheet External Table, create a Google Spreadsheet with some data: 
+
+* Put column names in the first row: untitled columns will not be read
+* A blank row terminates the table (data below won't be read)
+* Put it in the first (and only) worksheet
+
+Get the spreadsheet ID from the HTTP URL. The ID is a 44-character string matching regexp `[A-Za-z0-9_]{44}`.
+It lives between the `/spreadsheets/d/` and possible trailing `/edit/blah` in the URL of your Google Spreadsheet.
+
+Create a Google Service Account and enable Google Sheets API access by following [this guide](https://docs.gspread.org/en/latest/oauth2.html).
+Share your Google spreadsheet with the Google Service Account email that is in the format of `...@...gserviceaccount.com`.
+
+Create a foreign table, replacing `...` with your Google Spreadsheet ID and Google Service Account credentials in JSON format:
+
+```sql
+CREATE EXTENSION multicorn;
+
+CREATE SERVER multicorn_gspreadsheet FOREIGN DATA WRAPPER multicorn
+  OPTIONS (
+    wrapper 'gspreadsheet_fdw.GspreadsheetFdw'
+  );
+
+CREATE FOREIGN TABLE test_spreadsheet (
+  id character varying,
+  name   character varying
+) server multicorn_gspreadsheet options(
+  gskey '...',
+  serviceaccount '...'
+);
+```
