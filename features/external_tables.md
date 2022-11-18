@@ -190,6 +190,62 @@ create foreign table users_csv (
 );
 ```
 
+## S3 Parquet External Tables
+
+You can run queries against [Apache Parquet files](https://parquet.apache.org/) stored on Amazon S3.
+S3 Parquet External Tables are implemented using [`parquet_s3_fdw`](https://github.com/HydrasDB/parquet_s3_fdw).
+As an example, we are using the same data from [here](https://github.com/Teradata/kylo/tree/master/samples/sample-data/parquet).
+
+The column details are as followed:
+
+```
+column#		column_name		hive_datatype
+=====================================================
+1		registration_dttm 	timestamp
+2		id                  int
+3		first_name 	        string
+4		last_name 	        string
+5		email 		        string
+6		gender 		        string
+7		ip_address 	        string
+8		cc                  string
+9		country 	        string
+10		birthdate 	        string
+11		salary 		        double
+12		title 		        string
+13		comments 	        string
+```
+
+Upload the parquet files to a S3 bucket folder called `sample-data`, and create a S3 Parquet foreign table, replacing `...` with your AWS credentials, region, and S3 bucket name:
+
+```sql
+CREATE EXTENSION parquet_s3_fdw;
+
+CREATE SERVER parquet_s3_srv FOREIGN DATA WRAPPER parquet_s3_fdw OPTIONS (aws_region '...');
+
+CREATE USER MAPPING FOR public SERVER parquet_s3_srv OPTIONS (user '...', password '...');
+
+CREATE FOREIGN TABLE userdata (
+    registration_dttm timestamp,
+    id int,
+    first_name text,
+    last_name text,
+    email text,
+    gender text,
+    ip_address text,
+    cc text,
+    country text,
+    birthdate text,
+    salary FLOAT8,
+    title text,
+    comments text
+)
+SERVER parquet_s3_srv
+OPTIONS (
+    dirname 's3://.../sample-data'
+);
+```
+
 ### Google Spreadsheet External Tables
 
 You can run run queries against Google Spreadsheets.
