@@ -54,10 +54,6 @@ You can now query your remote database from Hydra, including:
 
 On many Postgres providers, you can also set up this connection in the other direction. This allows you to access your Hydra data warehouse from your other databases. You may need to contact your provider to get the necessary permissions.
 
-## Other External Table Engines
-
-Hydra is working on providing connections to other data sources in the near future. If you have a request, please reach out to us via our support channel.
-
 ## MySQL External Tables
 
 MySQL External Tables are implemented using [`mysql_fdw`](https://github.com/EnterpriseDB/mysql_fdw).
@@ -171,3 +167,7 @@ CREATE FOREIGN TABLE test_spreadsheet (
   serviceaccount '...'
 );
 ```
+
+## Other External Table Engines
+
+Hydra is working on providing connections to other data sources in the near future. If you have a request, please reach out to us via our support channel.
