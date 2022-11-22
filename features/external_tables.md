@@ -223,7 +223,7 @@ CREATE EXTENSION parquet_s3_fdw;
 
 CREATE SERVER parquet_s3_srv FOREIGN DATA WRAPPER parquet_s3_fdw OPTIONS (aws_region '...');
 
-CREATE USER MAPPING FOR public SERVER parquet_s3_srv OPTIONS (user '...', password '...');
+CREATE USER MAPPING FOR CURRENT_USER SERVER parquet_s3_srv OPTIONS (user '...', password '...');
 
 CREATE FOREIGN TABLE userdata (
     registration_dttm timestamp,
