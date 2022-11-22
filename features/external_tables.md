@@ -76,6 +76,37 @@ CREATE SCHEMA remote_mysql;
 IMPORT FOREIGN SCHEMA mysql FROM SERVER remote_mysql_server INTO remote_mysql;
 ```
 
+## S3 CSV External Tables
+
+You can run queries against CSV files stored on Amazon S3.
+S3 CSV External Tables are implemented using [`s3csv_fdw`](https://github.com/eligoenergy/s3csv_fdw).
+To create a S3 CSV External Table, create a `data.csv` file with the following content:
+
+```csv
+1,o@example.com
+2,jd@example.com
+3,joe@example.com
+```
+
+Upload the file to S3 and create a `multicorn` S3 CSV foreign table, replacing `...` with your AWS credentials and S3 bucket name:
+
+```sql
+CREATE EXTENSION multicorn;
+CREATE SERVER multicorn_s3 FOREIGN DATA WRAPPER multicorn
+  OPTIONS (
+    wrapper 's3fdw.s3fdw.S3Fdw'
+  );
+create foreign table users_csv (
+  id int,
+  email text
+) server multicorn_s3 options (
+  aws_access_key '...',
+  aws_secret_key '...',
+  bucket '...',
+  filename 'data.csv'
+);
+```
+
 ## S3 Parquet External Tables
 
 You can run queries against [Apache Parquet files](https://parquet.apache.org/) stored on Amazon S3.
