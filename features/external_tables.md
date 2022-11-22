@@ -89,21 +89,21 @@ As an example, we are using the same data from [here](https://github.com/Teradat
 The column details are as followed:
 
 ```
-column#		column_name		hive_datatype
+column#  column_name        hive_datatype
 =====================================================
-1		registration_dttm 	timestamp
-2		id                  int
-3		first_name 	        string
-4		last_name 	        string
-5		email 		        string
-6		gender 		        string
-7		ip_address 	        string
-8		cc                  string
-9		country 	        string
-10		birthdate 	        string
-11		salary 		        double
-12		title 		        string
-13		comments 	        string
+1        registration_dttm  timestamp
+2        id                 int
+3        first_name         string
+4        last_name          string
+5        email              string
+6        gender             string
+7        ip_address         string
+8        cc                 string
+9        country            string
+10       birthdate          string
+11       salary             double
+12       title              string
+13       comments           string
 ```
 
 Upload the parquet files to a S3 bucket folder called `sample-data`, and create a S3 Parquet foreign table, replacing `...` with your AWS credentials, region, and S3 bucket name:
@@ -137,11 +137,11 @@ OPTIONS (
 ```
 You can now read data from the Parquet file using `SELECT ... FROM userdata`. Note that every query will read the data again, incurring charges on your AWS account. For better performance and avoiding ongoing charges, we recommend caching the data locally in Hydra by insert it into a table or using a materialized view.
 
-### Google Spreadsheet External Tables
+## Google Spreadsheet External Tables
 
 You can run run queries against Google Spreadsheets.
 Google Spreadsheet External Tables are implemented using [`gspreadsheet_fdw`](https://github.com/HydrasDB/gspreadsheet_fdw).
-To create a Google Spreadsheet External Table, create a Google Spreadsheet with some data: 
+To create a Google Spreadsheet External Table, create a Google Spreadsheet with some data:
 
 * Put column names in the first row: untitled columns will not be read
 * A blank row terminates the table (data below won't be read)
