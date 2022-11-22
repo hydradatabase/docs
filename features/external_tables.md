@@ -245,6 +245,7 @@ OPTIONS (
     dirname 's3://.../sample-data'
 );
 ```
+You can now read data from the Parquet file using `SELECT ... FROM userdata`. Note that every query will read the data again, incurring charges on your AWS account. For better performance and avoiding ongoing charges, we recommend caching the data locally in Hydra by insert it into a table or using a materialized view.
 
 ### Google Spreadsheet External Tables
 
