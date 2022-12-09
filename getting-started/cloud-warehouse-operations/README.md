@@ -1,2 +1,0 @@
-# 💻 Cloud Warehouse Operations
-

@@ -1,23 +1,35 @@
 ---
-description: Welcome to Hydra documentation
+description: >-
+  Hydra is a fully-managed open source data warehouse built on Postgres designed to scale with your data.
 ---
 
-# 🏠 Home
+# 💡 What is Hydra?
 
-Hydra is an open source data warehouse built on Postgres. Hydra leverages columnar storage, vectorized execution, and query parallelization to efficiently serve online analytical processing of queries (OLAP). Unlike traditional warehouses, Hydra supports Postgres heap tables, indexing, and native partitioning to process high-throughput transactional writes, quick lookup and operational queries, and hybrid transactional / analytics processing workloads (HTAP).
+All Hydra instances include:
 
-Hydra is offered as a fully-managed cloud warehouse and as self-hosted open source software.
+* Encrypted connections and data stores
+* 30 days backups with point-in-time recovery
+* Seamlessly scale up storage
 
 ## Quick Start
 
-Set-up guide
+Begin with a Hydra data warehouse, then use standard Postgres tools to copy data. You'll need to substitute the credentials as appropriate. Each command below will prompt for the password.
 
-Tutorial and sample data
+```shell
+pg_dump -Fc --no-acl --no-owner \
+  -h your.db.hostname \
+  -U username \
+  databasename > mydb.dump
+  
+pg_restore --verbose --clean --no-acl --no-owner \
+  -h 623942e76454.db.hydras.io \
+  -U uyuc0wnp2zmp \
+  -d dida6lgi5dpl \
+   mydb.dump
+```
 
-## Concepts
+Once you have your data imported, you can start using your Hydra data warehouse with any PostgreSQL-compatible tools and adapters.
 
-What are OLTP, OLAP, and HTAP workloads?
-
-Hydra External Tables
-
-Batch ingestion vs data streaming
+{% hint style="info" %}
+Your Hydra username always begins with `u`, and your database always begins with `d`.
+{% endhint %}
