@@ -1,4 +1,0 @@
-# Hydra Architecture
-
-
-
