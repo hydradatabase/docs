@@ -3,7 +3,7 @@
 * [🏠 Home](README.md)
 * [🐘 Getting Started](getting-started/README.md)
   * [Setup Guide](getting-started/setup-guide.md)
-  * [Tutorial and Sample Data](getting-started/loading-sample-data.md)
+  * [Sample Data](getting-started/loading-sample-data.md)
 * [🟠 Centralize Data](centralize-data/README.md)
   * [Load](centralize-data/load/README.md)
     * [From Local CSV File](centralize-data/load/from-local-csv-file.md)
