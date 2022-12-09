@@ -1,2 +1,0 @@
-# Tutorial and Sample Data
-

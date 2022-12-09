@@ -1,2 +1,0 @@
-# From Hydra Open Source
-
