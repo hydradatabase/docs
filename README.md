@@ -8,16 +8,16 @@ Hydra is an open source data warehouse built on Postgres. Hydra leverages column
 
 Hydra is offered as a fully-managed cloud warehouse and as self-hosted open source software.
 
-## Quick Start
+## Getting Started
 
-Set-up guide
+[Set-up Guide](getting-started/setup-guide.md)
 
-Tutorial and sample data
+[Sample Datasets](getting-started/loading-sample-data.md)
 
 ## Concepts
 
-What are OLTP, OLAP, and HTAP workloads?
+[OLTP, OLAP, and HTAP](concepts/oltp-olap-and-htap.md)
 
-Hydra External Tables
+[Row vs Column tables](organize/data-modeling/row-vs-column-tables.md)
 
-Batch ingestion vs data streaming
+[Batch ingestion vs data streaming](concepts/batch-ingestion-and-data-streaming.md)
