@@ -6,7 +6,7 @@ description: >-
 
 # Airbyte
 
-Airbyte can be used to import and update data into your Hydra data warehouse from a [wide variety of sources](https://docs.airbyte.com/integrations/sources). You can choose how often Airbyte should update your data in Hydra, from one-time, weekly, daily, or hourly.
+Airbyte can be used to import and update data into your Hydra data warehouse from a [wide variety of sources](https://docs.airbyte.com/category/sources). You can choose how often Airbyte should update your data in Hydra, from one-time, weekly, daily, or hourly.
 
 ### Setup
 
