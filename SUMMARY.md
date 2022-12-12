@@ -55,14 +55,3 @@
   * [Support](cloud-warehouse-operations/support.md)
   * [SLA](cloud-warehouse-operations/sla.md)
   * [Billing](cloud-warehouse-operations/billing.md)
-
-## Features
-
-* [📊 Columnar](features/columnar.md)
-* [🔁 Scheduler](features/scheduler.md)
-* [📡 External Tables](features/external\_tables.md)
-* [🔒 TLS](features/tls.md)
-
-## Tools
-
-* [Airbyte](tools/airbyte.md)
