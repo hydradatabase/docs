@@ -1,46 +1,16 @@
 # Segment
 
-For best performance, create your database in the `US West` region.
-
-Ensure your database is publicly accessible
-
-When you create your database, ensure that the **Public access** setting is set to **Yes**. Segment requires your database to be publicly accessible in order to connect to your database.
-
-When you create your database, Segment recommends that you enter a **Database name** value in the **Additional options** section. This setting creates the Postgres database at instance startup.
-
-### **Permissions for Segment to Hydra**
-
-Once you’ve created a database, you must create an inbound rule allowing Segment to connect to your instance.
-
-To create a new inbound rule:
+## Add Hydra as a Segment destination
 
 1. Open the Hydra dashboard
-2. Open the Warehouses tab and select a warehouse
-3. Click the **View Credentials…** button and copy the host, database, user, and password values. You will need this information to connect your database to Segment in a later step.
+2. Select the warehouse you wish to connect to Segment.
+3. Click the button to reveal your credentials and copy the host, database, user, and password values. You will need this information to connect your database to Segment in a later step.
 4. Open the Segment app. On the Overview page, click **Add Destination**.
 5. Search for and select the Postgres destination.
 6. Choose the source(s) you’d like to connect to Postgres, and click **Next**.
-7. Enter the host, database, user, and password values you copied from Heroku in an earlier step, and click **Connect**. If Segment connected to your destination, you’ll see the Next Steps screen. If you receive an “Invalid database” error, check that your host, database, user, and password fields match the credentials found in the Settings tab of your Heroku Postgres instance.
+7. Enter the host, database, user, and password values you copied from Hydra in an earlier step, and click **Connect**. If Segment connected to your destination, you’ll see the Next Steps screen. If you receive an “Invalid database” error, check that your host, database, user, and password fields match the credentials found in the Hydra dashboard.
 
-#### Connect with Segment <a href="#connect-with-segment" id="connect-with-segment"></a>
-
-1.  Open up Segment in another browser window or tab
-
-    Visit the [Segment Workspaces screen](http://segment.com/workspaces). Click the workspace you’d like the database to be associated with.
-2.  Click **Add Destination**.
-
-    In the Workspace, you can find the button beside the Destinations.
-3. Either select “Warehouses” categories from the left-hand sidebar, or use the search field and look for “Postgres”.
-4.  Configure the Database Connection.
-
-    Select Postgres database. Then, copy the relevant settings into the text fields on this page and clicking **Connect**.
-
-    ![](https://segment.com/docs/connections/storage/catalog/postgres/images/segment4.png)
-5.  Verify that the database connected successfully.
-
-    You should see a message indicating that the connection was successful. If not, check that you entered the settings correctly. If it still isn’t working, feel free to [contact Segment support](https://segment.com/help/contact/).
-
-#### Sync schedule <a href="#sync-schedule" id="sync-schedule"></a>
+## Sync schedule
 
 Your data will be available in Warehouses between 24 and 48 hours from your first sync. Your warehouse then syncs once or twice a day depending on your [Segment Plan](https://segment.com/pricing).
 
@@ -50,32 +20,25 @@ If you are on a BT plan, you can schedule warehouse syncs by going to **Warehous
 
 ![](https://segment.com/docs/connections/destinations/catalog/images/syncsched.png)
 
-### Security <a href="#security" id="security"></a>
+## Security
 
-To make sure your Postgres database is secure:
-
-* Log in with a user that has read and write permissions so that Segment can write to your database.
-* Allowlist the Segment IP (`52.25.130.38/32`). Otherwise, Segment can’t load your data.
-* Create a service user that has `read/write` permissions.
-* Always require SSL/TLS and make sure your data warehouse can only accept secure connections. Segment only connects to your data warehouse using SSL/TLS.
-
-#### Database set up - Service user and permissions <a href="#database-set-up---service-user-and-permissions" id="database-set-up---service-user-and-permissions"></a>
+### Database user and permissions
 
 Once you have your Hydra database running, you should do a few more things before connecting the database to Segment.
 
-Your database probably has an `admin` username and password. While you _could_ give these credentials directly to Segment, for security purposes you should instead create a separate “service” user. Do this for any other third-parties who connect with your database. This helps isolate access, and makes it easier to audit which accounts have done what.
+The default username and password gives Segment full access to your database. While you _could_ give these credentials directly to Segment, for security purposes you should instead create a separate “service” user. Do this for any other third-parties who connect with your database. This helps isolate access, and makes it easier to audit which accounts have done what.
 
-To use the SQL commands here, [connect to your database using a command line tool](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.AWSCLI.PostgreSQL.html) such AWSCLI or psql Client.
+To use the SQL commands here, connect to your Hydra database with your preferred Postgres client, like psql.
 
 ```
--- this command creates a user named "segment" that Segment will use when connecting to your Redshift cluster.
+-- this command creates a user named "segment" that Segment will use when connecting to Hydra
 CREATE USER segment WITH PASSWORD '<enter password here>';
 
 -- allows the "segment" user to create new schemas and temporary tables on the specified database.
 GRANT CREATE, TEMPORARY ON DATABASE <enter database name here> TO segment;
 ```
 
-#### Browse & Query
+## Browse & Query
 
 And now the fun part - browsing and querying the data!
 
@@ -94,7 +57,7 @@ All of the other tables will be event-specific, according to the event names and
 
 ![](https://segment.com/docs/images/duplicate.svg)
 
-In the Hydra Segment database, there will then be a table named “deployments\_show” which can be queried for that deployment to see how many times it was viewed:
+In the Hydra database, there will then be a table named “deployments\_show” which can be queried for that deployment to see how many times it was viewed:
 
 ```
  SELECT COUNT(id)
@@ -131,15 +94,15 @@ This way, you can create custom reports for analysis on the tracking data, using
 
 ![](https://segment.com/docs/images/duplicate.svg)
 
-### Best Practices <a href="#best-practices" id="best-practices"></a>
+## Best Practices
 
-Once you’ve got your data in Hydra, you can do even more with it. You might develop an app that performs various functions based on different events being loaded to the database, potentially using [RabbitMQ](https://www.compose.io/articles/going-from-postgresql-rows-to-rabbitmq-messages/) as your asynchronous message broker. For example, you might want a banner to appear once your 1000th customer has signed up. The data is at your fingertips; you just need to decide how to use it.
+Once you have your data in Hydra, you can do even more with it. You might develop an app that performs various functions based on different events being loaded to the database, potentially using [RabbitMQ](https://www.compose.io/articles/going-from-postgresql-rows-to-rabbitmq-messages/) as your asynchronous message broker. For example, you might want a banner to appear once your 1000th customer has signed up. The data is at your fingertips; you just need to decide how to use it.
 
-#### Query Speed <a href="#query-speed" id="query-speed"></a>
+### Query Speed
 
 The speed of your queries depends on the capabilities of the hardware you have chosen as well as the size of the dataset. The amount of data utilization in the cluster will also impact query speed. Check with your hosting provider or Postgres docs for performance best practices.
 
-#### Single and Double Quotes in PostgreSQL <a href="#single-and-double-quotes-in-postgresql" id="single-and-double-quotes-in-postgresql"></a>
+#### Single and Double Quotes in PostgreSQ
 
 If you use double quotes on the name of a table, column, index, or other object when you create it, and if there is even one capital letter in that identifier, you will need to use double quotes every single time you query it.
 
@@ -166,21 +129,21 @@ ERROR: relation "example" does not exist
 
 For more information on single vs double follow [this link](http://blog.lerner.co.il/quoting-postgresql/).
 
-### FAQs <a href="#faqs" id="faqs"></a>
+## FAQ
 
-#### Can I add an index to my tables? <a href="#can-i-add-an-index-to-my-tables" id="can-i-add-an-index-to-my-tables"></a>
+### Can I add an index to my tables?
 
 Yes! You can add indexes to your tables without blocking Segment syncs. However, Segment recommends limiting the number of indexes you have. Postgres’s native behavior requires that indexes update as more data is loaded, and this can slow down your Segment syncs.
 
-### Troubleshooting <a href="#troubleshooting" id="troubleshooting"></a>
+## Troubleshooting
 
-#### Permission denied for database <a href="#permission-denied-for-database" id="permission-denied-for-database"></a>
+### Permission denied for database
 
 The syncs are failing due to a permissions issue. The user you configured does not have permission to connect to the appropriate database. To resolve these errors: connect to your warehouse using the owner account, or grant permissions to the account you use to connect to Segment. You can correct these permissions by running the following SQL statement, replacing `<user>` with the account you use to connect to Segment:
 
 `GRANT CONNECT ON DATABASE <database_name> TO <user>`
 
-#### Permission denied for schema <a href="#permission-denied-for-schema" id="permission-denied-for-schema"></a>
+### Permission denied for schema
 
 The syncs for the source, `<source_name>`, are failing because of a permissions issue. In most cases, the user connected to Segment does not have permission to view the necessary schemas in the warehouse.
 
@@ -188,17 +151,16 @@ To resolve these errors, connect your warehouse using the owner account, or gran
 
 `GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA <schema_name> TO <user>`
 
-#### Dial TCP: no such host <a href="#dial-tcp-no-such-host" id="dial-tcp-no-such-host"></a>
+### Dial TCP: no such host
 
 Segment is unable to connect to the warehouse host, which is causing the syncs to fail. This error is usually due to an invalid host address, a warehouse hosted on a private IP, or a credentials issue.
 
 In order to resolve the error, check the following settings:
 
 * The host address listed in your Segment warehouse settings is correct
-* The host is configured with a _publicly_ accessible IP address
-* The username and password you use to connect to your Segment workspace matches the username and password on the Warehouse directly
+* The username and password you use to connect to your Segment workspace matches the username and password in Hydra
 
-#### Dial TCP: i/o timeout <a href="#dial-tcp-io-timeout" id="dial-tcp-io-timeout"></a>
+### Dial TCP: i/o timeout
 
 The warehouse syncs are failing due to a connection issue:
 
@@ -207,16 +169,14 @@ The warehouse syncs are failing due to a connection issue:
 This error can be caused for a few reasons:
 
 * Your warehouse went offline.
-* There’s a setting needed for Segment to connect which hasn’t been correctly configured. Refer to the [Warehouse documentation](https://segment.com/docs/connections/storage/warehouses/) to ensure all steps outlined there have been followed.
+* A network issue exists between Hydra and Segment.
 
-#### Schema does not exist <a href="#schema--does-not-exist" id="schema--does-not-exist"></a>
+Try connecting directly to your Hydra data warehouse to verify where the issue is occuring. If you continue to encounter an issue, contact Hydra Support.
+
+### Schema does not exist
 
 The syncs are failing due to a permissions issue. It looks like the user connected does not have permission to create schemas in your warehouse.
 
 To resolve these errors Segment recommends connecting to your warehouse using the owner account, or granting permissions to the current account you use to connect to Segment. You can correct these permissions by running the following SQL statement - Replace `user` with the account you use to connect to Segment, and run this statement for each schema in the warehouse.
 
 `GRANT CREATE ON DATABASE <database_name> TO <user>`
-
-\
-
-
