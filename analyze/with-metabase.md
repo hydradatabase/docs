@@ -17,10 +17,10 @@ As [Metabase](https://www.metabase.com/) puts it:
 
 Let’s start by creating a sample table in Hydra and populate it with some data. You'll need to replace your Hydra connection string or set the `PGCONN` environment variable.
 
-* Create a sample database and seed some data. You will be prompted for the Hydra password twice. It is (as configured in compose) `hydra`.
+* Create a sample table and seed some data.
 
     ```
-    psql $PGCONN \
+    psql "$PGCONN" \
       -c "CREATE TABLE sample_data (id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(), sample integer, timestamp timestamptz) USING columnar;" \
       -c "INSERT INTO sample_data (sample, timestamp) SELECT floor((random() + random() + random() + random() + random() + random()) / 6 * 100000000)::int, to_timestamp(EXTRACT(epoch from NOW()) - floor(random() * 2600000)) FROM generate_series(1, 50000);"
     ```
@@ -101,5 +101,5 @@ Now let’s combine those questions into a dashboard to give our users at a glan
 Once you’re done exploring Metabase and Hydra you can cleanup the sample data be droping the `sample_data` table.
 
 ```
-psql $PGCONN -c "DROP TABLE sample_data;"
+psql "$PGCONN" -c "DROP TABLE sample_data;"
 ```
