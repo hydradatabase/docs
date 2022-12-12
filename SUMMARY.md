@@ -47,7 +47,6 @@
   * [Plans, Solutions, and pricing](cloud-warehouse-operations/plans-solutions-and-pricing.md)
   * [Integrations](cloud-warehouse-operations/integrations/README.md)
     * [Postgres Extensions](cloud-warehouse-operations/integrations/postgres-extensions.md)
-    * [SaaS, Tools, ORMs](cloud-warehouse-operations/integrations/saas-tools-orms.md)
   * [Team management](cloud-warehouse-operations/team-management.md)
   * [Maintenance](cloud-warehouse-operations/maintenance.md)
   * [Postgres version](cloud-warehouse-operations/postgres-version.md)
@@ -56,16 +55,6 @@
   * [Support](cloud-warehouse-operations/support.md)
   * [SLA](cloud-warehouse-operations/sla.md)
   * [Billing](cloud-warehouse-operations/billing.md)
-* [📙 Guides](guides/README.md)
-  * [How to query across data silos without pipelines](guides/how-to-query-across-data-silos-without-pipelines.md)
-  * [Set up a 360 degree customer view](guides/set-up-a-360-degree-customer-view.md)
-  * [Track user high-value activity (HVA) for better qualified sales](guides/track-user-high-value-activity-hva-for-better-qualified-sales.md)
-* [▶ Warehouse-native applications](warehouse-native-applications/README.md)
-  * [Revenue Operations & CRM](warehouse-native-applications/revenue-operations-and-crm.md)
-  * [Marketing Automation](warehouse-native-applications/marketing-automation.md)
-  * [Business Intelligence (BI)](warehouse-native-applications/business-intelligence-bi.md)
-  * [Product Analytics & telemetry](warehouse-native-applications/product-analytics-and-telemetry.md)
-  * [Data Science & Machine Learning (ML)](warehouse-native-applications/data-science-and-machine-learning-ml.md)
 
 ## Features
 
