@@ -2,9 +2,12 @@
 
 ### Populate data to Hydra with Foreign Data Wrappers (FDWs)
 
+Foreign Data Wrappers can be used to import data into your Hydra data warehouse.
+Hydra supports a variety of FDWs.
+
 ## Postgres External Tables
 
-Postgres External Tables are implemented using `postgres_fdw`. To set up a Postgres External Table from `psql`, run the following SQL, replacing `...` with your server's information.
+Postgres External Tables are implemented using [`postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html). To set up a Postgres External Table from `psql`, run the following SQL, replacing `...` with your server's information.
 
 ```sql
 CREATE EXTENSION postgres_fdw;
@@ -29,13 +32,9 @@ You can now query your remote database from Hydra, including:
 * Using `JOIN` between data in Hydra and in your remote database
 * Inserting, updating, or deleting data
 
-### Bi-directional connection
-
-On many Postgres providers, you can also set up this connection in the other direction. This allows you to access your Hydra data warehouse from your other databases. You may need to contact your provider to get the necessary permissions.
-
 ## MySQL External Tables
 
-MySQL External Tables are implemented using [`mysql_fdw`](https://github.com/EnterpriseDB/mysql\_fdw). To set up a MySQL External Table from `psql`, run the following SQL, replacing `...` with your server's information.
+MySQL External Tables are implemented using [`mysql_fdw`](https://github.com/EnterpriseDB/mysql_fdw). To set up a MySQL External Table from `psql`, run the following SQL, replacing `...` with your server's information.
 
 ```sql
 CREATE EXTENSION mysql_fdw;
@@ -52,8 +51,6 @@ CREATE SCHEMA remote_mysql;
 
 IMPORT FOREIGN SCHEMA mysql FROM SERVER remote_mysql_server INTO remote_mysql;
 ```
-
-##
 
 ## Google Spreadsheet External Tables
 
