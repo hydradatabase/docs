@@ -2,10 +2,6 @@
 
 This is a list of extensions that are available in Hydra:
 
-```sql
-SELECT '* ' || name || ' (' || default_version || ') - ' || comment AS extensions from pg_available_extensions;
-                                                                       extensions
---------------------------------------------------------------------------------------------------------------------------------------------------------
  * pg_buffercache (1.3) - examine the shared buffer cache
  * hstore_plluau (1.0) - Hstore transform for untrusted Lua
  * first_last_agg (0.1.4) - first() and last() aggregate functions
