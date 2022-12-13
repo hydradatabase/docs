@@ -13,7 +13,7 @@ In Hydra, every account is part of a team. In this step, you will name your team
 
 💡 If you accepted a team invite from a teammate, you will not see this step.
 
-![set team name dialog window](../.gitbook/assets/set-team-name.png)
+![](../.gitbook/assets/set-team-name.png)
 
 ## Creating Your Data Warehouse
 
@@ -21,7 +21,7 @@ Welcome to Hydra! You will now have two options: request a demo or proceed with 
 
 Alternatively, you can choose to create a Hydra data warehouse immediately by clicking "Skip trial, Create Data Warehouse".
 
-![welcome to hydra](../.gitbook/assets/welcome-to-hydra.png)
+![](../.gitbook/assets/welcome-to-hydra.png)
 
 ### Choosing a Plan
 
@@ -31,7 +31,7 @@ You can create a Hydra data warehouse by providing a name, tier, and plan.
 2. First pick your desired tier. All Production plans have HA, while Staging plans do not. We recommend Production if availability is important for your use case.
 3. Now pick your plan size. A 1X plan is usually the best place to start! Hydra can always increase your plan later.
 
-![create hydra](../.gitbook/assets/create-hydra.png)
+![](../.gitbook/assets/create-hydra.png)
 
 ### Paying for Hydra
 
@@ -41,11 +41,11 @@ Your Hydra subscription will be fully managed by Stripe. There's no upfront bill
 
 Your Hydra data warehouse will take about 5 minutes to be ready. Take a break and rehydrate! If your Hydra is still not available after 15 minutes, something has gone wrong! Please contact support.
 
-![hydra creating spinner](../.gitbook/assets/hydra-creating-spinner.png)
+![](../.gitbook/assets/hydra-creating-spinner.png)
 
 Once ready, the page will show your connection details and the very first metrics for your new data warehouse.
 
-![hydra show](../.gitbook/assets/hydra-show.png)
+![](../.gitbook/assets/hydra-show.png)
 
 ## Connecting, Importing Data, and Running Queries
 
