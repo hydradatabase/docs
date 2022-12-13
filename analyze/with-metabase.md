@@ -19,7 +19,7 @@ Let’s start by creating a sample table in Hydra and populate it with some data
 
 * Create a sample table and seed some data.
 
-    ```
+    ```shell
     psql "$PGCONN" \
       -c "CREATE TABLE sample_data (id uuid NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(), sample integer, timestamp timestamptz) USING columnar;" \
       -c "INSERT INTO sample_data (sample, timestamp) SELECT floor((random() + random() + random() + random() + random() + random()) / 6 * 100000000)::int, to_timestamp(EXTRACT(epoch from NOW()) - floor(random() * 2600000)) FROM generate_series(1, 50000);"
@@ -48,7 +48,7 @@ You can use Metabase to run ad hoc queries against Hydra. You can access it via 
 
 ![Howdy, Hydra](https://hydras.io/assets/blog/2022-09-28/howdy-2d387a21fde79ff7c3d899779e26ca46fb25a66cee814d2857cca51138dd0d4b.png)
 
-```
+```sql
 SELECT
     MIN(sample), MAX(sample), COUNT(sample), AVG(sample), STDDEV(sample)
 FROM sample_data;
@@ -100,6 +100,6 @@ Now let’s combine those questions into a dashboard to give our users at a glan
 
 Once you’re done exploring Metabase and Hydra you can cleanup the sample data be droping the `sample_data` table.
 
-```
+```shell
 psql "$PGCONN" -c "DROP TABLE sample_data;"
 ```
