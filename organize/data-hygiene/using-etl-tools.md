@@ -1,8 +1,8 @@
 # Using ETL Tools
 
-### **Pipeline-based data transformation**
+When using ETL tools, you must take care to normalize your data.
 
-#### First transformation step: Normalization
+## Normalization with Airbyte
 
 At its core, Airbyte is geared to handle the EL (Extract Load) steps of an ELT process. These steps can also be referred in Airbyte's dialect as "Source" and "Destination".
 

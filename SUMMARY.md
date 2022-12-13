@@ -28,7 +28,6 @@
   * [With Metabase](analyze/with-metabase.md)
 * [💡 Concepts](concepts/README.md)
   * [OLTP, OLAP, & HTAP](concepts/oltp-olap-and-htap.md)
-  * [Hydra Architecture](concepts/readme.md)
   * [What is Columnar?](concepts/what-is-columnar.md)
   * [What is Vectorized Execution?](concepts/what-is-vectorized-execution.md)
   * [What is Query Parallelization?](concepts/what-is-query-parallelization.md)
