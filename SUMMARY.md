@@ -9,6 +9,7 @@
     * [From Local CSV File](centralize-data/load/from-local-csv-file.md)
     * [From S3](centralize-data/load/from-s3.md)
     * [From Postgres](centralize-data/load/from-postgres.md)
+    * [From Google Sheets](centralize-data/load/from-google-sheets.md)
     * [From Hydra Open Source](centralize-data/load/from-hydra-open-source.md)
   * [Stream](centralize-data/stream/README.md)
     * [ETL tools](centralize-data/stream/etl-tools.md)
