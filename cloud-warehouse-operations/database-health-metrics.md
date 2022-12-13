@@ -1,10 +1,12 @@
 # Database health metrics
 
-### Key Hydra Metrics to Watch
+_This article contains recommendations from [a blog post by Nate Matherson of ContainIQ](https://hydras.io/blog/2022-08-08-postgres-performance-monitoring-best-practices-and-tools). We will update this content with Hydra-specific recommendations soon._
+
+## Key Hydra Metrics to Watch
 
 Monitoring is a crucial aspect for any highly available and performant database. Monitoring helps database administrators to detect changes in user access behavior, pinpoint the reasons and translate the findings into insights for business value. PostgreSQL monitoring metrics are commonly categorized into **host system metrics** and **database metrics** that collectively help in efficiently identifying and mitigating potential concerns in real-time.
 
-### System Resource Metrics
+## System Resource Metrics
 
 As the performance and health of any database typically rely on the underlying infrastructure of the host onto which it is deployed, system-level resource metrics help measure infrastructure resource usage that considerably impacts the performance of a database. Some of the host system resource metrics include:
 
@@ -18,7 +20,7 @@ Additionally, network failure or high-latency response from the database server 
 
 **Storage -** A surge in the storage of data or excessive access to disk storage can cause higher disk latency, server’s I/O throughput and delayed query processing. DBAs can monitor the disk’s read/write latency and read/write throughput of IO processes to baseline an ideal disk consumption and identify bottlenecks. An ideal disk usage should remain below 85%, while attributing 90% of baselined disk usage to a critical alert.
 
-#### Database Metrics
+### Database Metrics
 
 Database metrics describe how well Postgres can organize, access and process data, which help ensure the database runs optimally and is healthy. Some database metrics include:
 
@@ -38,11 +40,11 @@ For a database to run optimally, at any point the total active connections for t
 
 **Deadlock creation rate -** A deadlock is caused when two or more transactions are locked on the same database object, thereby creating a conflict. Postgres automatically aborts one of the transactions, and prints it out within the logs for deadlock errors. Correlating the error timestamp with the time a deadlock was triggered in the logs helps DBAs assess the conditions that caused the deadlock. Monitoring the rate of deadlock occurrence also helps DBAs prevent the system from propagating additional load on OS resources and causing delays in the future.
 
-### Best Practices and Tools
+## Best Practices and Tools
 
 Monitoring PostgreSQL is a multi-pronged undertaking that involves tracking various system resource metrics and events to ensure the database performs as expected. Following are some recommended practices and tools to simplify Postgres monitoring and prevent downtimes.
 
-#### Postgres Monitoring Best Practices
+### Postgres Monitoring Best Practices
 
 Some best practices for efficient PostgreSQL monitoring include:
 
@@ -64,7 +66,7 @@ To do so, it is recommended to utilize the `EXPLAIN` parameter with queries to d
 
 As table size increases on Hydra's row heap tables, the speed will reduce for both reads and writes. Instead, offload your largest tables into columnar storage. Analytics queries can execute **30X faster** on columnar storage and observe a **3X- 4X data compression** benefit.&#x20;
 
-#### Converting from Row to Columnar
+### Converting from Row to Columnar
 
 Hydra has a convenience function that will copy your row table to columnar.
 
@@ -80,23 +82,15 @@ Data can also be converted manually by copying. For instance:
 
 In an auto-commit mode, the PostgreSQL server automatically commits transactions every 100 milliseconds. Holding open transactions for too long may result in the accumulation of a large number of uncommitted rows and strain the PostgreSQL server’s resources. To avoid this, it is recommended to set the optimum commit interval that matches the host’s memory and CPU limit, thereby ensuring there is no data loss due to commit failure.
 
-### Ecosystem Monitoring Tools
+## Ecosystem Monitoring Tools
 
 Some popular tools that help simplify PostgreSQL monitoring include:
 
-#### pg\_stat\_statements
+### pg\_stat\_statements
 
 [This module](https://www.postgresql.org/docs/current/pgstatstatements.html) uses query identifier calculations to track the planning and execution statistics of all SQL statements the database server has executed. The module records the queries run against the database, extracts variables from the queries and saves the query’s performance and execution data. Instead of storing individual query data, the pg\_stat\_statements module parametrizes all queries run against the server and stores the aggregated result for future analysis.
 
-#### ContainIQ for Postgres on Kubernetes clusters
-
-Organizations that rely on a container-based [microservices architecture](https://www.containiq.com/post/microservices-architecture) for developing dynamic apps typically leverage Kubernetes clusters to deploy PostgreSQL databases. ContainIQ is a Kubernetes-native monitoring platform that offers dynamic tracking of PostgreSQL server stats, queries, and events as cluster metrics.
-
-![](https://hydras.io/assets/blog/2022-08-08/containiq-720218fc027fafb7ebd7d483dad39315ff773eebec448034d2b167cac232276d.png)
-
-The [ContainIQ platform](https://www.containiq.com/kubernetes-monitoring) ships with easy-to-set alerts, efficient payload data visualization and pre-built dashboards out-of-the-box to facilitate quicker identification and troubleshooting of Postgres performance bottlenecks.
-
-#### Prometheus with PostgreSQL Exporter
+### Prometheus with PostgreSQL Exporter
 
 [Prometheus](https://prometheus.io/) integrates with the PostgreSQL exporter to extract database metrics such as queries per second (QPS), number of rows processed per second, database locks, active sessions, replications, etc. Prometheus contains a time-series database that stores these metrics and scrapes them for monitoring the PostgreSQL database performance and anomalies in database metrics.
 
@@ -104,7 +98,7 @@ The [ContainIQ platform](https://www.containiq.com/kubernetes-monitoring) ships 
 
 Prometheus offers the flexibility to build custom metrics for analysis that are not inherently supported by PostgreSQL exporter. The Prometheus Alertmanager additionally helps to define and create alerts when metrics reach the threshold, facilitating real-time notifications for critical alerts. Prometheus also utilizes Grafana for creating metrics dashboards that help visualize the pattern, behavior, and anomalies in database performance.
 
-#### pganalyze
+### pganalyze
 
 [pganalyze](https://pganalyze.com/) is a query and access library tool that enables Postgres monitoring through log insights. It is utilized for tracking slow queries, performance monitoring, setting alerts for critical issues and defining privileges.
 
@@ -112,7 +106,7 @@ Prometheus offers the flexibility to build custom metrics for analysis that are 
 
 Apart from highlighting performance issues, pganalyze also facilitates the root cause identification by enforcing insights into query execution plans and visualizing EXPLAIN outputs in a user-friendly tree view. The platform additionally allows query optimization by providing index recommendations and highlighting missing indexes based on the database schema and query workload statistics.
 
-#### explain.dalibo.com
+### explain.dalibo.com
 
 A web UI for [visualizing and understanding EXPLAIN plans](https://explain.dalibo.com/). With this tool, a user only needs to paste the plans and queries to be used into a form and submit them with a single click. The platform subsequently helps calculate execution stats and visualizes them through a simple, intuitive UI.
 
