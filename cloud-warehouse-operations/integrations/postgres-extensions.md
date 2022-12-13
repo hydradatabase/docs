@@ -102,6 +102,3 @@ This is a list of extensions that are available in Hydra:
  * parquet_s3_fdw (0.3) - foreign-data wrapper for parquet on S3
  * multicorn (2.4) - Multicorn2 Python3.6+ bindings for Postgres 11++ Foreign Data Wrapper
  * mysql_fdw (1.1) - Foreign data wrapper for querying a MySQL server
- * columnar (11.1-4) - Citus Columnar extension
-(101 rows)
-```
