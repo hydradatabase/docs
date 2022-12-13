@@ -4,7 +4,7 @@
 * [🐘 Getting Started](getting-started/README.md)
   * [Setup Guide](getting-started/setup-guide.md)
   * [Sample Datasets](getting-started/loading-sample-data.md)
-* [🟠 Centralize Datasets](centralize-data/README.md)
+* [🟠 Centralize](centralize-data/README.md)
   * [Load](centralize-data/load/README.md)
     * [From Local CSV File](centralize-data/load/from-local-csv-file.md)
     * [From S3](centralize-data/load/from-s3.md)
