@@ -1,10 +1,12 @@
 # DBT Transformation & Model Management
 
-**In-warehouse data transformation**
-
 Data transformation ensures your data warehouse is a single, consistent source of centralized data. We recommend using DBT, which is open-source, runs where the data lives, and is easy to use.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f4fb899d-0b37-4486-9307-1af6adb64920/Untitled.png)
+![](../../.gitbook/assets/dbt.png)
+
+## Using DBT with dbt-postgres
+
+Using DBT with Hydra uses DBT's Postgres support.
 
 ### Installing dbt-postgres
 
