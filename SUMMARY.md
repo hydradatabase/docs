@@ -23,8 +23,6 @@
   * [Data Hygiene](organize/data-hygiene/README.md)
     * [DBT Transformation & Model Management](organize/data-hygiene/dbt-transformation-and-model-management.md)
     * [Using ETL Tools](organize/data-hygiene/using-etl-tools.md)
-  * [Data Observability](organize/data-observability/README.md)
-    * [With Elementary Data](organize/data-observability/with-elementary-data.md)
 * [📈 Analyze](analyze/README.md)
   * [Postgres Native](analyze/postgres-native.md)
   * [With Metabase](analyze/with-metabase.md)
