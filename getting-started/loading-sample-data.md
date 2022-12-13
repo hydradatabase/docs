@@ -14,5 +14,5 @@ psql ... -f path_to_github_events.sql
 or in `psql` console:
 
 ```
-\d path_to_github_events.sql
+\i path_to_github_events.sql
 ```
