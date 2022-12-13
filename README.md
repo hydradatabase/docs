@@ -1,35 +1,23 @@
 ---
-description: >-
-  Hydra is a fully-managed open source data warehouse built on Postgres designed to scale with your data.
+description: Welcome to Hydra documentation
 ---
 
-# 💡 What is Hydra?
+# 🏠 Home
 
-All Hydra instances include:
+Hydra is an open source data warehouse built on Postgres. Hydra leverages columnar storage, vectorized execution, and query parallelization to efficiently serve online analytical processing of queries (OLAP). Unlike traditional warehouses, Hydra supports Postgres heap tables, indexing, and native partitioning to process high-throughput transactional writes, quick lookup and operational queries, and hybrid transactional / analytics processing workloads (HTAP).
 
-* Encrypted connections and data stores
-* 30 days backups with point-in-time recovery
-* Seamlessly scale up storage
+Hydra is offered as a fully-managed cloud warehouse and as self-hosted open source software. We extend a 14-day [free trial](https://calendly.com/hydrasdb/hydra-early-access) of Hydra's cloud warehouse and free [open source](https://github.com/HydrasDB/hydra).
 
-## Quick Start
+## Getting Started
 
-Begin with a Hydra data warehouse, then use standard Postgres tools to copy data. You'll need to substitute the credentials as appropriate. Each command below will prompt for the password.
+[Set-up Guide](getting-started/setup-guide.md)
 
-```shell
-pg_dump -Fc --no-acl --no-owner \
-  -h your.db.hostname \
-  -U username \
-  databasename > mydb.dump
-  
-pg_restore --verbose --clean --no-acl --no-owner \
-  -h 623942e76454.db.hydras.io \
-  -U uyuc0wnp2zmp \
-  -d dida6lgi5dpl \
-   mydb.dump
-```
+[Sample Datasets](getting-started/loading-sample-data.md)
 
-Once you have your data imported, you can start using your Hydra data warehouse with any PostgreSQL-compatible tools and adapters.
+## Concepts
 
-{% hint style="info" %}
-Your Hydra username always begins with `u`, and your database always begins with `d`.
-{% endhint %}
+[OLTP, OLAP, and HTAP](concepts/oltp-olap-and-htap.md)
+
+[Row vs Column tables](organize/data-modeling/row-vs-column-tables.md)
+
+[Batch ingestion vs data streaming](concepts/batch-ingestion-and-data-streaming.md)
