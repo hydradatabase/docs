@@ -1,5 +1,5 @@
 ---
-description: Business intelligence tooling
+description: Metabase is an open-source business intelligence tool where you can build graphs and dashboards of your data.
 ---
 
 # With Metabase
