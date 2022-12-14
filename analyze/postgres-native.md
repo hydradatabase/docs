@@ -16,6 +16,6 @@ Hydra supports all Postgres-native tools. Some recommendations are below. `psql`
 ## Business intelligence
 
 * [Metabase](with-metabase.md)
-* [Treavor](https://trevor.io/)
+* [Trevor](https://trevor.io/)
 * [Looker](https://www.looker.com/)
 * [Tableau](https://www.tableau.com/)
