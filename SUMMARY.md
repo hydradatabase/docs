@@ -26,6 +26,7 @@
 * [📈 Analyze](analyze/README.md)
   * [Postgres Native](analyze/postgres-native.md)
   * [With Metabase](analyze/with-metabase.md)
+  * [With Zing Data](analyze/with-zing-data.md)
 * [💡 Concepts](concepts/README.md)
   * [OLTP, OLAP, & HTAP](concepts/oltp-olap-and-htap.md)
   * [What is Columnar?](concepts/what-is-columnar.md)
