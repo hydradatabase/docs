@@ -18,8 +18,10 @@ Add a Hydra database from the web console:
 
 1. Go to your [Zing Data Web Console](https://console.getzingdata.com/dashboard) and ensure you are logged in
 2.  Tap the "Data Sources" tab
+
     ![](https://docs.getzingdata.com/docs/setting-up-a-data-source/datasources\_screenshot.png)
 3. Visit the Hydra dashboard and copy your Hydra database credentials
 4. Enter your Hydra credentials, as outlined above. Enable "Require SSL."
+
     ![](https://docs.getzingdata.com/docs/setting-up-a-data-source/ssl.gif)
 5. Tap "Save." Hydra will now be available to everybody in your organization.
