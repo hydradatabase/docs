@@ -86,7 +86,7 @@ CREATE TABLE my\_table (i INT8);
 CREATE TABLE my_table (i INT8);
 -- convert to columnar
 
-SELECT alter_table_set_access_method('my_table', 'columnar');
+SELECT columnar.alter_table_set_access_method('my_table', 'columnar');
 ```
 
 Data can also be converted manually by copying. For instance:
