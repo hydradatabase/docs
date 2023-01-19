@@ -1,6 +1,6 @@
 # Using Jupyter Notebooks with Hydra
 
-In this tutorial, we'll show you how to use [Hydra](https://hydra.so/) (an open-source, Postgres-compatible data warehouse) and [JupySQL](https://github.com/ploomber/jupysql) to analyze large datasets efficiently.
+In this tutorial, we'll show you how to use [Hydra](https://hydra.so/) (an open-source, Postgres data warehouse) and [JupySQL](https://github.com/ploomber/jupysql) to analyze large datasets efficiently.
 
 <!-- #region -->
 ## Requirements
