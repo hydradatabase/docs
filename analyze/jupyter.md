@@ -1,25 +1,4 @@
----
-description: Hydra integration
-images:
-- serialized/26-1.png
-jupyblog:
-  execute_code: false
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.14.4
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-title: Hydra
----
-
-## Hydra
+# Using Jupyter Notebooks with Hydra
 
 In this tutorial, we'll show you how to use [Hydra](https://hydra.so/) (an open-source, Postgres-compatible data warehouse) and [JupySQL](https://github.com/ploomber/jupysql) to analyze large datasets efficiently.
 
