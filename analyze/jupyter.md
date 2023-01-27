@@ -2,6 +2,8 @@
 
 In this tutorial, we'll show you how to use [Hydra](https://hydra.so/) (an open-source, Postgres data warehouse) and [JupySQL](https://github.com/ploomber/jupysql) to analyze large datasets efficiently.
 
+Using JupySQL to combine Jupyter Notebooks with Hydra allows data scientists to easily query data in SQL directly from Jupyter. This opens up a wide array of potential use cases to combine data across a number of sources using Postgres, or access hosted data sources which could contain hundreds or thousands of gigabytes of data. Locally, you can experiment with importing and combining datasets using both Hydra's columnar tables, Postgres built-in row tables, and external data using FDWs.
+
 ## Requirements
 
 To run this tutorial, you need to install the following Python packages:
