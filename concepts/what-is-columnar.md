@@ -55,7 +55,7 @@ Because similar data is stored next to each other, very high data compression is
 
 Columnar storage is not designed to do common transactional queries like “find by ID” - the database will need to scan a much larger amount of data to fetch this information than a row table.
 
-Additionally, columnar storage on Hydra is append-only, though we working on implementing updates and deletes. Even so, updates and deletes will principally be for convenience, and will not be as performant as row tables.
+Additionally, columnar storage on Hydra is an append-only datastore. While Hydra Columnar [supports updates and deletes](updates-and-deletes.md), it is not as performant as row tables.
 
 Lastly, columnar tables need to be inserted in bulk in order to create efficient stripes. This makes them ideal for long-term storage of data you already have, but not ideal when data is still streaming into the database. For these reasons, it’s best to store data in row-based tables until it is ready to be archived into columnar.
 
@@ -80,8 +80,6 @@ Insert data into the table and read from it like normal (subject to the limitati
 
 Hydra has a convenience function that will copy your row table to columnar.
 
-CREATE TABLE my\_table (i INT8);
-
 ```sql
 CREATE TABLE my_table (i INT8);
 -- convert to columnar
@@ -94,7 +92,7 @@ Data can also be converted manually by copying. For instance:
 ```sql
 CREATE TABLE table_heap (i INT8);
 CREATE TABLE table_columnar (LIKE table_heap) USING columnar;
-INSERT INTO table_columnar SELECT * FROM table_hea
+INSERT INTO table_columnar SELECT * FROM table_heap;
 ```
 
 ## Partitioning
@@ -126,13 +124,7 @@ INSERT INTO parent VALUES ('2020-02-15', 20, 200, 'two thousand'); -- columnar
 INSERT INTO parent VALUES ('2020-03-15', 30, 300, 'three thousand'); -- row
 ```
 
-When performing operations on a partitioned table with a mix of row and columnar partitions, take note of the following behaviors for operations that are supported on row tables but not columnar (e.g. `UPDATE`, `DELETE`, tuple locks, etc.):
-
-If the operation is targeted at a specific row partition (e.g. `UPDATE p2 SET i = i + 1`), it will succeed; if targeted at a specified columnar partition (e.g. `UPDATE p1 SET i = i + 1`), it will fail.
-
-If the operation is targeted at the partitioned table and has a `WHERE` clause that excludes all columnar partitions (e.g. `UPDATE parent SET i = i + 1 WHERE ts = '2020-03-15'`), it will succeed.
-
-If the operation is targeted at the partitioned table, but does not exclude all columnar partitions, it will fail; even if the actual data to be updated only affects row tables (e.g. `UPDATE parent SET i = i + 1 WHERE n = 300`).
+When performing operations on a partitioned table with a mix of row and columnar partitions, take note of the following behaviors for operations that are supported on row tables but not columnar (e.g. tuple locks).
 
 Note that the columnar engine supports `btree` and `hash` indexes (and the constraints requiring them) but does not support `gist`, `gin`, `spgist` and `brin` indexes. For this reason, if some partitions are columnar and if the index is not supported by columnar, then it's impossible to create indexes on the partitioned (parent) table directly. In that case, you need to create the index on the individual row partitions. Similarly for the constraints that require indexes, e.g.:
 
@@ -141,51 +133,3 @@ CREATE INDEX p2_ts_idx ON p2 (ts);
 CREATE UNIQUE INDEX p2_i_unique ON p2 (i);
 ALTER TABLE p2 ADD UNIQUE (n);
 ```
-
-## Options
-
-Set options using:
-
-```sql
-alter_columnar_table_set(
-relid REGCLASS,
-chunk_group_row_limit INT4 DEFAULT NULL,
-stripe_row_limit INT4 DEFAULT NULL,
-compression NAME DEFAULT NULL,
-compression_level INT4)
-```
-
-For example:
-
-```sql
-SELECT alter_columnar_table_set(
-'my_columnar_table',
-compression => 'none',
-stripe_row_limit => 10000);
-```
-
-The following options are available:
-
-**compression**: `[none|pglz|zstd|lz4|lz4hc]` - set the compression type for _newly-inserted_ data. Existing data will not be recompressed/decompressed. The default value is `zstd`.
-
-**compression\_level**: `<integer>` - Sets compression level. Valid settings are from 1 through 19. If the compression method does not support the level chosen, the closest level will be selected instead.
-
-**stripe\_row\_limit**: `<integer>` - the maximum number of rows per stripe for _newly-inserted_ data. Existing stripes of data will not be changed and may have more rows than this maximum value. The default value is `150000`.
-
-**chunk\_group\_row\_limit**: `<integer>` - the maximum number of rows per chunk for _newly-inserted_ data. Existing chunks of data will not be changed and may have more rows than this maximum value. The default value is `10000`.
-
-View options for all tables with:
-
-SELECT \* FROM columnar.options;
-
-You can also adjust options with a `SET` command of one of the following configuration variables:
-
-`columnar.compression`
-
-`columnar.compression_level`
-
-`columnar.stripe_row_limit`
-
-`columnar.chunk_group_row_limit`
-
-These settings only affect newly-created tables, not any newly-created stripes on an existing table.
