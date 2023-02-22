@@ -37,7 +37,7 @@ Future versions of Hydra Columnar will address this shortcoming.
 
 Hydra Columnar updates and deletes will meet the isolation level requested for your current transaction
 (the default is `READ COMMITTED`).
-Keep in mind that an `UPDATE` query is implenmented as an `DELETE` followed by an `INSERT`.
+Keep in mind that an `UPDATE` query is implenmented as a `DELETE` followed by an `INSERT`.
 As new data that is inserted in one transaction can appear in a second transaction in `READ COMMITTED`,
 this can affect concurrent transactions even if the first transaction was an `UPDATE`.
 While this satisfies `READ COMMITTED`, it may result in unexpected behavior.
