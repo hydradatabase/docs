@@ -2,7 +2,7 @@
 
 Hydra Columnar tables support updates and deletes, yet remains an append-only datastore. In order to achieve this,
 Hydra maintains metadata about which rows in the table have been deleted or modified. Modified data is re-written
-to the end of the table; you can think of an `UPDATE` as a DELETE followed by an `INSERT`.
+to the end of the table; you can think of an `UPDATE` as a `DELETE` followed by an `INSERT`.
 
 When querying, Hydra will automatically return only the latest version of your data.
 
