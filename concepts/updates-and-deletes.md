@@ -35,10 +35,15 @@ _For terms used in this section, please refer to [the Postgres documentation on 
 
 [tx-iso]: https://www.postgresql.org/docs/current/transaction-iso.html
 
-Hydra Columnar updates and deletes will have the _minimum_ isolation level requested for your current transaction
-(the default is `READ COMMITTED`), however an `UPDATE` query must be considered as a `DELETE` followed by an `INSERT`.
-As new data that is inserted in one transaction can appear in a second transaction in `READ COMMITTED`, this can affect
-concurrent transactions even if the first transaction was an `UPDATE`.
+Hydra Columnar updates and deletes will meet the isolation level requested for your current transaction
+(the default is `READ COMMITTED`).
+Keep in mind that an `UPDATE` query is implenmented as an `DELETE` followed by an `INSERT`.
+As new data that is inserted in one transaction can appear in a second transaction in `READ COMMITTED`,
+this can affect concurrent transactions even if the first transaction was an `UPDATE`.
+While this satisfies `READ COMMITTED`, it may result in unexpected behavior.
+This is also possible in heap (row-based) tables,
+but heap tables contain additional metadata that limit the impact of this case.
 
-For stronger isolation guarantees, `REPEATABLE READ` is recommended, as your transaction will be cancelled
-if it references data that has been modified by another transaction.
+For stronger isolation guarantees, `REPEATABLE READ` is recommended,
+as your transaction will be cancelled if it references data that has been modified by another transaction.
+In this case, your application should be prepared to retry the transaction.
