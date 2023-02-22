@@ -31,7 +31,7 @@ Future versions of Hydra Columnar will address this shortcoming.
 
 ## Isolation
 
-_For terms used in this section, please refer to [the Postgres documentation on isolation levels][tx-iso]._
+ℹ️ For terms used in this section, please refer to [the Postgres documentation on isolation levels][tx-iso].
 
 [tx-iso]: https://www.postgresql.org/docs/current/transaction-iso.html
 
