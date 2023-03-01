@@ -6,7 +6,7 @@ description: >-
 
 # TLS
 
-{% hint style="info" %}
+{% hint style="warning" %}
 You must use TLS (SSL) to connect to Hydra. Hydra does not support unencrypted connections.
 {% endhint %}
 
@@ -67,7 +67,9 @@ Any additional parameters will override your service entry. For example, you can
 
 ### Always validate certificates
 
-:warning: If you choose this path, `psql` will try to validate certificates when connecting to any Postgres database. This will cause connections to some other Postgres databases to return an error, even if you set `sslmode`.
+{% hint style="warning" %}
+If you choose this path, `psql` will try to validate certificates when connecting to any Postgres database. This will cause connections to some other Postgres databases to return an error, even if you set `sslmode`.
+{% endhint %}
 
 You can instruct `psql` to always read your public certificate bundle my symlinking `~/.postgresql/root.crt` to your public root cert bundle:
 
