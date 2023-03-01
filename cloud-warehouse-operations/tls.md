@@ -6,20 +6,22 @@ description: >-
 
 # Securely connecting to Hydra
 
-⚠️ You must use TLS (SSL) to connect to Hydra. Hydra does not support unencrypted connections.
+:warning: You must use TLS (SSL) to connect to Hydra. Hydra does not support unencrypted connections.
 
-Hydra has publicly-trusted certificates (issued by [Let's Encrypt](https://letsencrypt.org/) allowing you to connect safety and securely to your data warehouse from anywhere on the Internet. 
+Hydra has publicly-trusted certificates, issued by [Let's Encrypt](https://letsencrypt.org/), allowing you to connect safety and securely to your data warehouse from anywhere on the Internet.
 
 * Whenever possible, we recommend validating the certificate. To do so, use `sslmode=verify-full` when connecting and configure your Postgres connection to read your public certificate bundle. More
 * If you are unable to configure your Postgres connection, we recommend using `sslmode=require`.
 
-More information on `sslmode` in [available in the Postgres documentation](https://www.postgresql.org/docs/current/libpq-ssl.html).
+For clients based on libpq, information on `sslmode` in [available in the Postgres documentation](https://www.postgresql.org/docs/current/libpq-ssl.html).
 
-## psql
+## GUI clients
 
-### Locate your root certificate bundle
+For GUI clients, configuration for SSL will vary. Please look for SSL settings when configuring a connection. If you encounter issues, please check your client's documentation for more information. If you are still unable to connect, reach out to Hydra support and we'll do our best to assist you.
 
-To configure psql, you will need to know the location of your root certificate bundle. On most systems, this file is located at `/etc/ssl/cert.pem`.
+## Locating your root certificate bundle
+
+To validate the certificate, you will need to know the location of your root certificate bundle. On many systems, this file is located at `/etc/ssl/cert.pem`.
 
 If the file is not located in `/etc/ssl`, you can use `curl -v` to a secure URL and look for the `CAfile` line:
 
@@ -27,6 +29,8 @@ If the file is not located in `/etc/ssl`, you can use `curl -v` to a secure URL 
 $ curl -v https://hydras.io/ 2>&1 | grep -i CAfile
 *  CAfile: /etc/ssl/cert.pem
 ```
+
+## Configuring psql
 
 ### Add sslrootcert to the connection string
 
