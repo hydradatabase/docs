@@ -4,11 +4,16 @@ description: >-
   certificates.
 ---
 
-# TLS
+# Securely connecting to Hydra
 
-Hydra has publicly-trusted certificates from Let's Encrypt allowing you to connect safety to your data warehouse from anywhere on the Internet. To validate the certificate, you must use `sslmode=verify-full` when connecting and configure your Postgres connection to read your public certificate bundle.
+⚠️ You must use TLS (SSL) to connect to Hydra. Hydra does not support unencrypted connections.
 
-If you are unable to configure your Postgres connection, we recommend using `sslmode=require`.
+Hydra has publicly-trusted certificates (issued by [Let's Encrypt](https://letsencrypt.org/) allowing you to connect safety and securely to your data warehouse from anywhere on the Internet. 
+
+* Whenever possible, we recommend validating the certificate. To do so, use `sslmode=verify-full` when connecting and configure your Postgres connection to read your public certificate bundle. More
+* If you are unable to configure your Postgres connection, we recommend using `sslmode=require`.
+
+More information on `sslmode` in [available in the Postgres documentation](https://www.postgresql.org/docs/current/libpq-ssl.html).
 
 ## psql
 
