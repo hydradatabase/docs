@@ -4,9 +4,11 @@ description: >-
   certificates.
 ---
 
-# Securely connecting to Hydra
+# TLS
 
-:warning: You must use TLS (SSL) to connect to Hydra. Hydra does not support unencrypted connections.
+{% hint style="info" %}
+You must use TLS (SSL) to connect to Hydra. Hydra does not support unencrypted connections.
+{% endhint %}
 
 Hydra has publicly-trusted certificates, issued by [Let's Encrypt](https://letsencrypt.org/), allowing you to connect safety and securely to your data warehouse from anywhere on the Internet.
 
