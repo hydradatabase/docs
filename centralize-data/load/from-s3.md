@@ -44,7 +44,7 @@ SELECT id, email FROM users_csv;
 
 ## Loading Parquet data from S3
 
-You can load data or run queries against [Apache Parquet files](https://parquet.apache.org/) stored on Amazon S3. S3 Parquet External Tables are implemented using [`parquet_s3_fdw`](https://github.com/HydrasDB/parquet\_s3\_fdw). As an example, we are using the same data from [here](https://github.com/Teradata/kylo/tree/master/samples/sample-data/parquet).
+You can load data or run queries against [Apache Parquet files](https://parquet.apache.org/) stored on Amazon S3. S3 Parquet External Tables are implemented using [`parquet_s3_fdw`](https://github.com/hydradatabase/parquet\_s3\_fdw). As an example, we are using the same data from [here](https://github.com/Teradata/kylo/tree/master/samples/sample-data/parquet).
 
 The column details are as followed:
 

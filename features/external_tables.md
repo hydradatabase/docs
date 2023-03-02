@@ -110,7 +110,7 @@ create foreign table users_csv (
 ## S3 Parquet External Tables
 
 You can run queries against [Apache Parquet files](https://parquet.apache.org/) stored on Amazon S3.
-S3 Parquet External Tables are implemented using [`parquet_s3_fdw`](https://github.com/HydrasDB/parquet_s3_fdw).
+S3 Parquet External Tables are implemented using [`parquet_s3_fdw`](https://github.com/hydradatabase/parquet_s3_fdw).
 As an example, we are using the same data from [here](https://github.com/Teradata/kylo/tree/master/samples/sample-data/parquet).
 
 The column details are as followed:
@@ -167,7 +167,7 @@ You can now read data from the Parquet file using `SELECT ... FROM userdata`. No
 ## Google Spreadsheet External Tables
 
 You can run run queries against Google Spreadsheets.
-Google Spreadsheet External Tables are implemented using [`gspreadsheet_fdw`](https://github.com/HydrasDB/gspreadsheet_fdw).
+Google Spreadsheet External Tables are implemented using [`gspreadsheet_fdw`](https://github.com/hydradatabase/gspreadsheet_fdw).
 To create a Google Spreadsheet External Table, create a Google Spreadsheet with some data:
 
 * Put column names in the first row: untitled columns will not be read

@@ -1,7 +1,7 @@
 
 # Load data from Google Sheets
 
-With Hydra, you can import data and run queries against Google Spreadsheets. Google Spreadsheet External Tables are implemented using [`gspreadsheet_fdw`](https://github.com/HydrasDB/gspreadsheet\_fdw). To create a Google Spreadsheet External Table, create a Google Spreadsheet with some data:
+With Hydra, you can import data and run queries against Google Spreadsheets. Google Spreadsheet External Tables are implemented using [`gspreadsheet_fdw`](https://github.com/hydradatabase/gspreadsheet\_fdw). To create a Google Spreadsheet External Table, create a Google Spreadsheet with some data:
 
 * Put column names in the first row: untitled columns will not be read
 * A blank row terminates the table (data below won't be read)

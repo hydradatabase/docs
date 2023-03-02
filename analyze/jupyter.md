@@ -71,7 +71,7 @@ We're ready to upload our data; we'll load the [JupySQL](https://github.com/ploo
 %sql postgresql://user:password@localhost/db
 ```
 
-Let's create the table; note that Hydra adds a [`USING columnar`](https://docs.hydras.io/concepts/what-is-columnar) option to the `CREATE TABLE` statement, which will optimize storage for analytical queries.
+Let's create the table; note that Hydra adds a [`USING columnar`](https://docs.hydra.so/concepts/what-is-columnar) option to the `CREATE TABLE` statement, which will optimize storage for analytical queries.
 
 ```sql
 CREATE TABLE "taxi" (
@@ -267,7 +267,7 @@ Much better! We just created a histogram of 1.4M observations!
 
 ## Where to go from here
 
-* [Hydra documenation](https://docs.hydras.io/)
+* [Hydra documenation](https://docs.hydra.so/)
 * [JupySQL documentation](https://jupysql.readthedocs.io/en/latest/quick-start.html)
 
 ## Clean up
@@ -281,13 +281,13 @@ To finish the tutorial, let's shut down the container:
 **Console output (1/1):**
 
 ```
-CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                    NAMES
-fd21cec1f520   ghcr.io/hydrasdb/hydra   "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes   0.0.0.0:5432->5432/tcp   hydra
+CONTAINER ID   IMAGE                         COMMAND                  CREATED         STATUS         PORTS                    NAMES
+fd21cec1f520   ghcr.io/hydradatabase/hydra   "docker-entrypoint.s…"   9 minutes ago   Up 9 minutes   0.0.0.0:5432->5432/tcp   hydra
 ```
 
 ```python
 %%capture out
-! docker container ls --filter ancestor=ghcr.io/hydrasdb/hydra --quiet
+! docker container ls --filter ancestor=ghcr.io/hydradatabase/hydra --quiet
 ```
 
 ```python
