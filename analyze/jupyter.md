@@ -73,7 +73,10 @@ We're ready to upload our data; we'll load the [JupySQL](https://github.com/ploo
 
 Let's create the table; note that Hydra adds a [`USING columnar`](https://docs.hydra.so/concepts/what-is-columnar) option to the `CREATE TABLE` statement, which will optimize storage for analytical queries.
 
+*Note:* to execute SQL on Jupyter via JupySQL, we must add `%%sql` at the beginning of the cell:
+
 ```sql
+%%sql
 CREATE TABLE "taxi" (
     "VendorID" DECIMAL NOT NULL,
     tpep_pickup_datetime TIMESTAMP WITHOUT TIME ZONE,
@@ -113,6 +116,7 @@ Done.
 Let's now upload the data:
 
 ```sql
+%%sql
 \copy taxi from 'taxi.csv' WITH DELIMITER ',' CSV HEADER;
 ```
 
@@ -128,6 +132,7 @@ Let's now upload the data:
 Let's now query our data:
 
 ```sql
+%%sql
 SELECT COUNT(*) FROM taxi
 ```
 
@@ -147,6 +152,7 @@ SELECT COUNT(*) FROM taxi
 We see that the \~1.4M are there. Let's take a look at the first rows:
 
 ```sql
+%%sql
 SELECT * FROM taxi
 LIMIT 3
 ```
@@ -169,6 +175,7 @@ LIMIT 3
 Hydra allows us to perform analytical queries efficiently. Let's compute the average trip distance given the passenger count:
 
 ```sql
+%%sql
 SELECT
     passenger_count, AVG(trip_distance) AS avg_trip_distance
 FROM taxi
@@ -217,6 +224,7 @@ JupySQL comes with powerful plotting capabilities. Let's create a histogram of t
 We cannot see much since there are some outliers. Let's find the 99th percentile:
 
 ```sql
+%%sql
 SELECT percentile_disc(0.99) WITHIN GROUP (ORDER BY trip_distance)
 FROM taxi
 ```
@@ -237,6 +245,7 @@ FROM taxi
 Now, let's use this value as a cutoff:
 
 ```sql
+%%sql --save no_outliers --no-execute
 SELECT trip_distance
 FROM taxi
 WHERE trip_distance < 19.24
