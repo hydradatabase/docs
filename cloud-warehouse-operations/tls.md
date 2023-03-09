@@ -34,6 +34,13 @@ $ curl -v https://hydras.io/ 2>&1 | grep -i CAfile
 
 ## Configuring psql
 
+You have several options on how to connect with Hydra while validating the certificate. 
+
+{% hint style="info" %}
+You only need to use one of the following options to validate the certificate. Validating the certificate is recommended but optional. 
+`psql` will automatically use SSL to connect to Hydra.
+{% endhint %}
+
 ### Add sslrootcert to the connection string
 
 The simplest option is to add the file to the end of the connection string using the parameter `sslrootcert`, as follows:
