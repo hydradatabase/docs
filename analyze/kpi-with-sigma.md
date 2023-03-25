@@ -49,33 +49,21 @@ description: Sigma is a cloud-native analytics platform that uses a familiar spr
 
 2. We will now connect to your Hydra database and upload the .csv. If you're unfamiliar with the process of connecting via. psql and creating/populating a table, please follow this [guide](https://docs.hydra.so/centralize-data/load/from-local-csv-file).
 
-  
+    * The following code is used to create the sales_data table:
 
-* The following code is used to create the sales_data table:
 
-  
 
-```
-
-CREATE TABLE sales_data (
-
-retailer_code INT,
-
-product_number INT,
-
-order_method_code INT,
-
-date TIMESTAMP,
-
-quantity INT,
-
-unit_price FLOAT,
-
-unit_sale_price FLOAT
-
-)
-
-```
+      ```
+      CREATE TABLE sales_data (
+          retailer_code INT,
+          product_number INT,
+          order_method_code INT,
+          date TIMESTAMP,
+          quantity INT,
+          unit_price FLOAT,
+          unit_sale_price FLOAT
+          )
+      ```
 
   
 
@@ -114,36 +102,24 @@ Now we can configure Sigma to access our sample data in the Hydra.
   
 
 5. Choose a name for the connection (we went with **hydra-sales_data_2023**) and select PostgreSQL as the type of database you'd like to connect to.
+    
+    ![Step_1](https://user-images.githubusercontent.com/71795488/227726542-f797223a-ba13-46ab-8640-507101f2fa3f.png)
 
   
 
   
 
-![Step_1](https://user-images.githubusercontent.com/71795488/227726542-f797223a-ba13-46ab-8640-507101f2fa3f.png)
+6. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database. Keep all other options unchanged. Once all the information has been entered, select **Create** on the top right.
+    
+    ![Step_2](https://user-images.githubusercontent.com/71795488/227726544-8070700a-1525-4cb6-8ed3-24d0ab62155f.png)
 
   
 
   
 
-7. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database. Keep all other options unchanged. Once all the information has been entered, select **Create** on the top right.
+7. Once created, you will be able to view the connection details.
 
-  
-
-  
-
-![Step_2](https://user-images.githubusercontent.com/71795488/227726544-8070700a-1525-4cb6-8ed3-24d0ab62155f.png)
-
-  
-
-  
-
-9. Once created, you will be able to view the connection details.
-
-  
-
-  
-
-![Step_3](https://user-images.githubusercontent.com/71795488/227726572-198b26f7-da24-428c-a0c4-7b6acf13c760.png)
+    ![Step_3](https://user-images.githubusercontent.com/71795488/227726572-198b26f7-da24-428c-a0c4-7b6acf13c760.png)
 
   
 
@@ -153,15 +129,13 @@ Now we can configure Sigma to access our sample data in the Hydra.
 
   
 
-1. Back on the main page, click **Create New** on the top left. Select **Workbook**. On the bar to the left, you will see a banner entitled, **DATA ELEMENTS**.
+1. Back on the main page, click **Create New** on the top left. Select **Workbook**. On the bar to the left, you will see a banner entitled **DATA ELEMENTS**.
 
   
 
 2. Select **VIZ** within it, then click on **TABLES AND DATASETS**. This will being you to the Hydra database and will show you the available schemas. Your data should exist within **public**.
 
-  
-
-![Step_4](https://user-images.githubusercontent.com/71795488/227726590-1a295fdc-6d96-4a48-b50b-7fb2ae161b25.png)
+    ![Step_4](https://user-images.githubusercontent.com/71795488/227726590-1a295fdc-6d96-4a48-b50b-7fb2ae161b25.png)
 
   
 
@@ -177,9 +151,7 @@ Now we can configure Sigma to access our sample data in the Hydra.
 
 Now that your data is connected, you're able to utilize your Hydra tables and create insights using Sigma's visualization. Let's experiment with creating the below dashboard showcasing some important KPI's relating to YoY revenue and profit.
 
-  
-
-![Step_5](https://user-images.githubusercontent.com/71795488/227729058-83647447-0536-4016-a04c-cdb09b8fcc1e.png)
+   ![Step_5](https://user-images.githubusercontent.com/71795488/227729058-83647447-0536-4016-a04c-cdb09b8fcc1e.png)
 
   
   
@@ -189,44 +161,38 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
 2. Navigate to **Layouts** and click on the layout showcasing two visuals side-by-side (third from the bottom).
 
-  
-
-![PIC1](https://user-images.githubusercontent.com/71795488/227729006-01f0bb7b-c368-4165-9655-6f05df711e73.png)
+    ![PIC1](https://user-images.githubusercontent.com/71795488/227729006-01f0bb7b-c368-4165-9655-6f05df711e73.png)
 
   
 
 4. Select the left empty visual, and then select **sales_data** as the table/data source.
 
-  
-
-![PIC2](https://user-images.githubusercontent.com/71795488/227729013-7e32450d-26e9-4bc1-8384-617014f35b15.png)
+    ![PIC2](https://user-images.githubusercontent.com/71795488/227729013-7e32450d-26e9-4bc1-8384-617014f35b15.png)
 
   
 
 6. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left.
 
-![PIC3](https://user-images.githubusercontent.com/71795488/227729027-073a7099-9bfe-4e4e-94d0-eb082fccce9a.png)
+    ![PIC3](https://user-images.githubusercontent.com/71795488/227729027-073a7099-9bfe-4e4e-94d0-eb082fccce9a.png)
 
   
   
 
-* Revenue: Change the column name to Revenue and enter the following formula onto the formula bar at the top: `[Unit Price] * [Quantity]`.
+      * Revenue: Change the column name to Revenue and enter the following formula onto the formula bar at the top: `[Unit Price] * [Quantity]`.
 
-* Profit Margin: Change the column name to Profit Margin and enter the following formula onto the formula bar at the top: `([Unit Price] - [Unit Sale Price]) * [Quantity]`.
+      * Profit Margin: Change the column name to Profit Margin and enter the following formula onto the formula bar at the top: `([Unit Price] - [Unit Sale Price]) * [Quantity]`.
 
 7. Now that we have the two columns used for these KPI's, let's add them to the metrics:
 
-* Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
+      * Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
 
-* Drag **Revenue** into both the **Value** and **Comparison** section in the toolbar.
+      * Drag **Revenue** into both the **Value** and **Comparison** section in the toolbar.
 
-* Select the newly dropped column under Value (should be automatically renamed to **Sum of Revenue** and change the formula to `SumIf([Revenue], Year([Date]) = 2017)`. Change
+      * Select the newly dropped column under Value (should be automatically renamed to **Sum of Revenue** and change the formula to `SumIf([Revenue], Year([Date]) = 2017)`. Change
 
-* Rename to Annual Sales and Format the type to currency by clicking on the arrow to the right when hovered over the column. You should now have something looking like this:
+      * Rename to Annual Sales and Format the type to currency by clicking on the arrow to the right when hovered over the column. You should now have something looking like this:
 
-  
-
-![PIC4](https://user-images.githubusercontent.com/71795488/227729038-a8ec4a33-1fd3-407c-952e-055a055faa69.png)
+    ![PIC4](https://user-images.githubusercontent.com/71795488/227729038-a8ec4a33-1fd3-407c-952e-055a055faa69.png)
 
   
   
