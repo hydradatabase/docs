@@ -197,7 +197,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
   
   
 
-**Repeat the above steps for YoY Profit**. When adding a new visual, choose **Annual Sales** as your data source when promted, as it will include the new columns created in the steps prior. 
+**Repeat the above steps for YoY Profit**. When adding a new visual, choose **Annual Sales** as your data source when prompted, as it will include the new columns created in the steps prior. 
 
 
 The Quarterly revenue graph is also made in similar fashion, with the addition of adding a date range and aggregation filter.
