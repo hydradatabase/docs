@@ -1,4 +1,5 @@
 
+
   
 
   
@@ -93,7 +94,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
   
 
-3. Select the **Connections** page from the top left hand panel.
+3. Select the **Connections** page from the top left-hand panel.
 
   
 
@@ -129,11 +130,11 @@ Now we can configure Sigma to access our sample data in Hydra.
 
   
 
-1. Back on the main page, click **Create New** on the top left. Select **Workbook**. On the bar to the left, you will see a banner entitled **DATA ELEMENTS**.
+1. Back on the main page, click **Create New** on the top left followed by selecting **Workbook**. You will see a banner entitled **DATA ELEMENTS** on the toolbar to the left.
 
   
 
-2. Select **VIZ** within it, then click on **TABLES AND DATASETS**. This will being you to the Hydra database and will show you the available schemas. Your data should exist within **public**.
+2. Within the aforementioned toolbar, select **VIZ** followed by clicking on **TABLES AND DATASETS**. This will being you to the Hydra database and will show you the available schemas. Your data should exist within the **public** schema.
 
     ![Step_4](https://user-images.githubusercontent.com/71795488/227726590-1a295fdc-6d96-4a48-b50b-7fb2ae161b25.png)
 
@@ -141,7 +142,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
   
 
-3. Navigate to the aforementioned schema, select sales_data, and then confirm your selection by clicking the button on the bottom right.
+3. Navigate to the aforementioned schema, select **sales_data**, and then confirm your selection by clicking the button on the bottom right.
 
   
 
