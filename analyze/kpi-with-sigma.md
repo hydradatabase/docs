@@ -208,27 +208,3 @@ The Quarterly revenue graph is also made in similar fashion, with the addition o
 5. Hovering over the data element again, click the arrow and then **Filter**. Change the filter type from **Between** to **Before**, and select December 31, 2017 as the date.
 
 ### You've now created your first Hyda x Sigma metrics!
-
-  
-
-#### Cleanup
-
-  
-
-  
-
-Once you’re done exploring Metabase and Hydra you can cleanup the sample data be droping the `sample_data` table.
-
-  
-
-  
-
-```shell
-
-  
-
-psql "$PGCONN"  -c  "DROP TABLE sample_data;"
-
-  
-
-```
