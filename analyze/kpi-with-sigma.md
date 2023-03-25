@@ -187,18 +187,33 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
       * Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
 
+		  ![PIC5](https://user-images.githubusercontent.com/71795488/227732966-279516a6-27c5-459e-8410-195268490d77.png)
+
+
       * Drag **Revenue** into both the **Value** and **Comparison** section in the toolbar.
 
-      * Select the newly dropped column under Value (should be automatically renamed to **Sum of Revenue** and change the formula to `SumIf([Revenue], Year([Date]) = 2017)`. Change
 
-      * Rename to Annual Sales and Format the type to currency by clicking on the arrow to the right when hovered over the column. You should now have something looking like this:
+		  ![PIC6](https://user-images.githubusercontent.com/71795488/227732960-0c065170-0564-4dca-8923-42d6a993f517.png)
 
-    ![PIC4](https://user-images.githubusercontent.com/71795488/227729038-a8ec4a33-1fd3-407c-952e-055a055faa69.png)
+
+      * Select the newly added column under **Value** (should be automatically renamed to **Sum of Revenue** and change the formula, located in the top-middle, to `SumIf([Revenue], Year([Date]) = 2017)`. Change the formula of the newly added column under **Comparison**, now entitled **Sum of SumIf of Revenue**, to `SumIf([Revenue], Year([Date]) = 2016)`.
+
+          ![PIC7](https://user-images.githubusercontent.com/71795488/227732979-784967e9-7df9-4c67-805f-d0eed1c37b43.png)
+          ![PIC8](https://user-images.githubusercontent.com/71795488/227732982-241f448e-bdb7-4163-8ee2-5a38e87b641b.png)
+
+	
+
+      * Rename **Sum of Revenue**, under **Value**, to **Annual Sales** and Format the type to *currency* by hovering over the column and clicking on the arrow to the right. You should now have something looking like this:
+
+          ![PIC4](https://user-images.githubusercontent.com/71795488/227729038-a8ec4a33-1fd3-407c-952e-055a055faa69.png)
 
   
   
 
-**Repeat the above steps for YoY Profit**. When adding a new visual, choose **Annual Sales** as your data source when prompted, as it will include the new columns created in the steps prior. 
+**Repeat the above steps for YoY Profit**, but use the **Profit Margin** column instead. When adding a new visual, choose **Annual Sales** as your data source when prompted, as it will include the new columns created in the visual prior. 
+
+   ![PIC10](https://user-images.githubusercontent.com/71795488/227733082-da1f89e8-92ba-479c-b6b5-c14e74d684c5.png)
+
 
 
 The Quarterly revenue graph is also made in similar fashion, with the addition of adding a date range and aggregation filter.
@@ -206,6 +221,14 @@ The Quarterly revenue graph is also made in similar fashion, with the addition o
 2. Change the visual type from **Bar** to **Line**.
 3. Drag Revenue into the y-axis, and Date into the x-axis.
 4. On the x-axis toolbar, click on the arrow and navigate to **Truncate date**. Select **Quarter**.
+
+      ![PIC11](https://user-images.githubusercontent.com/71795488/227733056-5f8d994e-e27d-47b7-b6cd-f013677b5b55.png)
+  
 5. Hovering over the data element again, click the arrow and then **Filter**. Change the filter type from **Between** to **Before**, and select December 31, 2017 as the date.
 
-### You've now created your first Hyda x Sigma metrics!
+      ![PIC12](https://user-images.githubusercontent.com/71795488/227733063-c5fcc5a3-e1f4-4d4d-ba8e-962fb294e0c7.png)
+
+
+### You're now done! Congratulations on creating your first Hydra x Sigma KPI dashboard!
+
+![Step_5](https://user-images.githubusercontent.com/71795488/227729058-83647447-0536-4016-a04c-cdb09b8fcc1e.png)
