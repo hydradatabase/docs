@@ -110,18 +110,33 @@ Now we can configure Sigma to access our sample data in the Hydra.
 ### Congratulations! You've connected Hydra with Sigma! What next?
 Now that your data is connected, you're able to utilize your Hydra tables and create insights using Sigma's visualization. Let's experiment with creating the below dashboard showcasing some important KPI's relating to YoY revenue and profit.
 
-![Step_5](https://user-images.githubusercontent.com/71795488/227726614-0a08bbaa-9acd-433b-8350-db5349aec216.png)
+![Step_5](https://user-images.githubusercontent.com/71795488/227729058-83647447-0536-4016-a04c-cdb09b8fcc1e.png)
+
+
+
 1. Within the dashboard, click the **+** symbol on the top left.
-2. Navigate to **Layouts** and click on the layout showcasing two visuals side-by-side (third from the bottom). PIC1
-3. Select the left empty visual, and then select **sales_data** as the table/data source. PIC2
-4. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left. PIC3
+2. Navigate to **Layouts** and click on the layout showcasing two visuals side-by-side (third from the bottom).
+
+	![PIC1](https://user-images.githubusercontent.com/71795488/227729006-01f0bb7b-c368-4165-9655-6f05df711e73.png)
+
+4. Select the left empty visual, and then select **sales_data** as the table/data source.
+
+	![PIC2](https://user-images.githubusercontent.com/71795488/227729013-7e32450d-26e9-4bc1-8384-617014f35b15.png)
+
+6. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left.
+	![PIC3](https://user-images.githubusercontent.com/71795488/227729027-073a7099-9bfe-4e4e-94d0-eb082fccce9a.png)
+
+
 	* Revenue: Change the column name to Revenue and enter the following formula onto the formula bar at the top: `[Unit Price] * [Quantity]`.
 	* Profit Margin: Change the column name to Profit Margin and enter the following formula onto the formula bar at the top: `([Unit Price] - [Unit Sale Price]) * [Quantity]`.
-5. Now that we have the two columns used for these KPI's, let's add them to the metrics:
+7. Now that we have the two columns used for these KPI's, let's add them to the metrics:
 	* Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
 	* Drag **Revenue** into both the **Value** and **Comparison** section in the toolbar.
 	* Select the newly dropped column under Value (should be automatically renamed to **Sum of Revenue** and change the formula to `SumIf([Revenue], Year([Date]) = 2017)`.  Change
-	* Rename to Annual Sales and Format the type to currency by clicking on the arrow to the right when hovered over the column. You should now have something looking like this: PIC4
+	* Rename to Annual Sales and Format the type to currency by clicking on the arrow to the right when hovered over the column. You should now have something looking like this:
+
+	![PIC4](https://user-images.githubusercontent.com/71795488/227729038-a8ec4a33-1fd3-407c-952e-055a055faa69.png)
+
 
 **Repeat the above steps for YoY Profit**. The Quarterly revenue graph is also made in similar fashion.
   
