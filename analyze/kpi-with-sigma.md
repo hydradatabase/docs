@@ -43,11 +43,11 @@ description: Sigma is a cloud-native analytics platform that uses a familiar spr
 
   
 
-1. We will use sample sales data from [IBM](https://relational.fit.cvut.cz/dataset/GOSales). Pull to the following [repository](https://github.com/IBM/watson-machine-learning-samples) and download the .csv located in `watson-machine-learning-samples/cpd4.6/data/go_sales/go_daily_sales.csv`.
+1. We will use sample sales data from [IBM](https://relational.fit.cvut.cz/dataset/GOSales). Head to the following [repository](https://github.com/IBM/watson-machine-learning-samples) and download the .csv located in `watson-machine-learning-samples/cpd4.6/data/go_sales/go_daily_sales.csv`.
 
   
 
-2. We will now connect to your Hydra database and upload the .csv. If you're unfamiliar with the process of connecting via. psql and creating/populating a table, please follow this [guide](https://docs.hydra.so/centralize-data/load/from-local-csv-file).
+2. Connect to your Hydra database and upload the .csv. If you're unfamiliar with the process of connecting via. psql and creating/populating a table, please follow this [guide](https://docs.hydra.so/centralize-data/load/from-local-csv-file).
 
     * The following code is used to create the sales_data table:
 
@@ -79,7 +79,7 @@ description: Sigma is a cloud-native analytics platform that uses a familiar spr
 
   
 
-Now we can configure Sigma to access our sample data in the Hydra.
+Now we can configure Sigma to access our sample data in Hydra.
 
   
 
