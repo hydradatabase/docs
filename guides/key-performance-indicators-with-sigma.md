@@ -8,7 +8,7 @@
 
   
 
-description: Sigma is a cloud-native analytics platform that uses a familiar spreadsheet interface to give business users instant access to explore and get insights from their cloud data warehouse. It requires no code or special training to explore billions or rows, augment with new data, or perform “what if” analysis on all data in real⁠-⁠time.
+description: Sigma is a cloud-native analytics platform that uses a familiar spreadsheet interface to give business users instant access to explore and get insights from their cloud data warehouse. It requires no code or special training to explore billions of rows, augment with new data, or perform “what if” analysis on all data in real⁠-⁠time.
 
   
 
@@ -21,7 +21,16 @@ description: Sigma is a cloud-native analytics platform that uses a familiar spr
 # Integrating Hydra with [Sigma](https://www.sigmacomputing.com/)
 
   
+## Scope
 
+The focus of this guide is to showcase the ease of integrating Hydra with Sigma by developing several KPI metrics based on data within a Hydra database.
+
+To cater to a large audience, the data and KPI's were chosen to be as agnostic as possible. The data used is mock sales data from IBM, and the metrics made are the following:
+* YoY Revenue Growth (card)
+* YoY Net Profit Growth (card)
+* QoQ Revenue Growth (time-series line chart)
+
+Your KPI's will most likely differ, but this will serve as a foundation for the development of more metrics regarding your business.
   
 
 ## Setup
@@ -40,7 +49,7 @@ description: Sigma is a cloud-native analytics platform that uses a familiar spr
 
   
 
-### Building the Table Hydra
+### Building the Table with Hydra
 
   
 
@@ -134,7 +143,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
   
 
-2. Within the aforementioned toolbar, select **VIZ** followed by clicking on **TABLES AND DATASETS**. This will being you to the Hydra database and will show you the available schemas. Your data should exist within the **public** schema.
+2. Within the aforementioned toolbar, select **VIZ** followed by clicking on **TABLES AND DATASETS**. This will bring you to the Hydra database and will show you the available schemas. Your data should exist within the **public** schema.
 
     ![Step_4](https://user-images.githubusercontent.com/71795488/227726590-1a295fdc-6d96-4a48-b50b-7fb2ae161b25.png)
 
