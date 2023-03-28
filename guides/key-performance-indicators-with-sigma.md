@@ -30,7 +30,7 @@ To cater to a large audience, the data and KPI's were chosen to be as agnostic a
 * YoY Net Profit Growth (card)
 * QoQ Revenue Growth (time-series line chart)
 
-Your KPI's will most likely differ, but this will serve as a foundation for the development of more metrics regarding your business.
+Your KPI's will most likely differ, but this will hopefully serve as a foundation for the development of more metrics.
   
 
 ## Setup
