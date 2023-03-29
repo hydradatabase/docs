@@ -4,6 +4,18 @@
 
 Please see our documentation about [when to use row and columnar tables](../organize/data-modeling/row-vs-column-tables.md).
 
+## Enabling Columnar
+
+For Hydra cloud databases, columnar is already enabled.
+
+For Hydra open source, the default `postgres` database has columnar enabled. Additional databases you create will need to have columnar enabled by running the query below as superuser:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS columnar;
+```
+
+Once installed, you will not need superuser to utilize columnar tables.
+
 ## Using a columnar table
 
 Create a Columnar table by specifying `USING columnar` when creating the table.
@@ -27,8 +39,8 @@ Hydra has a convenience function that will copy your row table to columnar.
 
 ```sql
 CREATE TABLE my_table (i INT8);
--- convert to columnar
 
+-- convert to columnar
 SELECT columnar.alter_table_set_access_method('my_table', 'columnar');
 ```
 
