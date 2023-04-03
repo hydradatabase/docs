@@ -2,9 +2,9 @@
 
 ## Signing Up
 
-First, a bit of bookkeeping.
+First, you'll need to complete a bit of bookkeeping.
 
-1. Sign up with either email address and password or with Google Auth.
+1. [Sign up](https://dashboard.hydra.so/signup) with either email address and password or with Google Auth.
 2. Confirm you have read our [Terms of Service](https://hydras.io/legal/tos).
 
 ## Name Your Team
