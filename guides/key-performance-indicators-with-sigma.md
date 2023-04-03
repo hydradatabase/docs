@@ -172,19 +172,8 @@ Now we can configure Sigma to access our sample data in Hydra.
 
 5. Choose a name for the connection (we went with **hydra-sales_data_2023**) and select PostgreSQL as the type of database you'd like to connect to. 
 
-![](../../.gitbook/assets/.sigma-images/connection_details.png)
+![](/.gitbook/assets/.sigma-images/connection_details.png)
 
-![Step_1](https://user-images.githubusercontent.com/71795488/227726542-f797223a-ba13-46ab-8640-507101f2fa3f.png)
-
-  
-
-  
-
-  
-
-6. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database. Keep all other options unchanged. Once all the information has been entered, select **Create** on the top right. [connection-credentials.png]
-
-![Step_2](https://user-images.githubusercontent.com/71795488/227726544-8070700a-1525-4cb6-8ed3-24d0ab62155f.png)
 
   
 
@@ -192,15 +181,21 @@ Now we can configure Sigma to access our sample data in Hydra.
 
   
 
-7. Once created, you will be able to view the connection details. [connection-summary]
+6. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database. Keep all other options unchanged. Once all the information has been entered, select **Create** on the top right.
+
+![](/.gitbook/assets/.sigma-images/connection-credentials.png)
 
   
 
-![Step_3](https://user-images.githubusercontent.com/71795488/227726572-198b26f7-da24-428c-a0c4-7b6acf13c760.png)
-
   
 
   
+
+7. Once created, you will be able to view the connection details.
+
+ ![](/.gitbook/assets/.sigma-images/connection-summary.png)
+
+
 
   
 
@@ -216,12 +211,11 @@ Now we can configure Sigma to access our sample data in Hydra.
 
   
 
-2. Within the aforementioned toolbar, select **VIZ** followed by clicking on **TABLES AND DATASETS**. This will bring you to the Hydra database and will show you the available schemas. Your data should exist within the **public** schema. [select-table]
+2. Within the aforementioned toolbar, select **VIZ** followed by clicking on **TABLES AND DATASETS**. This will bring you to the Hydra database and will show you the available schemas. Your data should exist within the **public** schema. 
+
+ ![](/.gitbook/assets/.sigma-images/select-table.png)
 
   
-
-![Step_4](https://user-images.githubusercontent.com/71795488/227726590-1a295fdc-6d96-4a48-b50b-7fb2ae161b25.png)
-
   
 
   
@@ -243,8 +237,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 Now that your data is connected, you're able to utilize your Hydra tables and create insights using Sigma's visualization. Let's experiment with creating the below dashboard showcasing some important KPI's relating to YoY revenue and profit.
 
   
-
-![Step_5](https://user-images.githubusercontent.com/71795488/227729058-83647447-0536-4016-a04c-cdb09b8fcc1e.png)
+ ![](/.gitbook/assets/.sigma-images/final-dashboard.png)
 
   
 
@@ -257,30 +250,24 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 2. Navigate to **Layouts** and click on the layout showcasing two visuals side-by-side (third from the bottom).
 
   
+ ![](/.gitbook/assets/.sigma-images/add-new.png)
 
-![PIC1](https://user-images.githubusercontent.com/71795488/227729006-01f0bb7b-c368-4165-9655-6f05df711e73.png)
-
-  
 
   
 
 4. Select the left empty visual, and then select **sales_data** as the table/data source.
 
-  
+   ![](/.gitbook/assets/.sigma-images/visual-source.png)
 
-![PIC2](https://user-images.githubusercontent.com/71795488/227729013-7e32450d-26e9-4bc1-8384-617014f35b15.png)
-
-  
 
   
 
 6. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left.
 
   
+ ![](/.gitbook/assets/.sigma-images/add-column.png)
 
-![PIC3](https://user-images.githubusercontent.com/71795488/227729027-073a7099-9bfe-4e4e-94d0-eb082fccce9a.png)
 
-  
 
   
 
@@ -298,9 +285,8 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
 * Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
 
-  
+ ![](/.gitbook/assets/.sigma-images/new-bar-chart.png)
 
-![PIC5](https://user-images.githubusercontent.com/71795488/227732966-279516a6-27c5-459e-8410-195268490d77.png)
 
   
   
@@ -308,30 +294,28 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 * Drag **Revenue** into both the **Value** and **Comparison** section in the toolbar.
 
   
-  
+   ![](/.gitbook/assets/.sigma-images/drag-columns.png)
 
-![PIC6](https://user-images.githubusercontent.com/71795488/227732960-0c065170-0564-4dca-8923-42d6a993f517.png)
 
   
   
 
 * Select the newly added column under **Value** (should be automatically renamed to **Sum of Revenue** and change the formula, located in the top-middle, to `SumIf([Revenue], Year([Date]) = 2017)`. Change the formula of the newly added column under **Comparison**, now entitled **Sum of SumIf of Revenue**, to `SumIf([Revenue], Year([Date]) = 2016)`.
 
+  ![](/.gitbook/assets/.sigma-images/add-metric-function.png)
+  
+  ![](/.gitbook/assets/.sigma-images/function.png)
   
 
-![PIC7](https://user-images.githubusercontent.com/71795488/227732979-784967e9-7df9-4c67-805f-d0eed1c37b43.png)
 
-![PIC8](https://user-images.githubusercontent.com/71795488/227732982-241f448e-bdb7-4163-8ee2-5a38e87b641b.png)
-
-  
 
   
 
 * Rename **Sum of Revenue**, under **Value**, to **Annual Sales** and Format the type to *currency* by hovering over the column and clicking on the arrow to the right. You should now have something looking like this:
 
   
+  ![](/.gitbook/assets/.sigma-images/annual-sales.png)
 
-![PIC4](https://user-images.githubusercontent.com/71795488/227729038-a8ec4a33-1fd3-407c-952e-055a055faa69.png)
 
   
 
@@ -340,10 +324,8 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 **Repeat the above steps for YoY Profit**, but use the **Profit Margin** column instead. When adding a new visual, choose **Annual Sales** as your data source when prompted, as it will include the new columns created in the visual prior.
 
   
+  ![](/.gitbook/assets/.sigma-images/add-second-metric.png)
 
-![PIC10](https://user-images.githubusercontent.com/71795488/227733082-da1f89e8-92ba-479c-b6b5-c14e74d684c5.png)
-
-  
   
   
 
@@ -357,21 +339,19 @@ The Quarterly revenue graph is also made in similar fashion, with the addition o
 
 4. On the x-axis toolbar, click on the arrow and navigate to **Truncate date**. Select **Quarter**.
 
-  
+  ![](/.gitbook/assets/.sigma-images/truncate-quarterly.png)
 
-![PIC11](https://user-images.githubusercontent.com/71795488/227733056-5f8d994e-e27d-47b7-b6cd-f013677b5b55.png)
+
 
 5. Hovering over the data element again, click the arrow and then **Filter**. Change the filter type from **Between** to **Before**, and select December 31, 2017 as the date.
 
-  
+    ![](/.gitbook/assets/.sigma-images/filter-metric.png)
 
-![PIC12](https://user-images.githubusercontent.com/71795488/227733063-c5fcc5a3-e1f4-4d4d-ba8e-962fb294e0c7.png)
 
-  
   
 
 ### You're now done! Congratulations on creating your first Hydra x Sigma KPI dashboard!
 
   
+ ![](/.gitbook/assets/.sigma-images/final-dashboard.png)
 
-![Step_5](https://user-images.githubusercontent.com/71795488/227729058-83647447-0536-4016-a04c-cdb09b8fcc1e.png)
