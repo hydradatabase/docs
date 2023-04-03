@@ -237,7 +237,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 Now that your data is connected, you're able to utilize your Hydra tables and create insights using Sigma's visualization. Let's experiment with creating the below dashboard showcasing some important KPI's relating to YoY revenue and profit.
 
   
- ![](/.gitbook/assets/.sigma-images/final-dashboard.png)
+![](/.gitbook/assets/.sigma-images/final-dashboard.png)
 
   
 
@@ -250,22 +250,22 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 2. Navigate to **Layouts** and click on the layout showcasing two visuals side-by-side (third from the bottom).
 
   
- ![](/.gitbook/assets/.sigma-images/add-new.png)
+    ![](/.gitbook/assets/.sigma-images/add-new.png)
 
 
   
 
-4. Select the left empty visual, and then select **sales_data** as the table/data source.
+3. Select the left empty visual, and then select **sales_data** as the table/data source.
 
-   ![](/.gitbook/assets/.sigma-images/visual-source.png)
+    ![](/.gitbook/assets/.sigma-images/visual-source.png)
 
-
-  
-
-6. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left.
 
   
- ![](/.gitbook/assets/.sigma-images/add-column.png)
+
+4. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left.
+
+  
+    ![](/.gitbook/assets/.sigma-images/add-column.png)
 
 
 
@@ -279,13 +279,13 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
   
 
-7. Now that we have the two columns used for these KPI's, let's add them to the metrics:
+5. Now that we have the two columns used for these KPI's, let's add them to the metrics:
 
   
 
 * Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
 
- ![](/.gitbook/assets/.sigma-images/new-bar-chart.png)
+    ![](/.gitbook/assets/.sigma-images/new-bar-chart.png)
 
 
   
