@@ -249,7 +249,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
 2. Navigate to **Layouts** and click on the layout showcasing two visuals side-by-side (third from the bottom).
 
-![](/.gitbook/assets/.sigma-images/add-new.png)
+    ![](/.gitbook/assets/.sigma-images/add-new.png)
 
 
   
@@ -257,7 +257,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 3. Select the left empty visual, and then select **sales_data** as the table/data source.
 
 
-![](/.gitbook/assets/.sigma-images/visual-source.png)
+    ![](/.gitbook/assets/.sigma-images/visual-source.png)
 
 
   
@@ -265,7 +265,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 4. Create two new columns, one for *Revenue* and one for *Profit Margin*, by clicking the **Add Column** button on the toolbar to the left.
 
   
-![](/.gitbook/assets/.sigma-images/add-column.png)
+    ![](/.gitbook/assets/.sigma-images/add-column.png)
 
 
 
@@ -285,7 +285,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
 * Click on the left empty visual and, from the top left toolbar, change its type from **Bar** to **Single Value**.
 
-![](/.gitbook/assets/.sigma-images/new-bar-chart.png)
+    ![](/.gitbook/assets/.sigma-images/new-bar-chart.png)
 
 
   
@@ -294,7 +294,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 * Drag **Revenue** into both the **Value** and **Comparison** section in the toolbar.
 
   
-![](/.gitbook/assets/.sigma-images/drag-columns.png)
+    ![](/.gitbook/assets/.sigma-images/drag-columns.png)
 
 
   
@@ -302,7 +302,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
 * Select the newly added column under **Value** (should be automatically renamed to **Sum of Revenue** and change the formula, located in the top-middle, to `SumIf([Revenue], Year([Date]) = 2017)`. Change the formula of the newly added column under **Comparison**, now entitled **Sum of SumIf of Revenue**, to `SumIf([Revenue], Year([Date]) = 2016)`.
 
-  ![](/.gitbook/assets/.sigma-images/add-metric-function.png)
+    ![](/.gitbook/assets/.sigma-images/add-metric-function.png)
   
   ![](/.gitbook/assets/.sigma-images/function.png)
   
