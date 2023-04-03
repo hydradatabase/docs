@@ -172,7 +172,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
 5. Choose a name for the connection (we went with **hydra-sales_data_2023**) and select PostgreSQL as the type of database you'd like to connect to. 
 
-![](/.gitbook/assets/.sigma-images/connection_details.png)
+    ![](/.gitbook/assets/.sigma-images/connection_details.png)
 
 
   
@@ -183,7 +183,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
 6. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database. Keep all other options unchanged. Once all the information has been entered, select **Create** on the top right.
 
-![](/.gitbook/assets/.sigma-images/connection-credentials.png)
+    ![](/.gitbook/assets/.sigma-images/connection-credentials.png)
 
   
 
@@ -193,7 +193,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
 7. Once created, you will be able to view the connection details.
 
- ![](/.gitbook/assets/.sigma-images/connection-summary.png)
+    ![](/.gitbook/assets/.sigma-images/connection-summary.png)
 
 
 
@@ -213,7 +213,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 
 2. Within the aforementioned toolbar, select **VIZ** followed by clicking on **TABLES AND DATASETS**. This will bring you to the Hydra database and will show you the available schemas. Your data should exist within the **public** schema. 
 
- ![](/.gitbook/assets/.sigma-images/select-table.png)
+    ![](/.gitbook/assets/.sigma-images/select-table.png)
 
   
   
@@ -339,8 +339,7 @@ The Quarterly revenue graph is also made in similar fashion, with the addition o
 
 4. On the x-axis toolbar, click on the arrow and navigate to **Truncate date**. Select **Quarter**.
 
-  ![](/.gitbook/assets/.sigma-images/truncate-quarterly.png)
-
+    ![](/.gitbook/assets/.sigma-images/truncate-quarterly.png)
 
 
 5. Hovering over the data element again, click the arrow and then **Filter**. Change the filter type from **Between** to **Before**, and select December 31, 2017 as the date.
