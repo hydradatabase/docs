@@ -171,13 +171,12 @@ Example output:
   );
   ```
 
- 3) Insert the data from the foreign tables to Hydra
- Example insert into statement, and for the most part Hydra will match the field names and convert the types just fine
+ 3) Insert the data from the foreign tables to Hydra:
 
-  ```sql 
-  INSERT INTO tickit.category
-  SELECT * FROM tickit.fcategory ;
-  ```
+    ```sql 
+    INSERT INTO tickit.category
+    SELECT * FROM tickit.fcategory ;
+    ```
 
  In case there is any type casting that needs to be done, you will need to explicitly call out the fields. Note the conversion from int to boolean in this example
 
