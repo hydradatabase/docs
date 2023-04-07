@@ -178,13 +178,13 @@ Example output:
     SELECT * FROM tickit.fcategory ;
     ```
 
- In case there is any type casting that needs to be done, you will need to explicitly call out the fields. Note the conversion from int to boolean in this example
+ In case there is any type casting that needs to be done, you will need to explicitly convert the fields. For example, below we convert from int to boolean:
 
-  ```sql
-  INSERT INTO tickit.date (dateid, caldate, "day", week, "month", qtr, "year", holiday)
-  SELECT dateid, caldate, "day", week, "month", qtr, "year", holiday != 0
-  FROM tickit.fdate ;
-  ```
+    ```sql
+    INSERT INTO tickit.date (dateid, caldate, "day", week, "month", qtr, "year", holiday)
+    SELECT dateid, caldate, "day", week, "month", qtr, "year", holiday != 0
+    FROM tickit.fdate ;
+    ```
 
 ## Conclusion
 At this point, this documentation has described the main steps and considerations for migrating from Redshift. As noted in the beginning, this documentation has migrated the schema from Redshift and migrated data through a layover in S3. If more help is needed to modify code, security access models, or other items not in this documentation feel free to reach out to Hydra for professional assistance.
