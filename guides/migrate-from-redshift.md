@@ -187,4 +187,4 @@ Example output:
     ```
 
 ## Conclusion
-At this point, this documentation has described the main steps and considerations for migrating from Redshift. As noted in the beginning, this documentation has migrated the schema from Redshift and migrated data through a layover in S3. If more help is needed to modify code, security access models, or other items not in this documentation feel free to reach out to Hydra for professional assistance.
+At this point, we have performed the main steps and considerations for migrating from Redshift. As noted in the beginning, this documentation has migrated the schema from Redshift and migrated data through a layover in S3. If more help is needed to modify code, security access models, or other items not in this documentation feel free to reach out to Hydra for professional assistance.
