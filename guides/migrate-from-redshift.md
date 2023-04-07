@@ -18,7 +18,7 @@ Redshift is a heavily modified version of PostgresSQL, making migration from Red
   - Roles are not supported in Redshift. Priveleges will otherwise come over okay, however this document strongly suggests that the security model needs to be fully evaluated and ported over carefully.
 
 ### Simplifications
-This document is using a dataset which is as simple as it comes. There are no foreign keys or other constraints because Redshift doesn't use them. The security model is practically non-existant. A production database will need key understanding to migrate those portions.
+In this guide, we use a dataset which has been simplified. There are no foreign keys or other constraints (because Redshift doesn't use them). There is also no security model present. A production database will need to those address these concerns during migration.
 The tools chosen for this are meant to be accessible to any level of user. This document only uses a text editor of your choice, DBeaver and the Redshift console to accomplish the migration. And that is by design. Command line tools, purpose build migration tools, or migration code examples in Python and Spark are very helpful for these migrations but for simplicity and clarity they are not needed here.
 
 ## Setup
