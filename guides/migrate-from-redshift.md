@@ -62,7 +62,7 @@ The data model is the structure all of the data is poured into. Our first task i
 To retrieve the DDL as a whole we will use DBeaver. As noted in the considerations, there are some parts of the Redshift DDL which will not be compatible with Hydra. You will need to edit the output from DBeaver in a text editor of your choice, but that will be described later.
 
 ### Steps to Extract Schema with DBeaver
- 1) Right click on ‘tickit’, follow through with the menu options‘Generate SQL’ -> DDL and then select “Show full DDL”
+ 1) Right click on "tickit", then follow through with the menu options: "Generate SQL" -> "DDL" and then select "Show full DDL"
  2) You will see a new window with lots of text in it, at the bottom of that window click the button that says ‘Copy’
  3) Open up text editor and paste the contents of the clipboard. Saving it is a good idea as well.
 
