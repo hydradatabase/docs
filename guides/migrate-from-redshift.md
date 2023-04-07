@@ -8,13 +8,13 @@ Amazon [Redshift](https://aws.amazon.com/redshift/) is a popular data warehouse 
 
 ## Key Considerations
 Redshift is a heavily modified version of PostgresSQL, making migration from Redshift to Hydra easier. However, there are some key differences which need to be addressed in the migration.
- - Code: 
-   - Table Functions and triggers won't be present in Redshift DDLs. What ever is executed on the database will be external, and with some minor upgrades work directly in Hydra. While further work could be done to bring external code internal to Hydra, this document will take the simple path.
- - Data Model:
+- Code: 
+  - Table Functions and triggers won't be present in Redshift DDLs. What ever is executed on the database will be external, and with some minor upgrades work directly in Hydra. While further work could be done to bring external code internal to Hydra, this document will take the simple path.
+- Data Model:
   - Constraints are not enforced in Redshift, even if they appear in the DDL. When ported to Hydra, they will be enforced. Likely if there are constraints they are a hold over from a previous migration to Redshift, and hopefully there is a system upstream still cleansing the data to enforce them. If not, there will likely be a data cleansing step to the migration which if you are not confident in handling is easily helped by our Data Service Providers.
-  - Indexes are not enforced in Redshift.
-  - DISTKEYS and SORTKEYS are index like features which not supported in Hydra. They can safely be ignored in favor of other tuning options which are not discussed in this document.
- - Security Model:
+- Indexes are not enforced in Redshift.
+- DISTKEYS and SORTKEYS are index like features which not supported in Hydra. They can safely be ignored in favor of other tuning options which are not discussed in this document.
+- Security Model:
   - Roles are not supported in Redshift. Priveleges will otherwise come over okay, however this document strongly suggests that the security model needs to be fully evaluated and ported over carefully.
 
 ### Simplifications
@@ -26,11 +26,11 @@ The tools chosen for this are meant to be accessible to any level of user. This 
 You can read about setting up the 'tickit' database in Redshift here. A free trial evaluation of Hydra is available here. Simply turning both on for the first time is all that is needed for this exercise. You will also need an S3 bucket with the permissions to talk to it from both Redshift and Hydra.
 
 ## Steps
- 1) MIgrate schema
+1) MIgrate schema
   - export
   - edit
   - import
- 2) Migrate Data
+2) Migrate Data
   - Export to S3 bucket
   - Setup S3 acess through Foreign Tables
   - Import the table data
@@ -46,14 +46,14 @@ Start a trial of Hydra if you haven't already done so.
 
 ### DBeaver connections
 #### Connecting to Redshift
- 1) Click on the 'copy to clipboard' icon next to the word "jdbc:redshift[...] to get the JDBC URL.
- 2) Select from the menu "Database" -> "New Connection from JDBC URL"
- 3) Paste in the jdbc URL, hit enter and watch the redshift database show up in the explorer window.
+1) Click on the 'copy to clipboard' icon next to the word "jdbc:redshift[...] to get the JDBC URL.
+2) Select from the menu "Database" -> "New Connection from JDBC URL"
+3) Paste in the jdbc URL, hit enter and watch the redshift database show up in the explorer window.
 
 #### Connecting to Hydra
- 1) On the Hydra dashboard, in the "Connect" frame, click on "Show Connection Details" and then click on the copy-to-clipboard icon to the left of "Database URL"
- 2) Select from the menu "Database" -> "New Connection from JDBC URL"
- 3) Paste in the jdbc URL, hit enter and watch the redshift database show up in the explorer window.
+1) On the Hydra dashboard, in the "Connect" frame, click on "Show Connection Details" and then click on the copy-to-clipboard icon to the left of "Database URL"
+2) Select from the menu "Database" -> "New Connection from JDBC URL"
+3) Paste in the jdbc URL, hit enter and watch the redshift database show up in the explorer window.
 
 ## Export the Schema/DDL
 
@@ -62,9 +62,9 @@ The data model is the structure all of the data is poured into. Our first task i
 To retrieve the DDL as a whole we will use DBeaver. As noted in the considerations, there are some parts of the Redshift DDL which will not be compatible with Hydra. You will need to edit the output from DBeaver in a text editor of your choice, but that will be described later.
 
 ### Steps to Extract Schema with DBeaver
- 1) Right click on "tickit", then follow through with the menu options: "Generate SQL" -> "DDL" and then select "Show full DDL"
- 2) You will see a new window with lots of text in it, at the bottom of that window click the button that says ‘Copy’
- 3) Open up text editor and paste the contents of the clipboard. Saving it is a good idea as well.
+1) Right click on "tickit", then follow through with the menu options: "Generate SQL" -> "DDL" and then select "Show full DDL"
+2) You will see a new window with lots of text in it, at the bottom of that window click the button that says ‘Copy’
+3) Open up text editor and paste the contents of the clipboard. Saving it is a good idea as well.
 
 ### Steps to export each table out to Parquet:
 In the RedShift query tool, use the following code on each table you want to extract. (change "Category" for each table name on both unload-from and to-s3 lines.)
@@ -80,13 +80,13 @@ In the RedShift query tool, use the following code on each table you want to ext
     ```
 
 ### Fix Schema with text editor
- 1) Comment out the following by placing two ‘--’ in front of every occurrence of (or just delete it)
+1) Comment out the following by placing two ‘--’ in front of every occurrence of (or just delete it)
   - ENCODE
   - DISTSTYLE
   - DISTKEY
 
- 2) The ALTER statement tries to mark ownership to the user from AWS. We can remove that since the user for our purposes the user that creates the schema will be the owner anyway. Comment out “ALTER” same as above
- 3) Comment or delete the three lines establishing the SORTKEY, that is also not used. Below is an example for just one of the tables after all the alterations are made. Everything commented out was from the original DDL downloaded from Redshift.
+2) The ALTER statement tries to mark ownership to the user from AWS. We can remove that since the user for our purposes the user that creates the schema will be the owner anyway. Comment out “ALTER” same as above
+3) Comment or delete the three lines establishing the SORTKEY, that is also not used. Below is an example for just one of the tables after all the alterations are made. Everything commented out was from the original DDL downloaded from Redshift.
  
 * Example output after alterations
     ```sql
@@ -129,11 +129,11 @@ In the RedShift query tool, use the following code on each table you want to ext
 
 
 ### Create the database in Hydra
- 1) Create a schema if you haven’t already done so
- 2) Using that schema, run the modified DDL sql from the step above
+1) Create a schema if you haven’t already done so
+2) Using that schema, run the modified DDL sql from the step above
 
 ### Create the foreign tables to access the S3 parquet
- 1) Access to S3 through parquet_s3_fdw
+1) Access to S3 through parquet_s3_fdw
 
     ```sql
     CREATE EXTENSION parquet_s3_fdw;
@@ -144,12 +144,12 @@ In the RedShift query tool, use the following code on each table you want to ext
     Modify the CREATE TABLE statements for the foreign tables (example)
     CREATE foreign TABLE
     ```
- 2) Simplify the data types
-   - All INTs and BOOLEAN to ‘int’
+2) Simplify the data types
+  - All INTs and BOOLEAN to ‘int’
      If you want to get tricky you can shorten or lengthen the ints to different sized ints, that won’t really do much except make more data available in memory cache at any given time. 
      You will need to re-convert the 0-1 boolean ints back to boolean, we have a nice trick for doing that during the INSERT
-   - DATE and TIMESTAMP can be left alone
-   - All VARCHAR and other strings to simply ‘text’
+  - DATE and TIMESTAMP can be left alone
+  - All VARCHAR and other strings to simply ‘text’
 
 Example output:
   
@@ -171,7 +171,7 @@ Example output:
   );
   ```
 
- 3) Insert the data from the foreign tables to Hydra:
+3) Insert the data from the foreign tables to Hydra:
 
     ```sql 
     INSERT INTO tickit.category
