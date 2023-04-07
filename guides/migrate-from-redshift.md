@@ -7,7 +7,7 @@ description: Redshift is a popular data warehouse platform on AWS, and shares a 
 Amazon [Redshift](https://aws.amazon.com/redshift/) is a popular data warehouse cloud platform provided in AWS. This document outlines one of many possible migration paths to Hydra, geared to be accessible and demonstrate key considerations.
 
 ## Key Considerations
-Redshift and Hydra are close cousins, they are both based on the wildly successful PostgresSQL open source database. There are differences which need to be addressed in the migration, but fortunately they are stacked in favor of migration away from Redshift.
+Redshift is a heavily modified version of PostgresSQL, making migration from Redshift to Hydra easier. However, there are some key differences which need to be addressed in the migration.
  - Code: 
    - Table Functions and triggers won't be present in Redshift DDLs. What ever is executed on the database will be external, and with some minor upgrades work directly in Hydra. While further work could be done to bring external code internal to Hydra, this document will take the simple path.
  - Data Model:
