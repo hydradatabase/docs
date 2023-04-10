@@ -145,11 +145,9 @@ In the RedShift query tool, use the following code on each table you want to ext
     CREATE foreign TABLE
     ```
 2) Simplify the data types
-  - All INTs and BOOLEAN to ‘int’
-     If you want to get tricky you can shorten or lengthen the ints to different sized ints, that won’t really do much except make more data available in memory cache at any given time. 
-     You will need to re-convert the 0-1 boolean ints back to boolean, we have a nice trick for doing that during the INSERT
-  - DATE and TIMESTAMP can be left alone
-  - All VARCHAR and other strings to simply ‘text’
+    - All INTs and BOOLEAN to `int`. If you wish, you can shorten or lengthen the ints to different sized ints which will affect memory usage. You will need to re-convert the 0-1 boolean ints back to boolean. This can be done during the INSERT.
+    - DATE and TIMESTAMP can be left alone
+    - All VARCHAR and other strings to simply `text`
 
 Example output:
   
