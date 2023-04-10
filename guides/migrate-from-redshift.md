@@ -81,9 +81,9 @@ In the RedShift query tool, use the following code on each table you want to ext
 
 ### Fix Schema with text editor
 1) Comment out the following by placing two ‘--’ in front of every occurrence of (or just delete it)
-  - ENCODE
-  - DISTSTYLE
-  - DISTKEY
+   - ENCODE
+   - DISTSTYLE
+   - DISTKEY
 
 2) The ALTER statement tries to mark ownership to the user from AWS. We can remove that since the user for our purposes the user that creates the schema will be the owner anyway. Comment out “ALTER” same as above
 3) Comment or delete the three lines establishing the SORTKEY, that is also not used. Below is an example for just one of the tables after all the alterations are made. Everything commented out was from the original DDL downloaded from Redshift.
