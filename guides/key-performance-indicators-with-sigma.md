@@ -7,13 +7,13 @@ description: Sigma is a cloud-native analytics platform that uses a familiar spr
 ## **Scope**
 The focus of this guide is to showcase the ease of integrating Hydra with [Sigma](https://www.sigmacomputing.com/) by developing several KPI metrics based on data within a Hydra database.
 
-To cater to a large audience, the data and KPI's were chosen to be as agnostic as possible. The data used is mock sales data from IBM, and the metrics made are the following:
+To cater to a large audience, the data and KPIs were chosen to be as agnostic as possible. The data used is mock sales data from IBM, and the metrics are the following:
 
 * YoY Revenue Growth (card)
 * YoY Net Profit Growth (card)
 * QoQ Revenue Growth (time-series line chart)
 
-Your KPI's will most likely differ, but this will hopefully serve as a foundation for the development of more metrics.
+Your KPIs will likely differ, but this will hopefully serve as a foundation for the development of more metrics.
 
 <br>
 
@@ -26,9 +26,9 @@ Your KPI's will most likely differ, but this will hopefully serve as a foundatio
 
 ### Building the Table with Hydra
 
-1. We will use sample sales data from [IBM](https://relational.fit.cvut.cz/dataset/GOSales). Head to the following [repository](https://github.com/IBM/watson-machine-learning-samples) and download the .csv located in `watson-machine-learning-samples/cpd4.6/data/go_sales/go_daily_sales.csv`.
+1. We will use sample sales data from [IBM](https://relational.fit.cvut.cz/dataset/GOSales). [Head to the repository](https://github.com/IBM/watson-machine-learning-samples/tree/master/cpd4.6/data/go_sales) and download the `go_daily_sales.csv` file from the linked directory (`cpd4.6/data/go_sales`).
 
-2. Connect to your Hydra database and upload the .csv. We will be following the steps outlined in the following [guide](https://docs.hydra.so/centralize-data/load/from-local-csv-file).
+2. Connect to your Hydra database and import the CSV file. We will be following the steps for importing a CSV outlined in the [documentation](https://docs.hydra.so/centralize-data/load/from-local-csv-file).
 
 	a. Grab the `psql` command from the Hydra dashboard and get into the `psql` console.
 
@@ -41,30 +41,22 @@ Your KPI's will most likely differ, but this will hopefully serve as a foundatio
 	-----------
 	 ISO, DMY
 	```
-	c. The below code is used to create the sales_data table. Note: we will create a [columnar](https://docs.hydra.so/organize/data-modeling/row-vs-column-tables) table, which makes it much quicker to obtain all data for a particular column.
+	c. The below code is used to create the sales_data table. Note: we will create a [columnar table](https://docs.hydra.so/organize/data-modeling/row-vs-column-tables), which makes it much quicker to obtain all data for a particular column.
 
 	```sql
 	CREATE TABLE sales_data (
-
 	retailer_code INT,
-
 	product_number INT,
-
 	order_method_code INT,
-
 	date DATE,
-
 	quantity INT,
-
 	unit_price FLOAT,
-
 	unit_sale_price FLOAT
-
 	) USING columnar;
 	```
 
 	  d. Once the table has been created, upload the .csv by utilizing the following command:
-	  `\COPY sales_data FROM 'notebooks/data/ibm_gosales/go_daily_sales.csv' DELIMITER ',' CSV HEADER;`
+	  `\COPY sales_data FROM 'go_daily_sales.csv' DELIMITER ',' CSV HEADER;`
 
 3. You should now have a sales-oriented table populated with approximately 150,000 rows.
 
@@ -74,7 +66,7 @@ Your KPI's will most likely differ, but this will hopefully serve as a foundatio
 
 Now we can configure Sigma to access our sample data in Hydra.
 
-1. As mentioned earlier, create a [trial account](https://www.sigmacomputing.com/free-trial).
+1. Start by creating a [trial account](https://www.sigmacomputing.com/free-trial), or logging in if you have already done so.
 
 2. Open your Admin Portal by selecting **Administration** in the user menu at the top right of your screen.
 
@@ -113,7 +105,7 @@ Now we can configure Sigma to access our sample data in Hydra.
 <br>
 
 ### Building the Metrics
-Now that your data is connected, you're able to utilize your Hydra tables and create insights using Sigma's visualization. Let's experiment with creating the below dashboard showcasing some important KPI's relating to YoY revenue and profit.
+Now that your data is connected, you're able to utilize your Hydra tables and create insights using Sigma's visualization. Let's experiment with creating the below dashboard showcasing some important KPIs relating to YoY revenue and profit.
 
 ![](/.gitbook/assets/.sigma-images/final-dashboard.png)
 
