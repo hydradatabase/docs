@@ -26,7 +26,7 @@ The tools chosen for this are meant to be accessible to any level of user. This 
 You can read about setting up the 'tickit' database for Redshift [in the AWS documentation](https://docs.aws.amazon.com/redshift/latest/dg/c_sampledb.html). A free trial evaluation of Hydra is available here. Simply turning both on for the first time is all that is needed for this exercise. You will also need an S3 bucket with the permissions to talk to it from both Redshift and Hydra.
 
 ## Steps
-1) MIgrate schema
+1) Migrate schema
   - export
   - edit
   - import
