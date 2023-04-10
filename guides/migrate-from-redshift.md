@@ -27,13 +27,13 @@ You can read about setting up the 'tickit' database for Redshift [in the AWS doc
 
 ## Steps
 1) Migrate schema
-  - export
-  - edit
-  - import
+    - export
+    - edit
+    - import
 2) Migrate Data
-  - Export to S3 bucket
-  - Setup S3 acess through Foreign Tables
-  - Import the table data
+    - Export to S3 bucket
+    - Setup S3 acess through Foreign Tables
+    - Import the table data
 
 # Migration Steps
 
