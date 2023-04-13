@@ -102,7 +102,7 @@ Once you have your data in Hydra, you can do even more with it. You might develo
 
 The speed of your queries depends on the capabilities of the hardware you have chosen as well as the size of the dataset. The amount of data utilization in the cluster will also impact query speed. Check with your hosting provider or Postgres docs for performance best practices.
 
-#### Single and Double Quotes in PostgreSQ
+#### Single and Double Quotes in PostgreSQL
 
 If you use double quotes on the name of a table, column, index, or other object when you create it, and if there is even one capital letter in that identifier, you will need to use double quotes every single time you query it.
 
