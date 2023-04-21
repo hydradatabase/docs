@@ -34,4 +34,4 @@ Efficiency issues in queries can be addressed by using specific column names ins
  &nbsp;&nbsp;   ![](.gitbook/assets/images/Picture4.png)   
  <br>
  &nbsp;&nbsp; ![](.gitbook/assets/images/Picture5.png)
-![](/.gitbook/assets/.sigma-images/connection-credentials.png)
+
