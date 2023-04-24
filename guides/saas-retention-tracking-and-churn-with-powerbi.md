@@ -9,13 +9,10 @@ The focus of this guide is to showcase the ease of integrating Hydra with [Power
 
 To cater to a large audience, the data and KPIs were chosen to be as agnostic as possible. The data used is mock sales data created specifically for this demo, and the metrics are the following:
 
-ENTER METRICS HERE ----------------
-* YoY Revenue Growth (card)
-* YoY Net Profit Growth (card)
-* QoQ Revenue Growth (time-series line chart)
-----------------
+* YoY Time Series Customer Retention Rate by Quarter 
+* YoY Time Series Customer Churn Rate by Quarter
 
-Your KPIs will likely differ, but this will hopefully serve as a foundation for the development of more metrics.
+Your KPIs will differ, but this will hopefully serve as a foundation for the development of more metrics.
 
 <br>
 
@@ -71,8 +68,35 @@ Now we can configure PowerBI to access our sample data in Hydra.
 
 	![](/.gitbook/assets/.saas-retention-powerbi/data_banner.png)
 
+7. Navigate to `Data view` on the left tab and, for each of the `monthly_retention` and `monthly_churn` columns, select the column and format it to `Percentage` by clicking on the `%` at the top.
+
+	![](/.gitbook/assets/.saas-retention-powerbi/format_percentage.png)
+
 <br>
 
-## **Building the Metrics**
+## **Building Customer-Centric Metrics**
 
-We're going to make a few metrics focused on retention, churn, and
+We're going to make a few metrics focused on retention and churn.
+
+
+## YoY Time Series Customer Retention Rate by Quarter
+1. In the `Report view`, where you're able to select your visualizations, choose `Line chart`. Click on the blank chart, and then drag `monthly_retention` from the `Data` panel on the right into the `Y-axis` field. Click on the drop-down arrow on what is now called `Sum of monthly_retention` and choose `Average`. Drag `record_date` and put it into the `X-axis` field, then delete `Day` and `Month`. 
+
+	![](/.gitbook/assets/.saas-retention-powerbi/yoy_time_series_quarter_retention_1.png)
+
+2. Within the `Y-axis` field, right click and select `Rename for this visual`. Enter `Average Customer Retention`.
+
+3. You should now have a metric titled `Average Customer Retention by Year and Quarter`.
+
+	![](/.gitbook/assets/.saas-retention-powerbi/yoy_time_series_quarter_retention_2.png)
+
+## YoY Time Series Customer Churn Rate by Quarter
+1. Create a new tab and add a line chart. Click on the blank chart, and then drag `monthly_churn` from the `Data` panel on the right into the `Y-axis` field. Click on the drop-down arrow on what is now called `Sum of monthly_churn` and choose `Average`. Drag `record_date` and put it into the `X-axis` field, then delete `Day` and `Month`. 
+
+	![](/.gitbook/assets/.saas-retention-powerbi/yoy_time_series_quarter_churn_1.png)
+
+2. Within the `Y-axis` field, right click and select `Rename for this visual`. Enter `Average Customer Churn`.
+
+3. You should now have a metric titled `Average Customer Retention by Year and Quarter`.
+
+	![](/.gitbook/assets/.saas-retention-powerbi/yoy_time_series_quarter_churn_2.png)
