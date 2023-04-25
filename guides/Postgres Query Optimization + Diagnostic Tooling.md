@@ -4,7 +4,7 @@
 
 PostgreSQL is a database management system that utilizes SQL and includes features like foreign keys, updatable views, and various query optimization tools. This article will outline some of the query optimization techniques in Postgres using diagnostic tools.
 <br />
-## Scope:
+## Scope
 Query optimization involves identifying the most efficient way to execute a query, considering the structure of the database and available indexes. The Postgres query optimizer can perform this task. Proper optimization techniques can help reduce costs and enhance environmental sustainability by using resources more efficiently.
 Postgres Query optimiser:
 The PostgreSQL optimizer generates a plan for each query it receives, and the EXPLAIN command allows one to view these plans. The EXPLAIN ANALYZE command can be used to evaluate the accuracy of these plans.
