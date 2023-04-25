@@ -19,7 +19,7 @@ The PostgreSQL Optimizer generates a plan for each query it receives, and the EX
 
 
  
-## Postgres Query optimization and performance tuning methods
+## Postgres Query Optimization and Performance Tuning Methods
 In this section, you will learn a few optimization techniques along with examples and query execution plans.
 ### Use of Indexes
 An index serves as an additional access structure that enables the rapid location and retrieval of specific data. In the absence of an index, a query would need to search the entire table to find the desired information. By indexing columns commonly used in WHERE or JOIN clauses, PostgreSQL can swiftly locate the desired data.
@@ -69,4 +69,4 @@ These are some additional factors that should be taken into consideration when d
 *	Materialized views are useful for speeding up execution time if having fully up-to-date data is not a priority for the query.  
 
 ## Conclusion
-In conclusion, optimizing Postgres queries is crucial for improving performance and reducing costs. Using diagnostic tools like EXPLAIN and EXPLAIN ANALYZE can help identify potential issues. Techniques such as using indexes, filtering columns, and optimizing joins can significantly improve 
+To sum up, enhancing the performance and reducing expenses relies on the optimization of Postgres queries. The use of diagnostic tools such as EXPLAIN and EXPLAIN ANALYZE can assist in identifying likely problems. By utilizing methods like index utilization, column filtering, and optimizing joins, one can enhance query performance greatly. When designing queries for optimal performance, it's crucial to consider different factors like query selectivity, table ordering, and the usage of temporary tables and views.
