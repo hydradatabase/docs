@@ -6,7 +6,7 @@ PostgreSQL is a database management system that utilizes SQL and includes featur
 <br />
 ## Scope
 Query optimization involves identifying the most efficient way to execute a query, considering the structure of the database and available indexes. The Postgres query optimizer can perform this task. Proper optimization techniques can help reduce costs and enhance environmental sustainability by using resources more efficiently.
-Postgres Query optimiser:
+## Postgres Query optimiser:
 The PostgreSQL optimizer generates a plan for each query it receives, and the EXPLAIN command allows one to view these plans. The EXPLAIN ANALYZE command can be used to evaluate the accuracy of these plans.
  &nbsp; 
  > For Example:
@@ -30,7 +30,8 @@ For instance, the following picture depicts the query execution plan without any
 &nbsp;&nbsp; ![](/.gitbook/assets/images/Picture3.png)
 
 ### Optimize SELECT Clause
-Efficiency issues in queries can be addressed by using specific column names instead of the ‘*’ argument in SELECT statements. Additionally, it is important to execute the HAVING clause after filtering the data with the SELECT statement, as SELECT acts as a filter. To illustrate, replacing ‘*’ with Payment_id in Group by can improve the query performance. You can see the change in execution plans in both the queries. <br><br>
+
+Efficiency issues in queries can be addressed by using specific column names instead of the *  argument in SELECT statements. Additionally, it is important to execute the HAVING clause after filtering the data with the SELECT statement, as SELECT acts as a filter. To illustrate, replacing * with Payment_id in Group by can improve the query performance. You can see the change in execution plans in both the queries. <br><br>
  &nbsp;&nbsp;   ![](/.gitbook/assets/images/Picture4.png)   
  <br>
  
