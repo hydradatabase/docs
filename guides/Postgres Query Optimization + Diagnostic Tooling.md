@@ -51,7 +51,7 @@ Efficiency issues in queries can be addressed by using specific column names ins
  &nbsp;&nbsp; ![](/.gitbook/assets/images/Picture9.png)
  
 ### Optimize Joins
-To enhance query performance, optimizing joins is essential as they are expensive operations. Substituting joins with subqueries whenever possible is one way to optimize them. Additionally, using the JOIN ON syntax instead of the WHERE clause can help the optimizer produce better execution plans. Filtering records of large tables before joining them with other tables can also lead to substantial performance improvements.
+To enhance query performance, optimizing joins is essential as they are expensive operations. Substituting joins with subqueries whenever possible is one way to optimize them. Additionally, using the JOIN ON syntax instead of the WHERE clause can help the optimizer produce better execution plans. Filtering records of large tables before joining them with other tables can lead to substantial performance improvements.
 
 These are some additional factors that should be taken into consideration when designing a Postgres query for improved performance.  
 *	Temporary tables can slow down execution but can also avoid the need for ORDER BY operations.  
