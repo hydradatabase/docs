@@ -43,7 +43,7 @@ Efficiency issues in queries can be addressed by using specific column names ins
  <br>
  
  &nbsp;&nbsp; ![](/.gitbook/assets/images/Picture7.png)
- ### WHERE Clause:
+ ### WHERE Clause
  To optimize the WHERE Clause, we can use OR instead of IN when there is no index on the filtering column. The IN statement matches a column value to a list of values, and technically, it should execute faster than OR. However, in some cases, using OR instead of IN may not improve performance significantly, but it is a way to test if the query runs faster. <br><br>
  &nbsp;&nbsp;   ![](/.gitbook/assets/images/Picture8.png)   
  <br>
