@@ -64,5 +64,5 @@ These are some additional factors that should be taken into consideration when d
 *	Long queries are not helped by indexes, but instead can be optimized by minimizing the number of full table scans and reducing the result size as soon as possible.  
 *	Materialized views are useful for speeding up execution time if having fully up-to-date data is not a priority for the query.  
 
-## Conclusion:
+## Conclusion
 In conclusion, optimizing Postgres queries is crucial for improving performance and reducing costs. Using diagnostic tools like EXPLAIN and EXPLAIN ANALYZE can help identify potential issues. Techniques such as using indexes, filtering columns, and optimizing joins can significantly improve 
