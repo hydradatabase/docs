@@ -29,7 +29,7 @@ For instance, the following picture depicts the query execution plan without any
 
 &nbsp;&nbsp; ![](/.gitbook/assets/images/Picture3.png)
 
-### Optimize SELECT Clause:
+### Optimize SELECT Clause
 Efficiency issues in queries can be addressed by using specific column names instead of the ‘*’ argument in SELECT statements. Additionally, it is important to execute the HAVING clause after filtering the data with the SELECT statement, as SELECT acts as a filter. To illustrate, replacing ‘*’ with Payment_id in Group by can improve the query performance. You can see the change in execution plans in both the queries. <br><br>
  &nbsp;&nbsp;   ![](/.gitbook/assets/images/Picture4.png)   
  <br>
