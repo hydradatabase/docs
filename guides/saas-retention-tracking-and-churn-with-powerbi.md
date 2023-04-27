@@ -5,7 +5,7 @@ description: Power BI is a unified, scalable platform for self-service and enter
 # Retention Tracking with Hydra and PowerBI
 
 ## Scope
-The focus of this guide is to showcase the ease of integrating Hydra with [PowerBI](https://powerbi.microsoft.com/en-ca/) to develop a retention & churn-oriented dashboard on sample data within a Hydra database.
+The focus of this guide is to showcase the ease of integrating Hydra with [PowerBI](https://powerbi.microsoft.com/en-ca/) to develop a customer retention & churn-oriented dashboard on sample data within a Hydra database.
 
 To cater to a large audience, the data and KPIs were chosen to be as agnostic as possible. The data used is mock sales data created specifically for this demo, and the metrics are the following:
 
