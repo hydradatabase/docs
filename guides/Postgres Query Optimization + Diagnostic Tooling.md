@@ -28,7 +28,7 @@ For instance, the following picture depicts the query execution plan without any
 
 &nbsp;&nbsp; ![](/.gitbook/assets/images/Picture2.PNG)
 
-<br>The execution plan displayed in this image depicts the impact of adding an index on the "address_id" column. The addition of the index has resulted in a noticeable improvement in both Planning Time and Execution Time.
+<br>The execution plan displayed in this image depicts the impact of adding an index on the address_id column. The addition of the index has resulted in a noticeable improvement in both Planning Time and Execution Time.
 
 &nbsp;&nbsp; ![](/.gitbook/assets/images/Picture3.PNG)
 
