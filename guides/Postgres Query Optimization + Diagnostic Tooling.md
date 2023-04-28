@@ -42,6 +42,7 @@ Efficiency issues in queries can be addressed by using specific column names ins
  The performance difference is not significant, but according to the sources reviewed in the literature study, modifying the use of * is expected to enhance performance.
  
  ### Filtering Rows with Subqueries and Indexes
+ 
  Filtering data before performing complex operations like GROUP BY or JOIN can enhance query performance by minimizing the amount of data that needs to be processed. Utilizing subqueries or other techniques to filter data is often effective in reducing query execution time and improving database efficiency. <br><br>
 &nbsp;&nbsp;   ![](/.gitbook/assets/images/Picture6.PNG)   
  <br>
