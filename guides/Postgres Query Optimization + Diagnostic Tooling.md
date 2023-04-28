@@ -20,7 +20,9 @@ The execution plan of this query is:
 
  
 ## Postgres Query Optimization and Performance Tuning Methods
+
 In this section, you will learn a few optimization techniques along with examples and query execution plans.
+
 ### Use of Indexes
 An index serves as an additional access structure that enables the rapid location and retrieval of specific data. In the absence of an index, a query would need to search the entire table to find the desired information. By indexing columns commonly used in WHERE or JOIN clauses, PostgreSQL can swiftly locate the desired data.
 
