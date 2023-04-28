@@ -13,7 +13,7 @@ The PostgreSQL Optimizer generates a plan for each query it receives, and the EX
  
  &nbsp;&nbsp; `` EXPLAIN ANALYZE SELECT * FROM customer; ``
  
-  > Execution Plan of this Query is: <br>
+The execution plan of this query is:
 &nbsp;&nbsp;![](/.gitbook/assets/images/Picture1.PNG)
 
 
