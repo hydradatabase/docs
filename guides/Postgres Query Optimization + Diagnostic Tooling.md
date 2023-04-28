@@ -9,7 +9,7 @@ Query optimization involves identifying the most efficient way to execute a quer
 ## Postgres Query Optimizer
 The PostgreSQL Optimizer generates a plan for each query it receives, and the EXPLAIN command allows one to view these plans. The EXPLAIN ANALYZE command can be used to evaluate the accuracy of these plans.
  &nbsp; 
- > For Example:
+ For example:
  
  &nbsp;&nbsp; `` EXPLAIN ANALYZE SELECT * FROM customer; ``
  
