@@ -7,8 +7,8 @@ description: PostgreSQL is a database management system that utilizes SQL and in
 ## Scope
 Query optimization involves identifying the most efficient way to execute a query, considering the structure of the database and available indexes. The Postgres query optimizer can perform this task. Proper optimization techniques can help reduce costs and enhance environmental sustainability by using resources more efficiently.
 
-## Postgres Query Optimizer
-The PostgreSQL Optimizer generates a plan for each query it receives, and the EXPLAIN command allows one to view these plans. The EXPLAIN ANALYZE command can be used to evaluate the accuracy of these plans.  
+## Postgres Query Planner
+PostgreSQL generates a query plan for each query it receives, and the EXPLAIN command allows one to view these plans. The EXPLAIN ANALYZE command can be used to evaluate the accuracy of these plans by viewing the actual performance of each node in the plan.  
 
  For example:
  
