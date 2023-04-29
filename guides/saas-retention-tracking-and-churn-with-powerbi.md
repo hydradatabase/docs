@@ -16,7 +16,7 @@ Your KPIs will differ, but this will hopefully serve as a foundation for the dev
 
 ## Setup
 
-### Before You Start:
+### Before You Start
 - Ensure you have the details of your Hydra instance handy.
 - Download [PowerBI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
