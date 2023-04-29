@@ -42,7 +42,7 @@ Efficiency issues in queries can be addressed by using specific column names ins
 
 ![](/.gitbook/assets/query-optimization-images/picture5.PNG)
 
-The performance difference is not significant, but according to the sources reviewed in the literature study, modifying the use of * is expected to enhance performance.
+While the performance difference is not significant in this example, avoiding use of `*` can often greatly enhance performance when using columnar tables.
  
  ### Filtering Rows with Subqueries and Indexes
  
