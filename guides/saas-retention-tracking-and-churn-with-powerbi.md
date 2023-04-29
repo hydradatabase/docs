@@ -48,7 +48,7 @@ Now we can configure PowerBI to access our sample data in Hydra.
 
     ![](/.gitbook/assets/.saas-retention-powerbi/get_data_postgres.png)
 
-3. Enter both your Hydra Hostname and Database in the Server and Database fields, respectively. Click on OK,
+3. Enter both your Hydra Hostname and Database in the Server and Database fields, respectively. Click on OK.
 
     ![](/.gitbook/assets/.saas-retention-powerbi/get_data_hydra_host_db.png)
 
