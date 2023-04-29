@@ -69,7 +69,7 @@ Now we can configure PowerBI to access our sample data in Hydra.
 	![](/.gitbook/assets/.saas-retention-powerbi/format_percentage.png)
 
 
-## **Building Customer-Centric Metrics**
+## Building Customer-Centric Metrics
 
 We're going to make a few metrics focused on retention and churn.
 
