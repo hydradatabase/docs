@@ -12,7 +12,9 @@ PostgreSQL generates a query plan for each query it receives, and the EXPLAIN co
 
  For example:
  
-   ```EXPLAIN ANALYZE SELECT * FROM customer;```
+ ```sql
+ EXPLAIN ANALYZE SELECT * FROM customer;
+ ```
  
  The execution plan of this query is:
  
