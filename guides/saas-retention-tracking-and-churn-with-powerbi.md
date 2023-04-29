@@ -23,7 +23,7 @@ Your KPIs will differ, but this will hopefully serve as a foundation for the dev
 
 ### Building the Table with Hydra
 
-1. We will use sample data created specifically for this demo. The data comes in two .sql scripts: one to [create the table](), and one to [populate the table]() with the data. Retreive these two scripts and save them locally.
+1. We will use sample data created specifically for this demo. The data comes in two .sql scripts: one to [create the table](https://github.com/hydradatabase/docs/tree/main/.gitbook/assets/.saas-retention-powerbi/.sql/saas_retention_ddl.sql), and one to [populate the table](https://github.com/hydradatabase/docs/tree/main/.gitbook/assets/.saas-retention-powerbi/.sql/saas_retention_data.sql) with the data. Retreive these two scripts and save them locally.
 
 2. Connect to your Hydra database via PSQL and run the two scripts with the following commands:
 
