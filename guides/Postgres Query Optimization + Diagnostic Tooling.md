@@ -15,7 +15,7 @@ The PostgreSQL Optimizer generates a plan for each query it receives, and the EX
  
  The execution plan of this query is:
  
-  ![](/.gitbook/assets/images/Picture1.PNG)
+  ![](/.gitbook/assets/query_Optimization_images/Picture1.PNG)
 
 ## Postgres Query Optimization and Performance Tuning Methods
 
@@ -26,20 +26,20 @@ An index serves as an additional access structure that enables the rapid locatio
 
 For instance, the following picture depicts the query execution plan without any indexes.
 
- ![](/.gitbook/assets/images/Picture2.PNG)
+ ![](/.gitbook/assets/query_Optimization_images/Picture2.PNG)
 
 The execution plan displayed in this image depicts the impact of adding an index on the address_id column. The addition of the index has resulted in a noticeable improvement in both Planning Time and Execution Time.
 
- ![](/.gitbook/assets/images/Picture3.PNG)
+ ![](/.gitbook/assets/query_Optimization_images/Picture3.PNG)
 
 ### Optimize SELECT Clause
 
 Efficiency issues in queries can be addressed by using specific column names instead of the *  argument in SELECT statements. Additionally, it is important to execute the HAVING clause after filtering the data with the SELECT statement, as SELECT acts as a filter. To illustrate, replacing * with Payment_id in Group by can improve the query performance. You can see the change in execution plans in both the queries.
 
-![](/.gitbook/assets/images/Picture4.PNG)
+![](/.gitbook/assets/query_Optimization_images/Picture4.PNG)
 
 
-![](/.gitbook/assets/images/Picture5.PNG)
+![](/.gitbook/assets/query_Optimization_images/Picture5.PNG)
 
 The performance difference is not significant, but according to the sources reviewed in the literature study, modifying the use of * is expected to enhance performance.
  
@@ -47,19 +47,19 @@ The performance difference is not significant, but according to the sources revi
  
  Filtering data before performing complex operations like GROUP BY or JOIN can enhance query performance by minimizing the amount of data that needs to be processed. Utilizing subqueries or other techniques to filter data is often effective in reducing query execution time and improving database efficiency.
  
-![](/.gitbook/assets/images/Picture6.PNG)
+![](/.gitbook/assets/query_Optimization_images/Picture6.PNG)
 
 
-![](/.gitbook/assets/images/Picture7.PNG)
+![](/.gitbook/assets/query_Optimization_images/Picture7.PNG)
 
  ### WHERE Clause
 
  To optimize the WHERE Clause, we can use OR instead of IN when there is no index on the filtering column. The IN statement matches a column value to a list of values, and technically, it should execute faster than OR. However, in some cases, using OR instead of IN may not improve performance significantly, but it is a way to test if the query can possibly run faster.
  
- ![](/.gitbook/assets/images/Picture8.PNG)
+ ![](/.gitbook/assets/query_Optimization_images/Picture8.PNG)
  
  
- ![](/.gitbook/assets/images/Picture9.PNG)
+ ![](/.gitbook/assets/query_Optimization_images/Picture9.PNG)
  
 ### Optimize Joins
 To enhance query performance, optimizing joins is essential as they are expensive operations. Substituting joins with subqueries whenever possible is one way to optimize them. Additionally, using the JOIN ON syntax instead of the WHERE clause can help the optimizer produce better execution plans. Filtering records of large tables before joining them with other tables can lead to substantial performance improvements.
