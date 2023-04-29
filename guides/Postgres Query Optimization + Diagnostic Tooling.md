@@ -35,7 +35,7 @@ The execution plan displayed in this image depicts the impact of adding an index
 
 ### Optimize SELECT Clause
 
-Efficiency issues in queries can be addressed by using specific column names instead of the *  argument in SELECT statements. Additionally, it is important to execute the HAVING clause after filtering the data with the SELECT statement, as SELECT acts as a filter. To illustrate, replacing * with Payment_id in Group by can improve the query performance. You can see the change in execution plans in both the queries.
+Efficiency issues in queries can be addressed by using specific column names instead of the `*` argument in SELECT statements. Additionally, it is important to execute the HAVING clause after filtering the data with the SELECT statement, as SELECT acts as a filter. To illustrate, replacing `*` with `payment_id` in GROUP BY can improve the query performance. You can see the change in execution plans in both the queries.
 
 ![](/.gitbook/assets/query-optimization-images/picture4.PNG)
 
