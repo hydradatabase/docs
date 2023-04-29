@@ -55,7 +55,7 @@ The performance difference is not significant, but according to the sources revi
 
  ### WHERE Clause
 
- To optimize the WHERE Clause, we can use OR instead of IN when there is no index on the filtering column. The IN statement matches a column value to a list of values, and technically, it should execute faster than OR. However, in some cases, using OR instead of IN may not improve performance significantly, but it is a way to test if the query can possibly run faster.
+ To optimize the `WHERE` clause, we can use `OR` instead of `IN` when there is no index on the filtering column. The `IN` statement matches a column value to a list of values, and technically, it should execute faster than `OR`. However, in some cases, using `OR` instead of `IN` may not improve performance significantly, but it is a way to test if the query can possibly run faster.
  
  ![](/.gitbook/assets/query-optimization-images/picture8.PNG)
  
