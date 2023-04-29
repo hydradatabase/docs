@@ -1,6 +1,7 @@
 ---
-Description: PostgreSQL is a database management system that utilizes SQL and includes features like foreign keys, updatable views, and various query optimization tools. This article will outline some of the query optimization techniques in Postgres using diagnostic tools.
+description: PostgreSQL is a database management system that utilizes SQL and includes features like foreign keys, updatable views, and various query optimization tools. This article will outline some of the query optimization techniques in Postgres using diagnostic tools.
 ---
+
 # Postgres Query Optimization + Diagnostic Tooling
 
 ## Scope
