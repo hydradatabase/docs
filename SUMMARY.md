@@ -28,6 +28,7 @@
   * [With Metabase](analyze/with-metabase.md)
   * [With Jupyter Notebooks](analyze/jupyter.md)
   * [With Zing Data](analyze/with-zing-data.md)
+* [🌐 Integrations](integrations.md)
 * [💡 Concepts](concepts/README.md)
   * [OLTP, OLAP, & HTAP](concepts/oltp-olap-and-htap.md)
   * [Using Hydra Columnar](concepts/using-hydra-columnar.md)
