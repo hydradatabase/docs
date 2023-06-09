@@ -1,0 +1,10 @@
+
+---
+description: Deepnote is a versatile notebook that revolutionizes analytics and data science workflows by seamlessly combining the power of SQL and Python with a wide range of data frameworks. It is purpose-built to simplify collaboration with team members, allowing you to work together seamlessly. Deepnote enables you to effortlessly connect to diverse data sources, ranging from CSV files to data warehouses, Docker environments, API integrations, and more, all from within your browser. With Deepnote, you can perform visualizations, tackle data engineering challenges, and execute data science tasks while ensuring the security and integrity of your data.
+---
+
+# Integrting Hydra with Deepnote
+The focus of this guide is to display the ease of Hydra to deepnote to perform analytics and predictions using python scripts using data on the hydra datawarehouse.
+
+In order to make predictions a simple salary dataset was chosen with two columns 'Years of experience' and 'Salary'.
+
