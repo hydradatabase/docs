@@ -139,7 +139,7 @@ Now that your data is connected, you're able to utilize your Hydra tables and cr
 
 7. Select the newly added column under **Value** (should be automatically renamed to **Sum of Revenue** and change the formula, located in the top-middle, to `SumIf([Revenue], Year([Date]) = 2017)`. Change the formula of the newly added column under **Comparison**, now entitled **Sum of SumIf of Revenue**, to `SumIf([Revenue], Year([Date]) = 2016)`.
 
-	![](/.gitbook/assets/.sigma-images/function.png)
+	![](/.gitbook/assetsws/.sigma-images/function.png)
 
 	![](/.gitbook/assets/.sigma-images/add-metric-function.png)
 
