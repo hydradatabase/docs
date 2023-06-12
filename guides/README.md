@@ -15,13 +15,7 @@ description: >-
 
 The focus of this guide is to display the ease of integrating Hydra into [Deepnote](https://deepnote.com/docs) to perform analytics and predictions using Python scripts.
 
-In order to make predictions a simple salary dataset was chosen with two columns 'Years of experience' and 'Salary'.
-
-### Scope
-
-The focus of this guide is to display the ease of integrating Hydra to [Deepnote](https://deepnote.com/docs) to perform analytics and predictions using python scripts.
-
-In order to make predictions a simple salary dataset was chosen with two columns 'Years of experience' and 'Salary'.
+A simple salary dataset was chosen with two columns 'Years of experience' and 'Salary' to make predictions.
 
 ### Setup
 
@@ -38,19 +32,19 @@ In order to make predictions a simple salary dataset was chosen with two columns
 Now we can connect the Postgres Database to Deepnote
 
 1. Start by [Signing Up](https://deepnote.com/sign-up) or Logging in if you already have an account.
-2. Create a workspace name, in this Demo it is called Hydra-Team, and choose the data source as PostgreSQL as shown in the image below
+2. Create a workspace name, in this Demo, it is called Hydra-Team, and choose the data source as PostgreSQL as shown in the image below.
 
-<figure><img src=".gitbook/assets/datasource.png" alt=""><figcaption><p>Selecting PostreSQL</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/datasource.png" alt=""><figcaption><p>Selecting PostreSQL</p></figcaption></figure>
 
 3. Create a new project by clicking on projects at the left panel of the screen
 
-<figure><img src=".gitbook/assets/create project.png" alt=""><figcaption><p>Create a new project</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/create project.png" alt=""><figcaption><p>Create a new project</p></figcaption></figure>
 
 4. Make an integration to your Hydra data warehouse by integrating PostgreSQL.Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database.
 
-<figure><img src=".gitbook/assets/Integrating postgres.png" alt=""><figcaption><p>Adding integrations</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Integrating postgres.png" alt=""><figcaption><p>Adding integrations</p></figcaption></figure>
 
-<figure><img src=".gitbook/assets/connecting postgres.png" alt=""><figcaption><p>Inputing your Hydra credentials</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/connecting postgres.png" alt=""><figcaption><p>Inputing your Hydra credentials</p></figcaption></figure>
 
 5\. Once that is connected you can be able to view the tables in your data warehouse in Deepnote and run SQL queries on the salary table that has been imported earlier as shown below using the SELECT statement on the salary table
 
@@ -60,9 +54,9 @@ SELECT * FROM public.salary LIMIT 100
 ```
 ````
 
-<figure><img src=".gitbook/assets/Hydra dashboard.png" alt=""><figcaption><p>Deepnotes dashboard after connection</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Hydra dashboard.png" alt=""><figcaption><p>Deepnotes dashboard after connection</p></figcaption></figure>
 
-6. In order to access the table using Python scripts, an engine has to be created with the data warehouse credentials
+6. To access the table using Python scripts, an engine has to be created with the data warehouse credentials
 
 ```python
 import pandas as pd
@@ -81,7 +75,7 @@ data = pd.read_sql_table('table_name',con= engine, schema= 'database')
 
 #### Making the predictions
 
-Now that the Database is connected we are able to use Python and SQL scripts to access the data. We can now make predictions on the Salary data using the Linear Regression model.&#x20;
+Now that the Database is connected we can use Python and SQL scripts to access the data. We can now predict the Salary data using the Linear Regression model.&#x20;
 
 ```python
 #import Classes and lib needed
@@ -129,6 +123,6 @@ plt.title('Actual vs Predicted')
 plt.ylabel('salary')
 ```
 
-<figure><img src=".gitbook/assets/Output.png" alt="" width="464"><figcaption><p>Visuslisation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Output.png" alt="" width="464"><figcaption><p>Visuslisation</p></figcaption></figure>
 
 You are now done!! Congratulations on making your first prediction with Hydra using Deepnote!!
