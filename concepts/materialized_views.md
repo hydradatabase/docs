@@ -135,6 +135,24 @@ postgres=# SELECT * FROM m; -- automatically updated
  4
 (4 rows)
 ```
+
+### IMMV and Columnar
+
+You can create an IMMV using columnar store by setting the default table access method. If the source table is columnar, you must also disable parallelism temporarily to create the IMMV:
+
+```sql
+SET default_table_access_method = 'columnar';
+SET max_parallel_workers = 1;
+SELECT create_immv('sales_test', 'SELECT * FROM sales');
+```
+
+After the IMMV is created, you can restore the settings to their defaults. (These settings do not affect other connections and will also be restored to their defaults upon your next session.)
+
+```sql
+SET max_parallel_workers = DEFAULT;
+SET default_table_access_method = DEFAULT;
+```
+
 ### Functions
 
 #### create_immv
