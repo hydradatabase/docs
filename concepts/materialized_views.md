@@ -131,7 +131,7 @@ postgres=# SELECT * FROM m; -- automatically updated
 ```
 ### Functions
 
-#### create_imm
+#### create_immv
 
 Use `create_immv` function to create IMMV.
 ```
@@ -148,7 +148,7 @@ if the view has DISTINCT clause, a unique index is created on all columns in the
 contains all primary key attributes of its base tables in the target list, a unique index is created on these
 attributes. In other cases, no index is created.
 
-#### refresh_imm
+#### refresh_immv
 
 Use `refresh_immv` function to refresh IMMV.
 ```
