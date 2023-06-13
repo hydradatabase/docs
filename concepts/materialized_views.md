@@ -83,7 +83,13 @@ after the transaction is committed, for example, when the view is accessed, as a
 `REFRESH MATERIALIZED VIEW`, or periodically in background, and so on. `pg_ivm` provides a kind of immediate
 maintenance, in which materialized views are updated immediately in AFTER triggers when a base table is modified.
 
-We call a materialized view supporting IVM an Incrementally Maintainable Materialized View (IMMV). To create IMMV,
+To begin using `pg_ivm`, you must first enable it on your database:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS pg_ivm;
+```
+
+We call a materialized view supporting IVM an Incrementally Maintainable Materialized View (IMMV). To create an IMMV,
 you have to call `create_immv` function with a relation name and a view definition query. For example:
 
 ```sql
