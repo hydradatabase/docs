@@ -83,13 +83,6 @@ SELECT columnar.vacuum_full(sleep_time => 0.5);
 SELECT columnar.vacuum_full(stripe_count => 1000);
 ```
 
-
-Deleting data does not reclaim space, and updated data will also leave behind deleted data (the previous version of the
-data). In order to reclaim space and re-compress your data, you must rewrite the table using `VACUUM FULL`. Note that
-`VACUUM FULL` requires a full table lock and can take considerable time for larger tables.
-
-Future versions of Hydra Columnar will address this shortcoming.
-
 ## Isolation
 
 ℹ️ For terms used in this section, please refer to [the Postgres documentation on isolation levels][tx-iso].
