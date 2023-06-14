@@ -33,6 +33,7 @@
   * [OLTP, OLAP, & HTAP](concepts/oltp-olap-and-htap.md)
   * [Using Hydra Columnar](concepts/using-hydra-columnar.md)
   * [Updates and Deletes](concepts/updates-and-deletes.md)
+  * [Optimizing Query Performance](concepts/optimizing-query-performance.md)
   * [Materialized Views](concepts/materialized_views.md)
   * [What is Vectorized Execution?](concepts/what-is-vectorized-execution.md)
   * [What is Query Parallelization?](concepts/what-is-query-parallelization.md)
