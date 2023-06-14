@@ -40,8 +40,15 @@ choose a cache size that is appropriate for your workload.
 
 ## Vacuum Tables
 
-Vacuuming tables will optimize tables that have had many inserts, updates, or deletes. There are three levels of vacuum on columnar tables:
+Vacuuming tables will optimize tables that have had many inserts, updates, or
+deletes. There are three levels of vacuum on columnar tables:
 
-* `VACUUM table` will rewrite recently created stripes into optimal stripes of maximum size. If making many small inserts or updates into a columnar table, run `VACUUM` frequently to optimize the table.
-* `SELECT columnar.vacuum_all()` will reclaim space from updated and deleted rows, writing new optimal stripes and compact the amount of space the table occupies.
-* `VACUUM FULL table` will do a full rewrite of the table making fully optimized stripes. This operation is very expensive but produces the best results.
+* `VACUUM table` will rewrite recently created stripes into optimal stripes of
+  maximum size. If making many small inserts or updates into a columnar table,
+  run `VACUUM` frequently to optimize the table.
+* `SELECT columnar.vacuum_all()` will reclaim space from updated and deleted
+  rows, writing new optimal stripes and compact the amount of space the table
+  occupies.
+* `VACUUM FULL table` will do a full rewrite of the table making fully
+  optimized stripes. This operation is very expensive but produces the best
+  results.
