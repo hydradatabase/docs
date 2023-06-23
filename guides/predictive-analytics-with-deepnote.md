@@ -5,7 +5,7 @@ description: >-
   wide range of data frameworks.
 ---
 
-# Predictive analytics with Hydra using Deepnote
+# Introduction
 
 The focus of this guide is to display the ease of integrating Hydra into [Deepnote](https://deepnote.com/docs) to perform analytics and predictions using Python scripts.
 
@@ -25,8 +25,8 @@ A simple salary dataset was chosen with two columns 'Years of experience' and 'S
 
 Now we can connect the Postgres Database to Deepnote
 
-1. Start by [Signing Up](https://deepnote.com/sign-up) or Logging in if you already have an account.
-2. Create a workspace name, in this Demo, it is called Hydra-Team, and choose the data source as PostgreSQL as shown in the image below.
+1. Start by [signing Up](https://deepnote.com/sign-up) or logging in if you already have an account.
+2. Create a workspace name, which will be "Hydra-Team" in this demo. Next, choose the data source as PostgreSQL as shown in the image below.
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/datasource.png" alt=""><figcaption><p>Selecting PostreSQL</p></figcaption></figure>
 
@@ -34,13 +34,14 @@ Now we can connect the Postgres Database to Deepnote
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/create project.png" alt=""><figcaption><p>Create a new project</p></figcaption></figure>
 
-4. Make an integration to your Hydra data warehouse by integrating PostgreSQL.Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database.
+4.  Make an integration to your Hydra data warehouse by integrating PostgreSQL. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database.
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/Integrating postgres.png" alt=""><figcaption><p>Adding integrations</p></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/connecting postgres.png" alt=""><figcaption><p>Inputing your Hydra credentials</p></figcaption></figure>
 
-5. Once that is connected you can be able to view the tables in your data warehouse in Deepnote and run SQL queries on the salary table that has been imported earlier as shown below using the SELECT statement on the salary table
+5. After establishing the connection, you will be able to view the imported salary table within Deepnote.
+Using the SELECT statement, you can run SQL queries on the salary table, enabling you to retrieve and analyze specific data from the table.
 
 ```sql
 SELECT * FROM public.salary LIMIT 100
@@ -67,7 +68,8 @@ data = pd.read_sql_table('table_name',con= engine, schema= 'database')
 
 ## Making the predictions
 
-Now that the Database is connected we can use Python and SQL scripts to access the data. We can now predict the Salary data using the Linear Regression model.&#x20;
+Now that the Database is connected we can use Python and SQL scripts to access the data. Using the Linear Regression model, we can predict the salary data.
+The neccesary models and libraries are being imported.The linear regression model and matplotlib for our visualization are imported as shown below&#x20;
 
 ```python
 #import Classes and lib needed
@@ -113,4 +115,4 @@ plt.ylabel('salary')
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/Output.png" alt="" width="464"><figcaption><p>Visuslisation</p></figcaption></figure>
 
-You have now made your first prediction with Hydra using Deepnote!
+Your first prediction is made and you can be able to know the range of a person's  salary from years of experience.
