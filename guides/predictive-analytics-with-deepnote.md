@@ -40,7 +40,7 @@ Now we can connect the Postgres Database to Deepnote
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/connecting postgres.png" alt=""><figcaption><p>Inputing your Hydra credentials</p></figcaption></figure>
 
-5. After establishing the connection, you will be able to view the imported salary table within Deepnote.
+5. After establishing the connection, you can view the imported salary table within Deepnote.
 Using the SELECT statement, you can run SQL queries on the salary table, enabling you to retrieve and analyze specific data from the table.
 
 ```sql
@@ -69,7 +69,7 @@ data = pd.read_sql_table('table_name',con= engine, schema= 'database')
 ## Making the predictions
 
 Now that the Database is connected we can use Python and SQL scripts to access the data. Using the Linear Regression model, we can predict the salary data.
-The neccesary models and libraries are being imported.The linear regression model and matplotlib for our visualization are imported as shown below&#x20;
+The necessary models and libraries are being imported.The linear regression model and matplotlib for our visualization are imported as shown below&#x20;
 
 ```python
 #import Classes and lib needed
@@ -115,4 +115,4 @@ plt.ylabel('salary')
 
 <figure><img src="../../.gitbook/assets/.predictive-analytics/Output.png" alt="" width="464"><figcaption><p>Visuslisation</p></figcaption></figure>
 
-Your first prediction is made and you can be able to know the range of a person's  salary from years of experience.
+Your first prediction is made and you can know the range of a person's salary from years of experience.
