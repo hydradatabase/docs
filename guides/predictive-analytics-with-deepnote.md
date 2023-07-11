@@ -28,17 +28,18 @@ Now we can connect the Postgres Database to Deepnote
 1. Start by [signing Up](https://deepnote.com/sign-up) or logging in if you already have an account.
 2. Create a workspace name, which will be "Hydra-Team" in this demo. Next, choose the data source as PostgreSQL as shown in the image below.
 
-<figure><img src="../../.gitbook/assets/.predictive-analytics/datasource.png" alt=""><figcaption><p>Selecting PostreSQL</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/.predictive-analytics/datasource.png" alt=""><figcaption><p>Selecting PostreSQL</p></figcaption></figure>
 
 3. Create a new project by clicking on projects at the left panel of the screen
 
-<figure><img src="../../.gitbook/assets/.predictive-analytics/create project.png" alt=""><figcaption><p>Create a new project</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/.predictive-analytics/create project.png" alt=""><figcaption><p>Create a new project</p></figcaption></figure>
 
 4.  Make an integration to your Hydra data warehouse by integrating PostgreSQL. Retrieve your database credentials from your Hydra dashboard. You will need Hostname, User, Password, and Database.
 
-<figure><img src="../../.gitbook/assets/.predictive-analytics/Integrating postgres.png" alt=""><figcaption><p>Adding integrations</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/.predictive-analytics/Integrating postgres.png" alt=""><figcaption><p>Adding integrations</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/.predictive-analytics/connecting postgres.png" alt=""><figcaption><p>Inputing your Hydra credentials</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/.predictive-analytics/connecting postgres.png" alt=""><figcaption><p>Inputing your Hydra credentials</p></figcaption></figure>
 
 5. After establishing the connection, you can view the imported salary table within Deepnote.
 Using the SELECT statement, you can run SQL queries on the salary table, enabling you to retrieve and analyze specific data from the table.
@@ -47,7 +48,7 @@ Using the SELECT statement, you can run SQL queries on the salary table, enablin
 SELECT * FROM public.salary LIMIT 100
 ```
 
-<figure><img src="../../.gitbook/assets/.predictive-analytics/Hydra dashboard.png" alt=""><figcaption><p>Deepnotes dashboard after connection</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/.predictive-analytics/Hydra dashboard.png" alt=""><figcaption><p>Deepnote dashboard after connection</p></figcaption></figure>
 
 6. To access the table using Python scripts, an engine has to be created with the data warehouse credentials
 
@@ -77,7 +78,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 ```
 
-The dataset is split into dependent and independent variables(X, Y) and the model is fitted on the dataset, and prediction on the salary table  is made\
+The dataset is split into dependent and independent variables(X, Y),the model is trained on the dataset, and prediction on the salary table  is made.
 
 
 ```python
@@ -113,6 +114,6 @@ plt.title('Actual vs Predicted')
 plt.ylabel('salary')
 ```
 
-<figure><img src="../../.gitbook/assets/.predictive-analytics/Output.png" alt="" width="464"><figcaption><p>Visuslisation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/.predictive-analytics/Output.png" alt="" width="464"><figcaption><p>Visualization</p></figcaption></figure>
 
-Your first prediction is made and you can know the range of a person's salary from years of experience.
+Your first prediction is made and you can determine the range of a person's salary from years of experience.
