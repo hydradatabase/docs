@@ -60,7 +60,7 @@ SELECT * FROM public.salary LIMIT 100
 
 <figure><img src="../.gitbook/assets/.predictive-analytics/deepnote dashboard.png" alt=""><figcaption><p>Deepnote dashboard showing the salary table</p></figcaption></figure>
 
-8. To access the table using Python scripts because predictions can not be done using SQL, an engine has to be created with the data warehouse credentials
+8. To access the table using Python scripts because predictions can not be done using SQL, an engine has to be created with the data warehouse credentials:
 
 ```python
 import pandas as pd
