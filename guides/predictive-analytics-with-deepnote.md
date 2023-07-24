@@ -11,8 +11,8 @@ The focus of this guide is to display the ease of integrating Hydra into [Deepno
 
 To cater to a broad audience, the data and KPIs were chosen to be as agnostic as possible. We will leverage a simple salary dataset on [Kaggle](https://www.kaggle.com/datasets/rsadiq/salary) with two columns:
 
-  * 'Years of experience'
-  * 'Salary'
+  * Years of experience
+  * Salary
 
 Your datasets will likely differ in scope and complexity, but this will hopefully serve as a general tutorial on how to leverage your data with Hydra & Deepnote for predictive analytics.
 
