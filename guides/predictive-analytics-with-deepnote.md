@@ -19,40 +19,40 @@ Your datasets will likely differ in scope and complexity, but this will hopefull
 
 ## Setup
 
-* Ensure you have your Hydra login details handy or follow the [Setup guide](https://docs.hydra.so/getting-started/setup-guide) to create your initial Hydra data warehouse.
+* Ensure you have your Hydra login details handy or follow the [setup guide](https://docs.hydra.so/getting-started/setup-guide) to create your initial Hydra data warehouse.
 
-* Sign up for your free instance at [Deepnote](https://deepnote.com/sign-up)
+* [Sign up for a free instance at Deepnote](https://deepnote.com/sign-up).
 
 ### Building the table with Hydra
 
-1. Sample data from [Kaggle](https://www.kaggle.com/datasets/rsadiq/salary) would be used for this guide. Download the CSV file.
-2. Connect to your Hydra database and import the CSV file to the database using the steps for importing a CSV file outlined in the [Documentation](https://docs.hydra.so/centralize-data/load/from-local-csv-file)
+1. Sample data from Kaggle will be used for this guide. [Download the CSV file](https://www.kaggle.com/datasets/rsadiq/salary) from their website.
+2. Connect to your Hydra database and import the CSV file to the database. To do so, [follow the documentation for importing a CSV file](https://docs.hydra.so/centralize-data/load/from-local-csv-file).
 
 ### Creating the Connection
 
 Now we can connect Deepnote to our sample data in Hydra.
 
-1. Start by [signing up](https://deepnote.com/sign-up) for Deepnote if you haven't done so already.
+1. Start by [signing up for Deepnote](https://deepnote.com/sign-up) if you haven't done so already.
 2. Within your Deepnote account, create a workspace name. In the case of this tutorial, the workspace name will be "Hydra-Team".
-3. Next, choose 'PostgreSQL' as the data source as shown in the image below.
+3. Next, choose "PostgreSQL" as the data source as shown in the image below.
 
 <figure><img src="../.gitbook/assets/.predictive-analytics/datasource.png" alt=""><figcaption><p>Choosing Datasource</p></figcaption></figure>
 
-4. Create a new project by clicking on '+' under 'Projects' within the left panel of the Deepnote console.
+4. Create a new project by clicking on "+" under "Projects" within the left panel of the Deepnote console.
 
 <figure><img src="../.gitbook/assets/.predictive-analytics/create project.png" alt=""><figcaption><p>Creating project</p></figcaption></figure>
 
-5. Within your new project, navigate to 'Integrations' on the right panel and choose 'PostgreSQL'.
+5. Within your new project, navigate to "Integrations" on the right panel and choose "PostgreSQL".
 
 <figure><img src="../.gitbook/assets/.predictive-analytics/Integrating postgres.png" alt=""><figcaption></figcaption></figure>
 
-6. At the 'Connect to PostgresSQL' popup, add your Hydra database credentials including Hostname, User, Password, and Database.
+6. In the "Connect to PostgresSQL"' pop-up, add your Hydra database credentials including hostname, user, password, and database. You can obtain these credentials from the [Hydra dashboard](https://dashboard.hydra.so/).
 
 <figure><img src="../.gitbook/assets/.predictive-analytics/connecting postgres.png" alt=""><figcaption><p>Connecting PostgreSQL</p></figcaption></figure>
 
 7. After establishing the connection, you can view the imported salary table within Deepnote.
 
-Using the SELECT statement, you are able to run SQL queries on the salary table which enables you to retrieve and analyze specific data from the table.
+Using a SELECT statement, you can run SQL queries on the salary table which enables you to retrieve and analyze specific data from the table. Let's run a simple query to make sure everything is working like we expect:
 
 ```sql
 SELECT * FROM public.salary LIMIT 100
@@ -65,15 +65,11 @@ SELECT * FROM public.salary LIMIT 100
 ```python
 import pandas as pd
 from sqlalchemy import create_engine
-#user = username
-#pass = password
-#server = hostname
-#database = database-name
 engine = create_engine('postgresql://user:pass@server:5432/database')
 data = pd.read_sql_table('Salary',con= engine, schema= 'public')
 ```
 
-**Congratulations!** You've successfully connected Hydra with Deepnote! What next?
+Congratulations! You've successfully connected Hydra with Deepnote! What's next?
 
 ## Making the predictions
 
@@ -121,4 +117,4 @@ plt.ylabel('salary')
 Your first prediction is complete! You can predict the range of a person's salary based on years of experience.
 
 ## Conclusion
-At this point, we have performed a basic predictive analytics project by integrating the Hydra database with Deepnote. This basic guide can be leveraged to experiment with your own business metrics, but don't hesitate to reach out for more advance support through the Hydra #experts channel in Discord.
+At this point, we have performed a basic predictive analytics project by integrating the Hydra database with Deepnote. This basic guide can be leveraged to experiment with your own business metrics, but don't hesitate to reach out for more advance support through the [Hydra #experts channel in Discord](https://discord.com/invite/SQrwnAxtDw).
