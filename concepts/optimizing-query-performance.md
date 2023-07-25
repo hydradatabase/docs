@@ -20,9 +20,16 @@ or `INSERT`, and are released after the `SELECT` query is complete.
 ### Enabling the Cache
 
 Caching is be enabled or disabled with a GUC: `columnar.enable_column_cache`.
+By default, the cache is enabled on Hydra Cloud, and disabled in Hydra Open
+Source. For queries where the cache is not helpful, you may find slightly
+better performance by disabling the cache.
 
 ```
+-- enable the cache
 set columnar.enable_column_cache = 't';
+
+-- disable the cache
+set columnar.enable_column_cache = 'f';
 ```
 
 In addition, the cache size can be set, with a default of `200MB` per
