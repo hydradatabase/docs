@@ -45,6 +45,7 @@
   * [KPIs with Sigma](guides/key-performance-indicators-with-sigma.md)
   * [Query Optimization + Diagnostic Tooling](guides/query-optimization.md)
   * [SaaS Retention Tracking and Churn with PowerBI](guides/saas-retention-tracking-and-churn-with-powerbi.md)
+  * [Predictive Analytics using Deepnote](guides/predictive-analytics-with-deepnote.md)
 * [💻 Cloud Warehouse Operations](cloud-warehouse-operations/README.md)
   * [Connecting with TLS (SSL)](cloud-warehouse-operations/tls.md)
   * [Hydra Scheduler](cloud-warehouse-operations/using-hydra-scheduler.md)
