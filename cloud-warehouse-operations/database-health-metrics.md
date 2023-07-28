@@ -73,7 +73,7 @@ Hydra has a convenience function that will copy your row table to columnar.
 ```sql
 CREATE TABLE my_table (i INT8) USING heap;
 -- convert to columnar
-SELECT alter_table_set_access_method('my_table', 'columnar');
+SELECT columnar.alter_table_set_access_method('my_table', 'columnar');
 ```
 
 Data can also be converted manually by copying. For instance:
