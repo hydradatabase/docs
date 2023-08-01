@@ -64,17 +64,25 @@ To do so, it is recommended to utilize the `EXPLAIN` parameter with queries to d
 
 **Offload Large Tables**
 
-As table size increases on Hydra's row heap tables, the speed will reduce for both reads and writes. Instead, offload your largest tables into columnar storage. Analytics queries can execute **30X faster** on columnar storage and observe a **3X- 4X data compression** benefit.&#x20;
+As table size increases on Hydra's row heap tables, the speed will reduce for both reads and writes. Instead, offload your largest tables into columnar storage. Analytics queries can execute **30X faster** on columnar storage and observe a **3X- 4X data compression** benefit.
 
 ### Converting from Row to Columnar
 
 Hydra has a convenience function that will copy your row table to columnar.
 
-`CREATE TABLE my_table (i INT8); -- convert to columnar SELECT alter_table_set_access_method('my_table', 'columnar');`
+```sql
+CREATE TABLE my_table (i INT8) USING heap;
+-- convert to columnar
+SELECT columnar.alter_table_set_access_method('my_table', 'columnar');
+```
 
 Data can also be converted manually by copying. For instance:
 
-`CREATE TABLE table_heap (i INT8); CREATE TABLE table_columnar (LIKE table_heap) USING columnar; INSERT INTO table_columnar SELECT * FROM table_heap;`
+```sql
+CREATE TABLE table_heap (i INT8) USING heap;
+CREATE TABLE table_columnar (LIKE table_heap) USING columnar;
+INSERT INTO table_columnar SELECT * FROM table_heap;
+```
 
 ![Move largest tables into Hydra columnar format](https://hydras.io/assets/blog/2022-08-08/hydra-6de64f513f2b7a1731aba85b0b937c8b499f20423c3cb743970a288bc9e6488d.svg)
 
