@@ -119,3 +119,15 @@ CREATE INDEX p2_ts_idx ON p2 (ts);
 CREATE UNIQUE INDEX p2_i_unique ON p2 (i);
 ALTER TABLE p2 ADD UNIQUE (n);
 ```
+
+## Creating additional databases
+
+Hydra allows you to create additional databases with the `CREATE DATABASE` command.
+New databases will have the default table type set to `heap` until the next time your
+instance is restarted. To change this immediately, run:
+
+```sql
+ALTER DATABASE new_database_name SET default_table_access_method = 'columnar';
+```
+
+This is a known issue and will be resolved in a future Hydra release.
