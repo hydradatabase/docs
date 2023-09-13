@@ -101,4 +101,5 @@ This is a list of extensions that are available in Hydra:
  * tsm_system_time (1.0) - TABLESAMPLE method which accepts time in milliseconds as a limit
  * unaccent (1.1) - text search dictionary that removes accents
  * uuid-ossp (1.1) - generate universally unique identifiers (UUIDs)
+ * vector (0.4.4) - vector data type and ivfflat access method
  * xml2 (1.1) - XPath querying and XSLT

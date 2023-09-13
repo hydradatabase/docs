@@ -71,7 +71,10 @@ We're ready to upload our data; we'll load the [JupySQL](https://github.com/ploo
 %sql postgresql://user:password@localhost/db
 ```
 
-Let's create the table; note that Hydra adds a [`USING columnar`](https://docs.hydra.so/concepts/what-is-columnar) option to the `CREATE TABLE` statement, which will optimize storage for analytical queries.
+Let's create the table on Hydra. Note that Hydra uses columnar tables by
+default, which will optimize storage for analytical queries. Below, we add the
+[`USING columnar`](https://docs.hydra.so/concepts/what-is-columnar) clause
+explicitly for clarity.
 
 *Note:* to execute SQL on Jupyter via JupySQL, we must add `%%sql` at the beginning of the cell:
 

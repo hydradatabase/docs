@@ -4,19 +4,19 @@ description: Welcome to Hydra documentation
 
 # 🏠 Home
 
-Hydra is an open source data warehouse built on Postgres. Hydra leverages columnar storage, vectorized execution, and query parallelization to efficiently serve online analytical processing of queries (OLAP). Unlike traditional warehouses, Hydra supports Postgres heap tables, indexing, and native partitioning to process high-throughput transactional writes, quick lookup and operational queries, and hybrid transactional / analytics processing workloads (HTAP).
-
-Hydra is offered as a fully-managed cloud warehouse and as self-hosted open source software. We extend a 14-day [free trial](https://dashboard.hydra.so/signup) of Hydra's cloud warehouse and free [open source](https://github.com/hydradatabase/hydra).
+Hydra (🐘🤘) is open source, column-oriented Postgres. You can query billions of rows instantly on Postgres without code changes. Parallelized analytics in minutes, not weeks.
 
 ## Getting Started
 
-[Set-up Guide](getting-started/setup-guide.md)
+Try the [Hydra Free Tier](https://dashboard.hydra.so/signup) to create a column-oriented Postgres instance. Then connect to it with your preferred Postgres client (psql, dbeaver, etc).
+
+Alternatively, you can run Hydra locally.
 
 [Sample Datasets](getting-started/loading-sample-data.md)
 
 ## Concepts
 
-[OLTP, OLAP, and HTAP](concepts/oltp-olap-and-htap.md)
+[FAQs](concepts/faqs.md)
 
 [Row vs Column tables](organize/data-modeling/row-vs-column-tables.md)
 
