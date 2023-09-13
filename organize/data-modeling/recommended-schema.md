@@ -8,7 +8,7 @@ Fact tables record measurements or metrics for a specific event. A fact table co
 
 The following diagram shows the star schema that we are going to model for the tutorial:
 
-![https://hydras.io/assets/blog/2022-10-19/star-schema-6902bc4b4b608aad3844912e49028d73a2a99e4d629fbe0cf018f68b60d9a37d.png](https://hydras.io/assets/blog/2022-10-19/star-schema-6902bc4b4b608aad3844912e49028d73a2a99e4d629fbe0cf018f68b60d9a37d.png)
+![../../.gitbook/assets/star-schema.png](../../.gitbook/assets/star-schema.png)
 
 ## Hydra Schema
 
