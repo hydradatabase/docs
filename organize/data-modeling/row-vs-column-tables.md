@@ -43,7 +43,7 @@ This data would be stored as follows in columnar:
 | d | d | d |
 ```
 
-In columnar, you can think of each stripe as a row of metadata that also holds up to 150,000 rows of data. Within each stripe, data is divided into _chunks_ of 1000 rows, and then within each chunk, there is a “row” for each _column_ of data you stored in it. Additionally, columnar stores the minimum, maximum, and count for each column in each chunk.
+In columnar, you can think of each stripe as a row of metadata that also holds up to 150,000 rows of data. Within each stripe, data is divided into _chunks_ of 10,000 rows, and then within each chunk, there is a “row” for each _column_ of data you stored in it. Additionally, columnar stores the minimum, maximum, and count for each column in each chunk.
 
 #### Advantages
 
