@@ -34,17 +34,17 @@ SELECT columnar.alter_table_set_access_method('table_name', 'heap');
 
 A: Aggregates (COUNT, SUM, AVG), WHERE clauses, bulk INSERTs, UPDATE, DELETE…
 
-💪 Columnar aggregates
+💪 **Columnar aggregates**:
 
 <figure><img src="../.gitbook/assets/Screen Shot 2023-06-16 at 12.27.01 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
-Query 0 is **512X** faster
+Query 0 is 512X faster:
 
 ```sql
 SELECT COUNT(*) FROM hits;
 ```
 
-Query 2 is **283X** faster
+Query 2 is 283X faster:
 
 ```sql
 SELECT SUM(AdvEngineID), COUNT(*), AVG(ResolutionWidth) FROM hits;
@@ -52,15 +52,15 @@ SELECT SUM(AdvEngineID), COUNT(*), AVG(ResolutionWidth) FROM hits;
 
 Postgres COUNTs are slow? Not anymore! Hydra parallelizes and vectorizes aggregates (COUNT, SUM, AVG) to deliver the analytic speed you’ve always wanted on Postgres.
 
-#### 🤯 **Filtering (WHERE clauses)**
+🤯 **Filtering (WHERE clauses)**
 
-Query 1 is **1,412X** faster
+Query 1 is 1,412X faster:
 
 ```sql
 SELECT COUNT(*) FROM hits WHERE AdvEngineID <> 0;
 ```
 
-Filters on Hydra’s columnar storage resulted in a 1,412X performance improvement. That’s road runner fast, _beep, beep._
+Filters on Hydra’s columnar storage resulted in a 1,412X performance improvement. That’s road runner fast: _beep, beep!_
 
 #### Tables with large numbers of columns where only some columns are accessed
 
@@ -91,13 +91,13 @@ Where columnar falls short, traditional heap tables can often help. On Hydra you
 
 A: Try Incremental Materialized Views
 
-[Materialized views](materialized-views.md) are precomputed database tables that store the results of a query. **Hydra enables automatic updates to materialized views based on changes in the underlying base tables**. This approach eliminates the need to recalculate the entire view, resulting in improved query performance and without time-consuming recomputation.
+[Materialized views](materialized-views.md) are precomputed database tables that store the results of a query. Hydra offers automatic updates to materialized views based on changes in the underlying base tables. This approach eliminates the need to recalculate the entire view, resulting in improved query performance and without time-consuming recomputation.
 
 ### Q: Why did you build Hydra on Postgres? Is Hydra a fork?
 
 A: Postgres is the world’s most advanced relational database on earth. It’s open source, fully portable, and accessible to anyone for free. Postgres is highly extensible, meaning it can be augmented with new capabilities without forking from the core Postgres community and features.
 
-**Hydra is not a fork of Postgres.** Hydra Columnar is a Postgres extension. Postgres’ extension model was released in PostgreSQL 9.1 in 2011. Prior to this release, forking was required to add 3rd party capabilities to Postgres. Hydra makes use of `tableam` (table access method API) which was added in Postgres 12 released in 2019.
+Hydra is not a fork of Postgres. Hydra Columnar is a Postgres extension. Postgres’ extension model was released in PostgreSQL 9.1 in 2011. Prior to this release, forking was required to add 3rd party capabilities to Postgres. Hydra makes use of `tableam` (table access method API) which was added in Postgres 12 released in 2019.
 
 ### Q: Can I deploy Hydra on my own AWS account?
 
