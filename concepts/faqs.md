@@ -91,7 +91,7 @@ Where columnar falls short, traditional heap tables can often help. On Hydra you
 
 A: Try Incremental Materialized Views
 
-[Materialized views](materialized\_views.md) are precomputed database tables that store the results of a query. **Hydra enables automatic updates to materialized views based on changes in the underlying base tables**. This approach eliminates the need to recalculate the entire view, resulting in improved query performance and without time-consuming recomputation.
+[Materialized views](materialized-views.md) are precomputed database tables that store the results of a query. **Hydra enables automatic updates to materialized views based on changes in the underlying base tables**. This approach eliminates the need to recalculate the entire view, resulting in improved query performance and without time-consuming recomputation.
 
 ### Q: Why did you build Hydra on Postgres? Is Hydra a fork?
 
