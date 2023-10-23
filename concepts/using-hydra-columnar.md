@@ -6,7 +6,7 @@ Please see our documentation about [when to use row and columnar tables](../orga
 
 ## Enabling Columnar
 
-For Hydra cloud databases, columnar is already enabled.
+For Hydra Cloud databases, columnar is already enabled.
 
 For Hydra open source, the default `postgres` database has columnar enabled.
 Additional databases you create need to have columnar enabled by running the
@@ -45,11 +45,12 @@ CREATE TABLE columnar_table (...) USING columnar;
 Once created, the table operates like a normal Postgres table. You can SELECT, INSERT,
 UPDATE, DELETE, and ALTER TABLE like you would expect, with a few restrictions:
 
-* Columnar supports only btree and hash indexes, and their associated constraints.
-  Note that indexing may cause some queries to run slower; in many cases, indexes are
-  not necessary.
 * Columnar does not support logical replication. Creating a subscription on a columnar
-  table will cause any writes to that table to return an error.
+table will cause any writes to that table to return an error.
+* ON CONFLICT clauses (also known as an upsert) are not supported.
+* Indexing may cause some queries to run slower; in many cases,
+indexes are not necessary. For more information, [please read our documentation on using indexes](../concepts/optimizing-query-performance.md#indexes-and-indexing-strategies).
+* BRIN indexes are not supported.
 
 ## Converting From Row to Columnar
 
@@ -70,6 +71,22 @@ CREATE TABLE table_heap (i INT8) USING heap;
 CREATE TABLE table_columnar (LIKE table_heap) USING columnar;
 INSERT INTO table_columnar SELECT * FROM table_heap;
 ```
+
+## Default table type
+
+The default table type for the default database is `columnar`. You can change
+this using an `ALTER DATABASE` statement:
+
+```sql
+ALTER DATABASE database_name SET default_table_access_method = 'heap';
+```
+
+For any database you create manually with `CREATE DATABASE`, the default table
+type is `heap`.
+
+The name of the default database on Hydra Cloud can be found with your
+credentials in the Hydra Dashboard. With Hydra Open Source, the default
+database is `postgres`.
 
 ## Partitioning
 
@@ -103,31 +120,15 @@ INSERT INTO parent VALUES ('2020-03-15', 30, 300, 'three thousand'); -- row
 ```
 
 When performing operations on a partitioned table with a mix of row and
-columnar partitions, take note of the following behaviors for operations that
+columnar partitions, take note of the behaviors for operations that
 are supported on row tables but not columnar (e.g. tuple locks).
-
-Note that the columnar engine supports `btree` and `hash` indexes (and the
-constraints requiring them) but does not support `gist`, `gin`, `spgist` and
-`brin` indexes. For this reason, if some partitions are columnar and if the
-index is not supported by columnar, then it's impossible to create indexes on
-the partitioned (parent) table directly. In that case, you need to create the
-index on the individual row partitions. Similarly for the constraints that
-require indexes, e.g.:
-
-```sql
-CREATE INDEX p2_ts_idx ON p2 (ts);
-CREATE UNIQUE INDEX p2_i_unique ON p2 (i);
-ALTER TABLE p2 ADD UNIQUE (n);
-```
 
 ## Creating additional databases
 
 Hydra allows you to create additional databases with the `CREATE DATABASE` command.
-New databases will have the default table type set to `heap` until the next time your
-instance is restarted. To change this immediately, run:
+New databases will have the default table type set to `heap`. To change this, run:
 
 ```sql
+CREATE EXTENSION IF NOT EXISTS columnar;
 ALTER DATABASE new_database_name SET default_table_access_method = 'columnar';
 ```
-
-This is a known issue and will be resolved in a future Hydra release.

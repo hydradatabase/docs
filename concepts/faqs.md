@@ -76,7 +76,7 @@ Columnar is not best for:
 
 * Datasets that have frequent large updates. While updates on Hydra Columnar are supported, they are slower than on heap tables.
 * Small transactions, particularly when the query needs to return very quickly, since each columnar transaction is quite a bit slower than a heap transaction.
-* Queries where traditional indexes provide high cardinality (i.e. are very effective), e.g. “needle in a haystack” problems, like “find by ID.” For this table, reference join tables are best stored using a heap table.
+* Queries where traditional indexes provide high cardinality (i.e. are very effective), e.g. “needle in a haystack” problems, like “find by ID.” For this reason, reference join tables are best stored using a heap table.
 * Very large single table datasets may need special care to perform well, like using table partitioning. We plan to improve this further in the future. If you are tackling a “big data” problem, reach out to us for help!
 * Use cases where high concurrency is needed. Analytical queries on Hydra make extensive use of parallelization, and thus consume large amounts of resources, limiting the ability to run queries concurrently.
 
@@ -85,7 +85,7 @@ Where columnar falls short, traditional heap tables can often help. On Hydra you
 ### Q: What Postgres features are unsupported on columnar?
 
 * Columnar tables do not support logical replication.
-* Columnar tables do not typically use indexes, and only support btree and hash indexes, and their associated constraints.
+* ON CONFLICT clauses (also known as an upsert) are not supported.
 
 ### Q: How does Hydra handle complex queries?
 
@@ -97,7 +97,7 @@ A: Try Incremental Materialized Views
 
 A: Postgres is the world’s most advanced relational database on earth. It’s open source, fully portable, and accessible to anyone for free. Postgres is highly extensible, meaning it can be augmented with new capabilities without forking from the core Postgres community and features.
 
-**Hydra is not a fork.** Postgres’ extension model was released in PostgreSQL 9.1 in 2011. Prior to this release, forking was required to add 3rd party capabilities to Postgres. Additionally, Hydra makes use of `tableam` (table access method API), which was added in Postgres 12 released in 2019.
+**Hydra is not a fork of Postgres.** Hydra Columnar is a Postgres extension. Postgres’ extension model was released in PostgreSQL 9.1 in 2011. Prior to this release, forking was required to add 3rd party capabilities to Postgres. Hydra makes use of `tableam` (table access method API) which was added in Postgres 12 released in 2019.
 
 ### Q: Can I deploy Hydra on my own AWS account?
 
