@@ -30,6 +30,12 @@ CREATE TABLE new_table (...) USING heap;
 SELECT columnar.alter_table_set_access_method('table_name', 'heap');
 ```
 
+If you wish, you can change the default back to `heap`:
+
+```sql
+ALTER DATABASE database_name SET default_table_access_method = 'heap';
+```
+
 ### Q: What operations is Hydra meant for? Provide examples.
 
 A: Aggregates (COUNT, SUM, AVG), WHERE clauses, bulk INSERTs, UPDATE, DELETE…
