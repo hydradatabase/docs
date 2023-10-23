@@ -30,7 +30,7 @@ CREATE TABLE new_table (...) USING heap;
 SELECT columnar.alter_table_set_access_method('table_name', 'heap');
 ```
 
-If you wish, you can change the default back to `heap`:
+You can also change the default back to `heap`:
 
 ```sql
 ALTER DATABASE database_name SET default_table_access_method = 'heap';
@@ -40,7 +40,7 @@ ALTER DATABASE database_name SET default_table_access_method = 'heap';
 
 A: Aggregates (COUNT, SUM, AVG), WHERE clauses, bulk INSERTs, UPDATE, DELETE…
 
-💪 **Columnar aggregates**:
+**Columnar aggregates**:
 
 <figure><img src="../.gitbook/assets/Screen Shot 2023-06-16 at 12.27.01 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -58,7 +58,7 @@ SELECT SUM(AdvEngineID), COUNT(*), AVG(ResolutionWidth) FROM hits;
 
 Postgres COUNTs are slow? Not anymore! Hydra parallelizes and vectorizes aggregates (COUNT, SUM, AVG) to deliver the analytic speed you’ve always wanted on Postgres.
 
-🤯 **Filtering (WHERE clauses)**
+**Filtering (WHERE clauses)**:
 
 Query 1 is 1,412X faster:
 
