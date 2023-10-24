@@ -34,7 +34,7 @@
   * [Using Hydra Columnar](concepts/using-hydra-columnar.md)
   * [Updates and Deletes](concepts/updates-and-deletes.md)
   * [Optimizing Query Performance](concepts/optimizing-query-performance.md)
-  * [Materialized Views](concepts/materialized\_views.md)
+  * [Materialized Views](concepts/materialized-views.md)
   * [What is Vectorized Execution?](concepts/what-is-vectorized-execution.md)
   * [What is Query Parallelization?](concepts/what-is-query-parallelization.md)
   * [Batch Ingestion & Data Streaming](concepts/batch-ingestion-and-data-streaming.md)
