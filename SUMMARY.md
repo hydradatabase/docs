@@ -1,6 +1,6 @@
 # Table of contents
 
-* [🏠 Home](README.md)
+* [🏠 Overview](README.md)
 * [🐘 Getting Started](getting-started/README.md)
   * [Sample Datasets](getting-started/loading-sample-data.md)
 * [🟠 Centralize](centralize-data/README.md)
