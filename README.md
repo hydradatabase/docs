@@ -17,7 +17,11 @@ layout:
 
 # 🏠 Overview
 
+<div align="left">
+
 <figure><img src=".gitbook/assets/Screen Shot 2024-01-30 at 3.42.06 PM (1).png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 Hydra makes it easy to scale realtime apps and analytical reporting on Postgres. \
 **Develop quicker. Scale faster**.
