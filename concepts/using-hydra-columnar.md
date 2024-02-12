@@ -47,7 +47,7 @@ UPDATE, DELETE, and ALTER TABLE like you would expect, with a few restrictions:
 
 * Columnar does not support logical replication. Creating a subscription on a columnar
 table will cause any writes to that table to return an error.
-* ON CONFLICT clauses (also known as an upsert) are not supported.
+* Foreign keys are not supported.
 * Indexing may cause some queries to run slower; in many cases,
 indexes are not necessary. For more information, [please read our documentation on using indexes](../concepts/optimizing-query-performance.md#indexes-and-indexing-strategies).
 * BRIN indexes are not supported.

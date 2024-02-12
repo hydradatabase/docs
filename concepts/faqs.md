@@ -91,7 +91,7 @@ Where columnar falls short, traditional heap tables can often help. On Hydra you
 ### Q: What Postgres features are unsupported on columnar?
 
 * Columnar tables do not support logical replication.
-* ON CONFLICT clauses (also known as an upsert) are not supported.
+* Foreign keys are not supported.
 
 ### Q: How does Hydra handle complex queries?
 
