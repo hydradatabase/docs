@@ -117,4 +117,4 @@ plt.ylabel('salary')
 Your first prediction is complete! You can predict the range of a person's salary based on years of experience.
 
 ## Conclusion
-At this point, we have performed a basic predictive analytics project by integrating the Hydra database with Deepnote. This basic guide can be leveraged to experiment with your own business metrics, but don't hesitate to reach out for more advance support through the [Hydra #experts channel in Discord](https://discord.com/invite/SQrwnAxtDw).
+At this point, we have performed a basic predictive analytics project by integrating the Hydra database with Deepnote. This basic guide can be leveraged to experiment with your own business metrics, but don't hesitate to reach out for more advance support through the [Hydra #experts channel in Discord](https://hydra.so/discord).

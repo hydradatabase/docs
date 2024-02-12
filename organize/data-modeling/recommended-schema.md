@@ -8,8 +8,8 @@ Fact tables record measurements or metrics for a specific event. A fact table co
 
 The following diagram shows the star schema that we are going to model for the tutorial:
 
-![https://hydras.io/assets/blog/2022-10-19/star-schema-6902bc4b4b608aad3844912e49028d73a2a99e4d629fbe0cf018f68b60d9a37d.png](https://hydras.io/assets/blog/2022-10-19/star-schema-6902bc4b4b608aad3844912e49028d73a2a99e4d629fbe0cf018f68b60d9a37d.png)
+![../../.gitbook/assets/star-schema.png](../../.gitbook/assets/star-schema.png)
 
 ## Hydra Schema
 
-A Hydra schema is conceptually identical to star schema with Fact tables record measurements / metics and Dimension tables are the entities that are modeled, such as people and places. The key difference of the Hydra schema is dimension tables may or may not be local within the data warehouse and can exist as foreign tables. Hydra schemas allow for rapidly updated data sets to avoid data duplication in the warehouse, but available for analysis instantly. To optimize for performance, foreign dimension tables should be kept under 1 million rows (though this varies by use case and data source). Larger tables should be imported and synced into Hydra.
+A Hydra schema is conceptually identical to star schema with Fact tables record measurements / metics and Dimension tables are the entities that are modeled, such as people and places. The key difference of the Hydra schema is dimension tables may or may not be local within the Hydra database and can exist as foreign tables. Hydra schemas allow for rapidly updated data sets to avoid data duplication in the warehouse, but available for analysis instantly. To optimize for performance, foreign dimension tables should be kept under 1 million rows (though this varies by use case and data source). Larger tables should be imported and synced into Hydra.

@@ -6,13 +6,11 @@ Columnar storage is a key part of the data warehouse, but why is that? In this a
 
 ### The heap table
 
-By default, data in Postgres is stored in a heap table. Heap tables are arranged row-by-row, similar to how you would arrange data when creating a large spreadsheet. Data can be added forever by appending data to the end of the table.
+In traditional Postgres, data in Postgres is stored in a heap table. Heap tables are arranged row-by-row, similar to how you would arrange data when creating a large spreadsheet. Data can be added forever by appending data to the end of the table.
 
 In Postgres, heap tables are organized into _pages_. Each page holds 8kb of data. Each page holds pointers to the start of each row in the data.
 
-![https://www.interdb.jp/pg/img/fig-1-04.png](https://www.interdb.jp/pg/img/fig-1-04.png)
-
-_Image credit:_ [_The Internals of PostgreSQL_](https://www.interdb.jp/pg/pgsql01.html)
+[![Structure of a Heap Table, from _The Internals of PostgreSQL_](https://www.interdb.jp/pg/img/fig-1-04.png)](https://www.interdb.jp/pg/pgsql01.html)
 
 #### Advantages
 
@@ -43,7 +41,7 @@ This data would be stored as follows in columnar:
 | d | d | d |
 ```
 
-In columnar, you can think of each stripe as a row of metadata that also holds up to 150,000 rows of data. Within each stripe, data is divided into _chunks_ of 1000 rows, and then within each chunk, there is a “row” for each _column_ of data you stored in it. Additionally, columnar stores the minimum, maximum, and count for each column in each chunk.
+In columnar, you can think of each stripe as a row of metadata that also holds up to 150,000 rows of data. Within each stripe, data is divided into _chunks_ of 10,000 rows, and then within each chunk, there is a “row” for each _column_ of data you stored in it. Additionally, columnar stores the minimum, maximum, and count for each column in each chunk.
 
 #### Advantages
 
@@ -55,9 +53,18 @@ Because similar data is stored next to each other, very high data compression is
 
 Hydra Columnar storage is not designed to do common transactional queries like “find by ID” - the database will need to scan a much larger amount of data to fetch this information than a row table.
 
-Hydra Columnar is append-only. While it supports updates and deletes (also known as Data Modification Language or DML), space is not reclaimed on deletion, and updates insert new data. Updates and deletes lock the table as Columnar does not have a row-level construct that can be locked. Overall, DML is considerably slower on columnar tables than row tables.
+Hydra Columnar is append-only. While it supports updates and deletes (also
+known as Data Modification Language or DML), space is not reclaimed on
+deletion, and updates insert new data. Updates and deletes lock the table as
+Columnar does not have a row-level construct that can be locked. Overall, DML
+is considerably slower on columnar tables than row tables. Space can be later
+reclaimed using [columnar.vacuum](../../concepts/updates-and-deletes.md).
 
-Lastly, columnar tables need to be inserted in bulk in order to create efficient stripes. This makes them ideal for long-term storage of data you already have, but not ideal when data is still streaming into the database. For these reasons, it’s best to store data in row-based tables until it is ready to be archived into columnar.
+Lastly, columnar tables need to be inserted in bulk in order to create
+efficient stripes. This makes them ideal for long-term storage of data you
+already have, but not ideal when data is still streaming into the database. For
+these reasons, it’s best to store data in row-based tables until it is ready to
+be archived into columnar. You can compact small stripes by [calling `VACUUM`](../../concepts/optimizing-query-performance.md#vacuum-tables).
 
 ## Using Hydra Columnar
 
